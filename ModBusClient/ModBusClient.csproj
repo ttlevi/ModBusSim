@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B33BE86F-571E-471C-9F40-222896113B62}</ProjectGuid>
+    <ProjectGuid>{E9D0E9F4-F57A-47C6-8F94-9A0C6A84A8C1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ModBusSim</RootNamespace>
-    <AssemblyName>ModBusSim</AssemblyName>
+    <RootNamespace>ModBusClient</RootNamespace>
+    <AssemblyName>ModBusClient</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,16 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServerSim.cs">
+    <Compile Include="ClientSim.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServerSim.Designer.cs">
-      <DependentUpon>ServerSim.cs</DependentUpon>
+    <Compile Include="ClientSim.Designer.cs">
+      <DependentUpon>ClientSim.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ServerSim.resx">
-      <DependentUpon>ServerSim.cs</DependentUpon>
+    <EmbeddedResource Include="ClientSim.resx">
+      <DependentUpon>ClientSim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

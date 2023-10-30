@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ModBusSim
+namespace ModBusClient
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace ModBusSim
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ServerSim());
+            Application.Run(new ModBusClient());
         }
     }
 }

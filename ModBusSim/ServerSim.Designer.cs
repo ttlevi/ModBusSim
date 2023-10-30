@@ -1,6 +1,6 @@
 ﻿namespace ModBusSim
 {
-    partial class ModBusSim
+    partial class ServerSim
     {
         /// <summary>
         /// Required designer variable.
