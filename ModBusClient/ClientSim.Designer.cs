@@ -38,11 +38,11 @@
             this.txtRegAddr = new System.Windows.Forms.TextBox();
             this.cboRegType = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.txtIPAddr = new System.Windows.Forms.TextBox();
-            this.btnStartStop = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -158,7 +158,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnStartStop);
+            this.groupBox2.Controls.Add(this.btnRefresh);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtPort);
@@ -169,6 +169,18 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client Properties";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Location = new System.Drawing.Point(261, 119);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(364, 73);
+            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnStartStop_Click);
             // 
             // label5
             // 
@@ -212,18 +224,6 @@
             this.txtIPAddr.TabIndex = 2;
             this.txtIPAddr.Text = "127.0.0.1";
             // 
-            // btnStartStop
-            // 
-            this.btnStartStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStartStop.Location = new System.Drawing.Point(261, 119);
-            this.btnStartStop.Margin = new System.Windows.Forms.Padding(6);
-            this.btnStartStop.Name = "btnStartStop";
-            this.btnStartStop.Size = new System.Drawing.Size(364, 73);
-            this.btnStartStop.TabIndex = 10;
-            this.btnStartStop.Text = "Start";
-            this.btnStartStop.UseVisualStyleBackColor = true;
-            this.btnStartStop.Click += new System.EventHandler(this.btnStartStop_Click);
-            // 
             // ModBusClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -257,7 +257,7 @@
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.TextBox txtIPAddr;
         private System.Windows.Forms.Label lblError;
-        private System.Windows.Forms.Button btnStartStop;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 

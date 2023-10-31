@@ -18,24 +18,27 @@ namespace ModBusClient
         public ModBusClient()
         {
             InitializeComponent();
+            RefreshClient();
         }
 
         private void btnStartStop_Click(object sender, EventArgs e)
         {
-            if (btnStartStop.Text == "Start")
-            {
-                btnStartStop.Text = "Stop";
+            RefreshClient();
+        }
 
-                client = new ModbusClient();
-                client.IPAddress = txtIPAddr.Text;
-                client.Port =  int.Parse(txtPort.Text);
+        private void RefreshClient()
+        {
+            client = new ModbusClient();
+            client.IPAddress = txtIPAddr.Text;
+            client.Port = int.Parse(txtPort.Text);
+
+            try
+            {
                 client.Connect();
             }
-
-            else
+            catch (Exception)
             {
-                btnStartStop.Text = "Start";
-                client = null;
+                MessageBox.Show("There's no ModBus client connected to this port. Try another IP Address or Port Number.", "Error");
             }
         }
 
@@ -55,11 +58,14 @@ namespace ModBusClient
                 {
                     rval = false;
                 }
-                //else
-                //{
-                //    lblError.Text = "Érvénytelen érték!";
-                //}
-                client.WriteSingleCoil(raddr-1, rval);
+                try
+                {
+                    client.WriteSingleCoil(raddr-1, rval);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Check if you misspelled something and try again!", "Error");
+                }
             }
 
             if (cboRegType.Text == "Holding Register")
