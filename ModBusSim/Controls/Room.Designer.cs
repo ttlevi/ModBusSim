@@ -113,7 +113,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Room";
-            this.Text = "New Room";
+            this.Text = "NewRoom";
             this.Load += new System.EventHandler(this.Room_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -102,7 +102,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName);
             this.Name = "RoomProperties";
-            this.Text = "RoomProperties";
+            this.Text = "Room Properties";
             this.ResumeLayout(false);
             this.PerformLayout();
 

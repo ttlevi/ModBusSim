@@ -13,12 +13,14 @@ namespace ModBusSim
 {
     public partial class ServerSim : Form
     {
+        public ModbusServer server { get; set; }
         public ServerSim()
         {
             InitializeComponent();
 
-            ModbusServer server = new ModbusServer();
+            server = new ModbusServer();
             server.UDPFlag = false;
+            server.Port = 502;
             server.Listen();
 
             server.HoldingRegistersChanged += (s, e) =>

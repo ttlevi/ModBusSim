@@ -18,7 +18,7 @@ namespace ModBusSim.Controls
             InitializeComponent();
             this.sourceRoom = sourceRoom;
             txtColor.BackColor = sourceRoom.BackColor;
-            txtName.Text = sourceRoom.Name;
+            txtName.Text = sourceRoom.Text;
         }
 
         private void btnChangeColor_Click(object sender, EventArgs e)

@@ -36,6 +36,7 @@
             this.txtIP = new System.Windows.Forms.TextBox();
             this.cboNrOfRegs = new System.Windows.Forms.ComboBox();
             this.btnConnect = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label1
@@ -116,12 +117,21 @@
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Location = new System.Drawing.Point(6, 65);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(373, 151);
+            this.panel1.TabIndex = 9;
+            // 
             // DigitalDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.cboNrOfRegs);
             this.Controls.Add(this.txtIP);
@@ -131,7 +141,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DigitalDevice";
-            this.Size = new System.Drawing.Size(383, 113);
+            this.Size = new System.Drawing.Size(383, 219);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +157,6 @@
         private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.ComboBox cboNrOfRegs;
         private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.Panel panel1;
     }
 }

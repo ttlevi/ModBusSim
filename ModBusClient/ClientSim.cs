@@ -71,7 +71,14 @@ namespace ModBusClient
             if (cboRegType.Text == "Holding Register")
             {
                 int rval = int.Parse(txtRegVal.Text);
-                client.WriteSingleRegister(raddr-1, rval);
+                try
+                {
+                    client.WriteSingleRegister(raddr - 1, rval);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Check if you misspelled something and try again!", "Error");
+                }
             }
         }
     }
