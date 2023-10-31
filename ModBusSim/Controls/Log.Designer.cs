@@ -1,6 +1,6 @@
 ﻿namespace ModBusSim
 {
-    partial class ServerSim
+    partial class Log
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgwCoilRegs = new System.Windows.Forms.DataGridView();
             this.Client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Register = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,7 +38,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bsrcCoilRegs = new System.Windows.Forms.BindingSource(this.components);
             this.bsrcHoldingRegs = new System.Windows.Forms.BindingSource(this.components);
@@ -46,6 +46,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsrcCoilRegs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsrcHoldingRegs)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Coil Registers:";
             // 
             // dgwCoilRegs
             // 
@@ -60,13 +70,14 @@
             this.Register,
             this.Value});
             this.dgwCoilRegs.DataSource = this.bsrcCoilRegs;
-            this.dgwCoilRegs.Location = new System.Drawing.Point(12, 49);
+            this.dgwCoilRegs.Location = new System.Drawing.Point(11, 23);
+            this.dgwCoilRegs.Margin = new System.Windows.Forms.Padding(2);
             this.dgwCoilRegs.Name = "dgwCoilRegs";
             this.dgwCoilRegs.ReadOnly = true;
             this.dgwCoilRegs.RowHeadersWidth = 82;
             this.dgwCoilRegs.RowTemplate.Height = 33;
-            this.dgwCoilRegs.Size = new System.Drawing.Size(596, 668);
-            this.dgwCoilRegs.TabIndex = 0;
+            this.dgwCoilRegs.Size = new System.Drawing.Size(298, 416);
+            this.dgwCoilRegs.TabIndex = 4;
             // 
             // Client
             // 
@@ -105,13 +116,14 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dgwHoldingRegs.DataSource = this.bsrcHoldingRegs;
-            this.dgwHoldingRegs.Location = new System.Drawing.Point(628, 49);
+            this.dgwHoldingRegs.Location = new System.Drawing.Point(320, 23);
+            this.dgwHoldingRegs.Margin = new System.Windows.Forms.Padding(2);
             this.dgwHoldingRegs.Name = "dgwHoldingRegs";
             this.dgwHoldingRegs.ReadOnly = true;
             this.dgwHoldingRegs.RowHeadersWidth = 82;
             this.dgwHoldingRegs.RowTemplate.Height = 33;
-            this.dgwHoldingRegs.Size = new System.Drawing.Size(596, 668);
-            this.dgwHoldingRegs.TabIndex = 1;
+            this.dgwHoldingRegs.Size = new System.Drawing.Size(298, 416);
+            this.dgwHoldingRegs.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -137,38 +149,27 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Coil Registers:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(623, 18);
+            this.label2.Location = new System.Drawing.Point(317, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(188, 25);
-            this.label2.TabIndex = 3;
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 7;
             this.label2.Text = "Holding Registers:";
             // 
-            // ServerSim
+            // Log
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1236, 729);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(632, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgwHoldingRegs);
             this.Controls.Add(this.dgwCoilRegs);
-            this.Name = "ServerSim";
-            this.Text = "ModBusSim";
-            this.Load += new System.EventHandler(this.ModBusSim_Load);
+            this.Controls.Add(this.dgwHoldingRegs);
+            this.Controls.Add(this.label2);
+            this.Name = "Log";
+            this.Text = "Log";
             ((System.ComponentModel.ISupportInitialize)(this.dgwCoilRegs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwHoldingRegs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsrcCoilRegs)).EndInit();
@@ -180,18 +181,17 @@
 
         #endregion
 
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgwCoilRegs;
-        private System.Windows.Forms.DataGridView dgwHoldingRegs;
         private System.Windows.Forms.DataGridViewTextBoxColumn Client;
         private System.Windows.Forms.DataGridViewTextBoxColumn Register;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private System.Windows.Forms.BindingSource bsrcCoilRegs;
+        private System.Windows.Forms.DataGridView dgwHoldingRegs;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.BindingSource bsrcCoilRegs;
         private System.Windows.Forms.BindingSource bsrcHoldingRegs;
+        private System.Windows.Forms.Label label2;
     }
 }
-

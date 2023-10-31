@@ -51,15 +51,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServerSim.cs">
+    <Compile Include="Controls\Log.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServerSim.Designer.cs">
+    <Compile Include="Controls\Log.Designer.cs">
+      <DependentUpon>Log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Room.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Room.Designer.cs">
+      <DependentUpon>Room.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RoomProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\RoomProperties.Designer.cs">
+      <DependentUpon>RoomProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ServerSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ServerSim.Designer.cs">
       <DependentUpon>ServerSim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DigitalDevice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DigitalDevice.Designer.cs">
+      <DependentUpon>DigitalDevice.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ServerSim.resx">
+    <EmbeddedResource Include="Controls\DigitalDevice.resx">
+      <DependentUpon>DigitalDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Log.resx">
+      <DependentUpon>Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Room.resx">
+      <DependentUpon>Room.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RoomProperties.resx">
+      <DependentUpon>RoomProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ServerSim.resx">
       <DependentUpon>ServerSim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

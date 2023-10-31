@@ -27,9 +27,6 @@ namespace ModBusSim
                 Console.WriteLine($"Értéke: {server.holdingRegisters[s]}");
                 for (int i = 1; i < 10; i++) { Console.Write($"{server.holdingRegisters[i]}, "); };
                 Console.WriteLine();
-
-                string[] newRow = { server.Port.ToString(), s.ToString(), server.holdingRegisters[s].ToString()};
-                holdingData.Add(newRow);
             };
 
             server.CoilsChanged += (s, e) =>
@@ -39,20 +36,12 @@ namespace ModBusSim
                 for (int i = 1; i < 10; i++) { Console.Write($"{server.coils[i]}, "); };
                 Console.WriteLine();
             };
-
-            server.LogDataChanged += () =>
-            {
-            };
-
-            server.NumberOfConnectedClientsChanged += () =>
-            {
-                //label1.Text= server.NumberOfConnections.ToString();
-            };
         }
 
-        private void ModBusSim_Load(object sender, EventArgs e)
+        private void newRoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Room newroom = new Room();
+            newroom.Show();
         }
     }
 }
