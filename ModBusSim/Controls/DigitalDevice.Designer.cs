@@ -82,7 +82,7 @@
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(58, 20);
             this.txtPort.TabIndex = 5;
-            this.txtPort.Text = "502";
+            this.txtPort.Text = "503";
             // 
             // txtIP
             // 
