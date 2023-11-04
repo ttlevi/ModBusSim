@@ -51,6 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AnalogDevice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AnalogDevice.Designer.cs">
+      <DependentUpon>AnalogDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Display.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Led.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\Log.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,8 +93,17 @@
     <Compile Include="Controls\DigitalDevice.Designer.cs">
       <DependentUpon>DigitalDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UCRoom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UCRoom.Designer.cs">
+      <DependentUpon>UCRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\AnalogDevice.resx">
+      <DependentUpon>AnalogDevice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\DigitalDevice.resx">
       <DependentUpon>DigitalDevice.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ServerSim.resx">
       <DependentUpon>ServerSim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UCRoom.resx">
+      <DependentUpon>UCRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

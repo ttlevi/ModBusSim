@@ -36,6 +36,7 @@
             this.roomPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             this.analogholdingDeviceToolStripMenuItem.Name = "analogholdingDeviceToolStripMenuItem";
             this.analogholdingDeviceToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.analogholdingDeviceToolStripMenuItem.Text = "Analog (holding) device";
+            this.analogholdingDeviceToolStripMenuItem.Click += new System.EventHandler(this.analogholdingDeviceToolStripMenuItem_Click);
             // 
             // digitalcoilDeviceToolStripMenuItem
             // 
@@ -105,11 +107,22 @@
             this.panel1.Size = new System.Drawing.Size(1030, 517);
             this.panel1.TabIndex = 2;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(968, 1);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // Room
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 557);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Room";
@@ -132,5 +145,6 @@
         private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem roomPropertiesToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnSave;
     }
 }

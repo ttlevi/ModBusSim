@@ -6,17 +6,15 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace ModBusSim.Controls
 {
-    public partial class DigitalDevice : UserControl
+    public partial class AnalogDevice : UserControl
     {
-        private ModbusServer server = new ModbusServer();
-        public DigitalDevice()
+        ModbusServer server = new ModbusServer();
+        public AnalogDevice()
         {
             InitializeComponent();
         }
@@ -32,27 +30,28 @@ namespace ModBusSim.Controls
             //    MessageBox.Show("This port is already in use.","Error");
             //}
 
-            server.CoilsChanged += (s, e) =>
+            server.HoldingRegistersChanged += (s, e) =>
             {
-                foreach (Led led in panel1.Controls) {
-                    if (led.Text == s.ToString()) { led.Switch(server.coils[s]); };
+                foreach (Display disp in panel1.Controls)
+                {
+                    if (disp.Address == s) { disp.SetValue(server.holdingRegisters[s]); };
                 }
             };
 
             panel1.Controls.Clear();
 
             int nr = int.Parse(cboNrOfRegs.Text);
-            List<Led> leds = new List<Led>();
-            for (int i = 1; i < nr+1; i++)
+            List<Display> displays = new List<Display>();
+            for (int i = 1; i < nr + 1; i++)
             {
-                Led led = new Led();
+                Display disp = new Display();
 
-                led.Text = i.ToString();
-                led.Top = ((i - 1) / 5) * 30;
-                led.Left = 30 + ((i - 1) % 5) * 50;
+                disp.Top = ((i - 1) / 5) * 30;
+                disp.Left = 30 + ((i - 1) % 5) * 50;
+                disp.Address = i;
 
-                leds.Add(led);
-                panel1.Controls.Add(led);
+                displays.Add(disp);
+                panel1.Controls.Add(disp);
             }
         }
 
