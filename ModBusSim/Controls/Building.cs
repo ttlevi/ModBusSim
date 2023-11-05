@@ -2,28 +2,19 @@
 using ModBusSim.Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ModBusSim
 {
-    public partial class ServerSim : Form
+    public partial class Building : Form
     {
-        public ModbusServer server { get; set; }
         private List<Room> rooms = new List<Room>();
-        public ServerSim()
+        public Building()
         {
             InitializeComponent();
 
-            //server = new ModbusServer();
-            //server.UDPFlag = false;
-            //server.Port = 502;
-            //server.Listen();
+            ModbusServer server = new ModbusServer();
+            server.Listen();
 
             //server.HoldingRegistersChanged += (s, e) =>
             //{
@@ -42,21 +33,44 @@ namespace ModBusSim
             //};
         }
 
+        public void LoadResources()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            
+        }
+
         public void NewRoom(Room newroom)
         {
-            rooms.Add(newroom);
-            int nr = rooms.Count;
-            UCRoom uc = new UCRoom();
-            uc.Top = ((nr - 1) / 8) * 90;
-            uc.Left = ((nr - 1) % 8) * 210;
-            uc.BackColor = newroom.BackColor;
-            uc.RoomName = newroom.Text;
-            panel1.Controls.Add(uc);
+            if (!newroom.Exists) { newroom.Exists = true; rooms.Add(newroom); }
+            LoadRooms();
+        }
+
+        public void RemoveRoom(Room newroom)
+        {
+            rooms.Remove(newroom);
+            LoadRooms();
+        }
+
+        private void LoadRooms()
+        {
+            panel1.Controls.Clear();
+            int nr = 0;
+            foreach (Room room in rooms){
+                UCRoom uc = new UCRoom(room);
+                uc.Top = (nr / 5) * 90;
+                uc.Left = (nr % 5) * 210;
+                uc.BackColor = room.Color;
+                uc.RoomName = room.Text;
+                uc.Room = room;
+                panel1.Controls.Add(uc);
+                nr++;
+            }
         }
 
         private void newRoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Room newroom = new Room(this);
+            Room newroom = new Room();
+            newroom.Building = this;
             newroom.Show();
         }
     }

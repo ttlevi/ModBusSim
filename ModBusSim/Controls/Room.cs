@@ -1,24 +1,22 @@
 ﻿using ModBusSim.Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ModBusSim
 {
     public partial class Room : Form
     {
-        int nrOfDevices = 0;
-        private ServerSim ServerSim;
-        public Room(ServerSim serverSim)
+        public Color Color { get; set; } = Color.Gray;
+        public List<Device> Devices { get; set; } = new List<Device>();
+        public Building Building { get; set; }
+        public bool Exists { get; set; } = false;
+
+        public Room()
         {
             InitializeComponent();
-            ServerSim = serverSim;
         }
 
         private void OpenRoomProperties()
@@ -30,22 +28,24 @@ namespace ModBusSim
 
         public void SetProperties(string name, Color color)
         {
-            this.Name = name;
-            this.Text = name;
-            this.BackColor = color;
+            Name = name;
+            Text = name;
+            panel1.BackColor = color;
+            Color = color;
         }
 
-        private void AddNewDevice(UserControl device)
+        private void AddDevice(Device device, int nr)
         {
-            device.Left = ((nrOfDevices) % 5) * 310;
-            device.Top = ((nrOfDevices) / 5) * 220;
-            nrOfDevices += 1;
+            device.Left = 10+(nr % 5) * 260;
+            device.Top = 10+(nr / 5) * 230;
             panel1.Controls.Add(device);
+            Devices.Add(device);
         }
 
         private void Room_Load(object sender, EventArgs e)
         {
-            OpenRoomProperties();
+            if (!Exists) { OpenRoomProperties();  };
+            foreach (Device device in Devices) { AddDevice(device, device.Position); };
         }
 
         private void roomPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,19 +55,29 @@ namespace ModBusSim
 
         private void digitalcoilDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DigitalDevice digDiv = new DigitalDevice();
-            AddNewDevice(digDiv);
+            DigitalDevice device = new DigitalDevice();
+            device.Room = this;
+            device.Position = Devices.Count;
+            AddDevice(device,device.Position);
         }
 
         private void analogholdingDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AnalogDevice analogDiv = new AnalogDevice();
-            AddNewDevice(analogDiv);
+            AnalogDevice device = new AnalogDevice();
+            device.Room = this;
+            device.Position = Devices.Count;
+            AddDevice(device, device.Position);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ServerSim.NewRoom(this);
+            int nr = 0;
+            foreach (Device device in panel1.Controls)
+            {
+                device.Position = nr;
+                nr++;
+            }
+            Building.NewRoom(this);
         }
     }
 }

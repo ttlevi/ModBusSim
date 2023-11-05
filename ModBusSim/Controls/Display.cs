@@ -1,29 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Label = System.Windows.Forms.Label;
+﻿using System.Windows.Forms;
 
 namespace ModBusSim.Controls
 {
-    public class Display : Label
+    public partial class Display : UserControl
     {
-        public int Address { get; set; }
+        private int address;
+
+        public int Address
+        {
+            get { return Address; }
+            set { address = value; lblAddr.Text = address.ToString(); }
+        }
+
+        private int holdingValue;
+
+        public int Value
+        {
+            get { return holdingValue; }
+            set { holdingValue = value; lblValue.Text = holdingValue.ToString(); }
+        }
+
+
         public Display()
         {
-            Text = "0";
-            Width = 45;
-            Height = 15;
-            BackColor = Color.Black;
-            ForeColor = Color.White;
-        }
-        public void SetValue(int value)
-        {
-            this.Invoke((MethodInvoker)(() => this.Text = value.ToString()));
+            InitializeComponent();
         }
     }
 }

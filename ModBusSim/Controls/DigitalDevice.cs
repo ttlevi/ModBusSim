@@ -1,64 +1,50 @@
-﻿using EasyModbus;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace ModBusSim.Controls
 {
-    public partial class DigitalDevice : UserControl
+    public partial class DigitalDevice : Device
     {
-        private ModbusServer server = new ModbusServer();
+        public List<bool> Coils { get; set; } = new List<bool>();
+
+        private bool isconnected = false;
         public DigitalDevice()
         {
             InitializeComponent();
         }
 
-        private void RefreshField()
+        private void AddDevice()
         {
-            ModbusServer newserver = new ModbusServer();
-            newserver.Port = int.Parse(txtPort.Text);
-            server = newserver;
-            server.Listen();
-            //catch (System.Net.Sockets.SocketException)
+            //server.CoilsChanged += (s, e) =>
             //{
-            //    MessageBox.Show("This port is already in use.","Error");
-            //}
-
-            server.CoilsChanged += (s, e) =>
-            {
-                foreach (Led led in panel1.Controls) {
-                    if (led.Text == s.ToString()) { led.Switch(server.coils[s]); };
-                }
-            };
+            //    foreach (Led led in panel1.Controls) {
+            //        if (led.Text == s.ToString()) { led.Switch(server.coils[s]); };
+            //    }
+            //};
 
             panel1.Controls.Clear();
-
             int nr = int.Parse(cboNrOfRegs.Text);
-            List<Led> leds = new List<Led>();
-            for (int i = 1; i < nr+1; i++)
+
+            for (int i = 0; i < nr; i++)
             {
                 Led led = new Led();
-
                 led.Text = i.ToString();
-                led.Top = ((i - 1) / 5) * 30;
-                led.Left = 30 + ((i - 1) % 5) * 50;
-
-                leds.Add(led);
+                led.Top = (i / 5) * 30;
+                led.Left = 10 + (i % 5) * 50;
                 panel1.Controls.Add(led);
+
+                Coils.Add(false);
             }
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            RefreshField();
+            if (!isconnected)
+            {
+                btnConnect.Text = "Disconnect";
+                AddDevice();
+            }
         }
     }
 }

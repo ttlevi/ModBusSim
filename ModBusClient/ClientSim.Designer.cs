@@ -43,6 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.txtIPAddr = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtUnitID = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -60,11 +62,9 @@
             this.groupBox1.Controls.Add(this.txtRegVal);
             this.groupBox1.Controls.Add(this.txtRegAddr);
             this.groupBox1.Controls.Add(this.cboRegType);
-            this.groupBox1.Location = new System.Drawing.Point(9, 229);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBox1.Location = new System.Drawing.Point(6, 151);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(637, 275);
+            this.groupBox1.Size = new System.Drawing.Size(318, 144);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change Data";
@@ -73,18 +73,18 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(256, 282);
+            this.lblError.Location = new System.Drawing.Point(128, 147);
+            this.lblError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 25);
+            this.lblError.Size = new System.Drawing.Size(0, 13);
             this.lblError.TabIndex = 7;
             // 
             // btnSetValue
             // 
             this.btnSetValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetValue.Location = new System.Drawing.Point(261, 191);
-            this.btnSetValue.Margin = new System.Windows.Forms.Padding(6);
+            this.btnSetValue.Location = new System.Drawing.Point(130, 99);
             this.btnSetValue.Name = "btnSetValue";
-            this.btnSetValue.Size = new System.Drawing.Size(364, 73);
+            this.btnSetValue.Size = new System.Drawing.Size(182, 38);
             this.btnSetValue.TabIndex = 6;
             this.btnSetValue.Text = "Set";
             this.btnSetValue.UseVisualStyleBackColor = true;
@@ -94,10 +94,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(75, 93);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(37, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(177, 25);
+            this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Register Address";
             // 
@@ -105,10 +104,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 145);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(65, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 25);
+            this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "New Value";
             // 
@@ -116,29 +114,26 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(75, 39);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(51, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 25);
+            this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Register Type";
             // 
             // txtRegVal
             // 
             this.txtRegVal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRegVal.Location = new System.Drawing.Point(261, 139);
-            this.txtRegVal.Margin = new System.Windows.Forms.Padding(6);
+            this.txtRegVal.Location = new System.Drawing.Point(130, 72);
             this.txtRegVal.Name = "txtRegVal";
-            this.txtRegVal.Size = new System.Drawing.Size(360, 31);
+            this.txtRegVal.Size = new System.Drawing.Size(182, 20);
             this.txtRegVal.TabIndex = 2;
             // 
             // txtRegAddr
             // 
             this.txtRegAddr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRegAddr.Location = new System.Drawing.Point(261, 87);
-            this.txtRegAddr.Margin = new System.Windows.Forms.Padding(6);
+            this.txtRegAddr.Location = new System.Drawing.Point(130, 45);
             this.txtRegAddr.Name = "txtRegAddr";
-            this.txtRegAddr.Size = new System.Drawing.Size(360, 31);
+            this.txtRegAddr.Size = new System.Drawing.Size(182, 20);
             this.txtRegAddr.TabIndex = 1;
             // 
             // cboRegType
@@ -148,24 +143,27 @@
             this.cboRegType.Items.AddRange(new object[] {
             "Holding Register",
             "Coil Output"});
-            this.cboRegType.Location = new System.Drawing.Point(261, 34);
-            this.cboRegType.Margin = new System.Windows.Forms.Padding(6);
+            this.cboRegType.Location = new System.Drawing.Point(130, 18);
             this.cboRegType.Name = "cboRegType";
-            this.cboRegType.Size = new System.Drawing.Size(360, 33);
+            this.cboRegType.Size = new System.Drawing.Size(182, 21);
             this.cboRegType.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtUnitID);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnRefresh);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtPort);
             this.groupBox2.Controls.Add(this.txtIPAddr);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(6, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(637, 208);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(318, 142);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client Properties";
@@ -173,10 +171,9 @@
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(261, 119);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6);
+            this.btnRefresh.Location = new System.Drawing.Point(130, 95);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(364, 73);
+            this.btnRefresh.Size = new System.Drawing.Size(182, 38);
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -186,10 +183,9 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(75, 76);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(58, 46);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 25);
+            this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Port Number";
             // 
@@ -197,40 +193,56 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(75, 39);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(66, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 25);
+            this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "IP Address";
             // 
             // txtPort
             // 
             this.txtPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPort.Location = new System.Drawing.Point(261, 76);
-            this.txtPort.Margin = new System.Windows.Forms.Padding(6);
+            this.txtPort.Location = new System.Drawing.Point(131, 43);
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(360, 31);
+            this.txtPort.Size = new System.Drawing.Size(182, 20);
             this.txtPort.TabIndex = 8;
             this.txtPort.Text = "502";
             // 
             // txtIPAddr
             // 
             this.txtIPAddr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIPAddr.Location = new System.Drawing.Point(261, 33);
-            this.txtIPAddr.Margin = new System.Windows.Forms.Padding(6);
+            this.txtIPAddr.Location = new System.Drawing.Point(130, 17);
             this.txtIPAddr.Name = "txtIPAddr";
-            this.txtIPAddr.Size = new System.Drawing.Size(360, 31);
+            this.txtIPAddr.Size = new System.Drawing.Size(182, 20);
             this.txtIPAddr.TabIndex = 2;
             this.txtIPAddr.Text = "127.0.0.1";
             // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(84, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Unit ID";
+            // 
+            // txtUnitID
+            // 
+            this.txtUnitID.Location = new System.Drawing.Point(130, 69);
+            this.txtUnitID.Name = "txtUnitID";
+            this.txtUnitID.Size = new System.Drawing.Size(182, 20);
+            this.txtUnitID.TabIndex = 12;
+            this.txtUnitID.Text = "0";
+            // 
             // ModBusClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 519);
+            this.ClientSize = new System.Drawing.Size(330, 300);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ModBusClient";
             this.Text = "ModBusClient";
             this.groupBox1.ResumeLayout(false);
@@ -258,6 +270,8 @@
         private System.Windows.Forms.TextBox txtIPAddr;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.TextBox txtUnitID;
+        private System.Windows.Forms.Label label6;
     }
 }
 

@@ -12,13 +12,14 @@ namespace ModBusSim.Controls
 {
     public partial class RoomProperties : Form
     {
-        private Room sourceRoom;
-        public RoomProperties(Room sourceRoom)
+        public Room Room { get; set; }
+
+        public RoomProperties(Room source)
         {
             InitializeComponent();
-            this.sourceRoom = sourceRoom;
-            txtColor.BackColor = sourceRoom.BackColor;
-            txtName.Text = sourceRoom.Text;
+            txtColor.BackColor = source.Color;
+            txtName.Text = source.Text;
+            Room = source;
         }
 
         private void btnChangeColor_Click(object sender, EventArgs e)
@@ -29,7 +30,7 @@ namespace ModBusSim.Controls
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            sourceRoom.SetProperties(txtName.Text,txtColor.BackColor);
+            Room.SetProperties(txtName.Text,txtColor.BackColor);
             Close();
         }
     }

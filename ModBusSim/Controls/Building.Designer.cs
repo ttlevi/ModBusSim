@@ -1,6 +1,6 @@
 ﻿namespace ModBusSim
 {
-    partial class ServerSim
+    partial class Building
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@
         {
             this.newRoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.availableRoomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -45,19 +44,12 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newRoomToolStripMenuItem,
-            this.availableRoomsToolStripMenuItem});
+            this.newRoomToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1066, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // availableRoomsToolStripMenuItem
-            // 
-            this.availableRoomsToolStripMenuItem.Name = "availableRoomsToolStripMenuItem";
-            this.availableRoomsToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
-            this.availableRoomsToolStripMenuItem.Text = "Available Rooms";
             // 
             // panel1
             // 
@@ -69,7 +61,7 @@
             this.panel1.Size = new System.Drawing.Size(1042, 589);
             this.panel1.TabIndex = 1;
             // 
-            // ServerSim
+            // Building
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,8 +72,8 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "ServerSim";
-            this.Text = "ModBusSim";
+            this.Name = "Building";
+            this.Text = "Building";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -93,7 +85,6 @@
 
         private System.Windows.Forms.ToolStripMenuItem newRoomToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem availableRoomsToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
     }
 }

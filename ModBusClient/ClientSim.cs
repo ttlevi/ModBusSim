@@ -30,6 +30,7 @@ namespace ModBusClient
         {
             client = new ModbusClient();
             client.IPAddress = txtIPAddr.Text;
+            client.UnitIdentifier = byte.Parse(txtUnitID.Text);
             client.Port = int.Parse(txtPort.Text);
 
             try

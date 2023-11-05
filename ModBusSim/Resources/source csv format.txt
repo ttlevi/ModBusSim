@@ -1,0 +1,9 @@
+Source csv, structure of a row:
+
+0. name of room - str
+1. color of room (hex rgb) - Color
+2. nr of digital devices - int
+3. nr of analog devices - int
+4+. lists containing the devices in the room - separated with ","
+	0. type of device (0=digital, 1=analog) - bool
+	1. list of device coils/holding registers status - int
