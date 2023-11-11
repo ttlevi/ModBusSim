@@ -14,7 +14,7 @@ namespace ModBusSim.Controls
             InitializeComponent();
         }
 
-        private void AddDevice()
+        private void LoadCoils()
         {
             //server.CoilsChanged += (s, e) =>
             //{
@@ -43,8 +43,13 @@ namespace ModBusSim.Controls
             if (!isconnected)
             {
                 btnConnect.Text = "Disconnect";
-                AddDevice();
+                LoadCoils();
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Room.RemoveDevice(this);
         }
     }
 }

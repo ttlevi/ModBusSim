@@ -4,7 +4,8 @@ using Label = System.Windows.Forms.Label;
 namespace ModBusSim.Controls
 {
     public class Led : Label
-    { 
+    {
+        public int Address { get; set; }
         public Led()
         {
             Width = 20;

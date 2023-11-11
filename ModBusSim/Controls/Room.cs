@@ -3,13 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace ModBusSim
 {
     public partial class Room : Form
     {
-        public Color Color { get; set; } = Color.Gray;
+        private Color roomcolor;
+
+        public Color Color
+        {
+            get { return roomcolor; }
+            set { roomcolor = value; panel1.BackColor = Color; }
+        }
+
         public List<Device> Devices { get; set; } = new List<Device>();
         public Building Building { get; set; }
         public bool Exists { get; set; } = false;
@@ -17,35 +25,7 @@ namespace ModBusSim
         public Room()
         {
             InitializeComponent();
-        }
-
-        private void OpenRoomProperties()
-        {
-            RoomProperties roomProperties = new RoomProperties(this);
-            roomProperties.TopMost = true;
-            roomProperties.Show();
-        }
-
-        public void SetProperties(string name, Color color)
-        {
-            Name = name;
-            Text = name;
-            panel1.BackColor = color;
-            Color = color;
-        }
-
-        private void AddDevice(Device device, int nr)
-        {
-            device.Left = 10+(nr % 5) * 260;
-            device.Top = 10+(nr / 5) * 230;
-            panel1.Controls.Add(device);
-            Devices.Add(device);
-        }
-
-        private void Room_Load(object sender, EventArgs e)
-        {
-            if (!Exists) { OpenRoomProperties();  };
-            foreach (Device device in Devices) { AddDevice(device, device.Position); };
+            Color = panel1.BackColor;
         }
 
         private void roomPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,7 +38,7 @@ namespace ModBusSim
             DigitalDevice device = new DigitalDevice();
             device.Room = this;
             device.Position = Devices.Count;
-            AddDevice(device,device.Position);
+            AddDevice(device);
         }
 
         private void analogholdingDeviceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,10 +46,16 @@ namespace ModBusSim
             AnalogDevice device = new AnalogDevice();
             device.Room = this;
             device.Position = Devices.Count;
-            AddDevice(device, device.Position);
+            AddDevice(device);
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        public void SaveRoom()
+        {
+            SetDevicePositions();
+            Building.RefreshRoomDisplays(this);
+        }
+
+        public void SetDevicePositions()
         {
             int nr = 0;
             foreach (Device device in panel1.Controls)
@@ -77,7 +63,41 @@ namespace ModBusSim
                 device.Position = nr;
                 nr++;
             }
-            Building.NewRoom(this);
+        }
+
+        private void OpenRoomProperties()
+        {
+            RoomProperties roomProperties = new RoomProperties();
+            roomProperties.Room = this;
+            roomProperties.TopMost = true;
+            roomProperties.Show();
+        }
+
+        private void AddDevice(Device device)
+        {
+            panel1.Controls.Add(device);
+            Devices.Add(device);
+            SaveRoom();
+        }
+
+        public void RemoveDevice(Device toremove)
+        {
+            Devices.Remove(toremove);
+            panel1.Controls.Remove(toremove);
+            SetDevicePositions();
+            SaveRoom();
+        }
+
+        private void Room_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveRoom();
+            e.Cancel = true;
+            this.Visible = false;
+        }
+
+        private void Room_Load(object sender, EventArgs e)
+        {
+            OpenRoomProperties();
         }
     }
 }

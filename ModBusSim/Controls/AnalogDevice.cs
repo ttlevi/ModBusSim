@@ -12,7 +12,7 @@ namespace ModBusSim.Controls
             InitializeComponent();
         }
 
-        private void AddDevice()
+        private void LoadHoldingRegs()
         {
 
             //server.HoldingRegistersChanged += (s, e) =>
@@ -41,8 +41,13 @@ namespace ModBusSim.Controls
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            AddDevice();
+            LoadHoldingRegs();
             btnConnect.Enabled = false;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Room.RemoveDevice(this);
         }
     }
 }

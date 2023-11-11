@@ -99,11 +99,11 @@
     <Compile Include="Controls\DigitalDevice.Designer.cs">
       <DependentUpon>DigitalDevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\UCRoom.cs">
+    <Compile Include="Controls\RoomDisplay.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\UCRoom.Designer.cs">
-      <DependentUpon>UCRoom.cs</DependentUpon>
+    <Compile Include="Controls\RoomDisplay.Designer.cs">
+      <DependentUpon>RoomDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,8 +128,8 @@
     <EmbeddedResource Include="Controls\Building.resx">
       <DependentUpon>Building.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UCRoom.resx">
-      <DependentUpon>UCRoom.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\RoomDisplay.resx">
+      <DependentUpon>RoomDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

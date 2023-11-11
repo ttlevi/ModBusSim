@@ -35,6 +35,7 @@
             this.txtIP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -106,12 +107,26 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Unit ID";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.White;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.Location = new System.Drawing.Point(220, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(27, 27);
+            this.btnDelete.TabIndex = 25;
+            this.btnDelete.Text = "X\r\n";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // DigitalDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cboNrOfRegs);
@@ -135,5 +150,6 @@
         private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

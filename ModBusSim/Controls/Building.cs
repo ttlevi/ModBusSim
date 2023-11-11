@@ -33,36 +33,15 @@ namespace ModBusSim
             //};
         }
 
-        public void LoadResources()
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            
-        }
-
-        public void NewRoom(Room newroom)
+        public void RefreshRoomDisplays(Room newroom)
         {
             if (!newroom.Exists) { newroom.Exists = true; rooms.Add(newroom); }
-            LoadRooms();
-        }
-
-        public void RemoveRoom(Room newroom)
-        {
-            rooms.Remove(newroom);
-            LoadRooms();
-        }
-
-        private void LoadRooms()
-        {
-            panel1.Controls.Clear();
             int nr = 0;
-            foreach (Room room in rooms){
-                UCRoom uc = new UCRoom(room);
-                uc.Top = (nr / 5) * 90;
-                uc.Left = (nr % 5) * 210;
-                uc.BackColor = room.Color;
-                uc.RoomName = room.Text;
-                uc.Room = room;
-                panel1.Controls.Add(uc);
+            foreach (RoomDisplay disp in panel1.Controls)
+            {
+                disp.SetPropOfRoomDisplay(disp.Room);
+                disp.Top = (nr / 5) * 90;
+                disp.Left = (nr % 5) * 210;
                 nr++;
             }
         }
@@ -70,6 +49,9 @@ namespace ModBusSim
         private void newRoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Room newroom = new Room();
+            RoomDisplay disp = new RoomDisplay();
+            disp.Room = newroom;
+            panel1.Controls.Add(disp);
             newroom.Building = this;
             newroom.Show();
         }

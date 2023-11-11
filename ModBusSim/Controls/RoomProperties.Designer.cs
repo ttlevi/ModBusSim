@@ -74,6 +74,7 @@
             // 
             // txtColor
             // 
+            this.txtColor.BackColor = System.Drawing.Color.Silver;
             this.txtColor.Enabled = false;
             this.txtColor.Location = new System.Drawing.Point(100, 48);
             this.txtColor.Name = "txtColor";
@@ -103,6 +104,7 @@
             this.Controls.Add(this.txtName);
             this.Name = "RoomProperties";
             this.Text = "Room Properties";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RoomProperties_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

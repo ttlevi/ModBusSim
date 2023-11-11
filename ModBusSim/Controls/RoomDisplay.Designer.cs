@@ -1,6 +1,6 @@
 ﻿namespace ModBusSim.Controls
 {
-    partial class UCRoom
+    partial class RoomDisplay
     {
         /// <summary> 
         /// Required designer variable.
@@ -44,7 +44,7 @@
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(200, 14);
             this.lblName.TabIndex = 0;
-            this.lblName.Text = "label1";
+            this.lblName.Text = "NewRoom";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblNrOfDig
@@ -53,9 +53,9 @@
             this.lblNrOfDig.BackColor = System.Drawing.Color.White;
             this.lblNrOfDig.Location = new System.Drawing.Point(80, 17);
             this.lblNrOfDig.Name = "lblNrOfDig";
-            this.lblNrOfDig.Size = new System.Drawing.Size(35, 13);
+            this.lblNrOfDig.Size = new System.Drawing.Size(13, 13);
             this.lblNrOfDig.TabIndex = 1;
-            this.lblNrOfDig.Text = "label1";
+            this.lblNrOfDig.Text = "0";
             // 
             // lblNrOfAn
             // 
@@ -63,9 +63,9 @@
             this.lblNrOfAn.BackColor = System.Drawing.Color.White;
             this.lblNrOfAn.Location = new System.Drawing.Point(80, 34);
             this.lblNrOfAn.Name = "lblNrOfAn";
-            this.lblNrOfAn.Size = new System.Drawing.Size(35, 13);
+            this.lblNrOfAn.Size = new System.Drawing.Size(13, 13);
             this.lblNrOfAn.TabIndex = 2;
-            this.lblNrOfAn.Text = "label1";
+            this.lblNrOfAn.Text = "0";
             // 
             // label1
             // 
@@ -99,11 +99,11 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
-            // UCRoom
+            // RoomDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
+            this.BackColor = System.Drawing.Color.Silver;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.label2);
@@ -111,7 +111,7 @@
             this.Controls.Add(this.lblNrOfAn);
             this.Controls.Add(this.lblNrOfDig);
             this.Controls.Add(this.lblName);
-            this.Name = "UCRoom";
+            this.Name = "RoomDisplay";
             this.Size = new System.Drawing.Size(200, 50);
             this.ResumeLayout(false);
             this.PerformLayout();
