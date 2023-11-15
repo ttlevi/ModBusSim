@@ -1,10 +1,11 @@
-﻿using EasyModbus;
+﻿using FluentModbus;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +14,7 @@ namespace ModBusClient
 {
     public partial class ModBusClient : Form
     {
-        ModbusClient client;
+        ModbusTcpClient client = new ModbusTcpClient();
 
         public ModBusClient()
         {
@@ -28,14 +29,10 @@ namespace ModBusClient
 
         private void RefreshClient()
         {
-            client = new ModbusClient();
-            client.IPAddress = txtIPAddr.Text;
-            client.UnitIdentifier = byte.Parse(txtUnitID.Text);
-            client.Port = int.Parse(txtPort.Text);
 
             try
             {
-                client.Connect();
+                client.Connect(new IPEndPoint(IPAddress.Parse(txtIPAddr.Text), int.Parse(txtPort.Text)));
             }
             catch (Exception)
             {
@@ -47,6 +44,7 @@ namespace ModBusClient
             
             //set register address of client (master)
             int raddr = int.Parse(txtRegAddr.Text);
+            int unitid = int.Parse(txtUnitID.Text);
 
             if (cboRegType.Text == "Coil Output")
             {
@@ -61,7 +59,7 @@ namespace ModBusClient
                 }
                 try
                 {
-                    client.WriteSingleCoil(raddr-1, rval);
+                    client.WriteSingleCoil(unitid, raddr-1, rval);
                 }
                 catch (Exception)
                 {
@@ -71,10 +69,10 @@ namespace ModBusClient
 
             if (cboRegType.Text == "Holding Register")
             {
-                int rval = int.Parse(txtRegVal.Text);
+                short rval = short.Parse(txtRegVal.Text);
                 try
                 {
-                    client.WriteSingleRegister(raddr - 1, rval);
+                    client.WriteSingleRegister(unitid, raddr - 1, rval);
                 }
                 catch (Exception)
                 {
