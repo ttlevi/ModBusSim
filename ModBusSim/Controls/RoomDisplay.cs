@@ -8,8 +8,10 @@ namespace ModBusSim.Controls
     {
         private int nrOfDig;
         private int nrOfAn;
+        private int position;
 
         public Room Room { get; set; }
+        public Building Building { get; set; }
 
         public int NrOfAn
         {
@@ -21,6 +23,17 @@ namespace ModBusSim.Controls
         {
             get { return nrOfDig; }
             set { nrOfDig = value; lblNrOfDig.Text = nrOfDig.ToString(); }
+        }
+
+        public int Position
+        {
+            get { return position; }
+            set
+            {
+                position = value;
+                Left = 10 + (position % 5) * 210;
+                Top = 10 + (position / 5) * 110;
+            }
         }
 
         public RoomDisplay()
@@ -45,6 +58,11 @@ namespace ModBusSim.Controls
         private void btnOpen_Click(object sender, EventArgs e)
         {
             Room.Visible = true;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Building.RemoveRoom(Room);
         }
     }
 }

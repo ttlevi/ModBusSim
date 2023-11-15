@@ -40,8 +40,7 @@ namespace ModBusSim
             foreach (RoomDisplay disp in panel1.Controls)
             {
                 disp.SetPropOfRoomDisplay(disp.Room);
-                disp.Top = (nr / 5) * 90;
-                disp.Left = (nr % 5) * 210;
+                disp.Position = nr;
                 nr++;
             }
         }
@@ -51,9 +50,27 @@ namespace ModBusSim
             Room newroom = new Room();
             RoomDisplay disp = new RoomDisplay();
             disp.Room = newroom;
+            disp.Building = this;
             panel1.Controls.Add(disp);
             newroom.Building = this;
             newroom.Show();
+        }
+
+        public void RemoveRoom(Room toremove)
+        {
+            toremove.Close();
+            toremove.Dispose();
+            rooms.Remove(toremove);
+            foreach (RoomDisplay disp in panel1.Controls)
+            {
+                if (disp.Room == toremove) { panel1.Controls.Remove(disp); }        
+            }
+            int nr = 0;
+            foreach (RoomDisplay disp in panel1.Controls)
+            {
+                disp.Position = nr;
+                nr++;
+            }
         }
     }
 }
