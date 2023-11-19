@@ -43,8 +43,8 @@ namespace ModBusClient
         private void btnSetValue_Click(object sender, EventArgs e) {
             
             //set register address of client (master)
-            int raddr = int.Parse(txtRegAddr.Text);
-            int unitid = int.Parse(txtUnitID.Text);
+            int raddr = int.Parse(nuRegAddr.Text);
+            int unitid = int.Parse(nuUnitID.Text);
 
             if (cboRegType.Text == "Coil Output")
             {
