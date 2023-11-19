@@ -78,7 +78,7 @@
             this.txtUnitID.Name = "txtUnitID";
             this.txtUnitID.Size = new System.Drawing.Size(82, 20);
             this.txtUnitID.TabIndex = 15;
-            this.txtUnitID.Text = "0";
+            this.txtUnitID.Text = "1";
             // 
             // label4
             // 

@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnConnect = new System.Windows.Forms.Button();
             this.cboNrOfRegs = new System.Windows.Forms.ComboBox();
-            this.txtIP = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -81,13 +81,13 @@
             this.cboNrOfRegs.TabIndex = 23;
             this.cboNrOfRegs.Text = "5";
             // 
-            // txtIP
+            // txtID
             // 
-            this.txtIP.Location = new System.Drawing.Point(2, 40);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(82, 20);
-            this.txtIP.TabIndex = 22;
-            this.txtIP.Text = "0";
+            this.txtID.Location = new System.Drawing.Point(2, 40);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(82, 20);
+            this.txtID.TabIndex = 22;
+            this.txtID.Text = "1";
             // 
             // label4
             // 
@@ -131,7 +131,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cboNrOfRegs);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtIP);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Name = "DigitalDevice";
@@ -147,7 +147,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.ComboBox cboNrOfRegs;
-        private System.Windows.Forms.TextBox txtIP;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDelete;

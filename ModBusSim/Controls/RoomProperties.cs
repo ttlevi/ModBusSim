@@ -17,7 +17,7 @@ namespace ModBusSim.Controls
         public Room Room
         {
             get { return room; }
-            set { room = value; txtColor.BackColor = Room.Color; txtName.Text = Room.Text; }
+            set { room = value; txtColor.BackColor = Room.Color; txtName.Text = Room.Text; Room.RoomProperties = this; }
         }
 
         public RoomProperties()

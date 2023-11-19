@@ -32,7 +32,7 @@ namespace ModBusSim.Controls
             {
                 position = value;
                 Left = 10 + (position % 5) * 210;
-                Top = 10 + (position / 5) * 110;
+                Top = 10 + (position / 5) * 80;
             }
         }
 

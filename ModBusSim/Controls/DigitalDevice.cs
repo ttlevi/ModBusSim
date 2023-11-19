@@ -1,12 +1,16 @@
-﻿using System;
+﻿using FluentModbus;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ModBusSim.Controls
 {
     public partial class DigitalDevice : Device
     {
         public List<bool> Coils { get; set; } = new List<bool>();
+        public ModbusTcpServer tcpServer;
+        public ModbusRtuServer rtuServer;
 
         private bool isconnected = false;
         public DigitalDevice()
@@ -16,12 +20,16 @@ namespace ModBusSim.Controls
 
         private void LoadCoils()
         {
-            //server.CoilsChanged += (s, e) =>
-            //{
-            //    foreach (Led led in panel1.Controls) {
-            //        if (led.Text == s.ToString()) { led.Switch(server.coils[s]); };
-            //    }
-            //};
+            rtuServer = new ModbusRtuServer(byte.Parse(txtID.Text));
+            rtuServer.Start($"COM{txtID.Text}");
+            rtuServer.CoilsChanged += (s, e) =>
+            {
+                Console.WriteLine(e.Coils);
+                //foreach (Led led in panel1.Controls)
+                //{
+                //    if (led.Text == e.Coils[s].ToString()) { led.Switch(true); };
+                //}
+            };
 
             panel1.Controls.Clear();
             int nr = int.Parse(cboNrOfRegs.Text);
@@ -41,15 +49,16 @@ namespace ModBusSim.Controls
         private void btnConnect_Click(object sender, EventArgs e)
         {
             if (!isconnected)
-            {
-                btnConnect.Text = "Disconnect";
+            {;
                 LoadCoils();
+                btnConnect.Enabled = false;
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Room.RemoveDevice(this);
+            rtuServer.Dispose();
         }
     }
 }

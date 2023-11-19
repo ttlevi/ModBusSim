@@ -11,6 +11,7 @@ namespace ModBusSim
     public partial class Room : Form
     {
         private Color roomcolor;
+        public RoomProperties RoomProperties { get; set; }
 
         public Color Color
         {
@@ -93,6 +94,7 @@ namespace ModBusSim
             SaveRoom();
             e.Cancel = true;
             this.Visible = false;
+            RoomProperties.Close();
         }
 
         private void Room_Load(object sender, EventArgs e)

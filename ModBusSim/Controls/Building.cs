@@ -1,4 +1,4 @@
-﻿using EasyModbus;
+﻿using FluentModbus;
 using ModBusSim.Controls;
 using System;
 using System.Collections.Generic;
@@ -13,8 +13,13 @@ namespace ModBusSim
         {
             InitializeComponent();
 
-            ModbusServer server = new ModbusServer();
-            server.Listen();
+            ModbusTcpServer server = new ModbusTcpServer();
+            server.Start();
+
+            server.CoilsChanged += (s, regAddresses) =>
+            {
+                Console.WriteLine(regAddresses.Coils[0].ToString());
+            };
 
             //server.HoldingRegistersChanged += (s, e) =>
             //{
@@ -52,8 +57,9 @@ namespace ModBusSim
             disp.Room = newroom;
             disp.Building = this;
             panel1.Controls.Add(disp);
+            RefreshRoomDisplays(disp.Room);
             newroom.Building = this;
-            newroom.Show();
+            newroom.Show(); 
         }
 
         public void RemoveRoom(Room toremove)
@@ -63,14 +69,10 @@ namespace ModBusSim
             rooms.Remove(toremove);
             foreach (RoomDisplay disp in panel1.Controls)
             {
-                if (disp.Room == toremove) { panel1.Controls.Remove(disp); }        
+                if (disp.Room == toremove) { panel1.Controls.Remove(disp); }
+                RefreshRoomDisplays(disp.Room);
             }
-            int nr = 0;
-            foreach (RoomDisplay disp in panel1.Controls)
-            {
-                disp.Position = nr;
-                nr++;
-            }
+
         }
     }
 }

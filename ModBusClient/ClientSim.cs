@@ -36,7 +36,7 @@ namespace ModBusClient
             }
             catch (Exception)
             {
-                MessageBox.Show("There's no ModBus client connected to this port. Try another IP Address or Port Number.", "Error");
+                MessageBox.Show("There's no ModBus server available on this port. Try another IP Address or Port Number.", "Error");
             }
         }
 
