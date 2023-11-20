@@ -6,7 +6,6 @@ namespace ModBusSim.Controls
 {
     public partial class AnalogDevice : Device
     {
-        public List<int> HoldingRegs { get; set; } = new List<int>();
         public AnalogDevice()
         {
             InitializeComponent();
@@ -15,14 +14,11 @@ namespace ModBusSim.Controls
         private void LoadHoldingRegs()
         {
 
-            //server.HoldingRegistersChanged += (s, e) =>
-            //{
-            //    foreach (Display disp in panel1.Controls)
-            //    {
-            //        if (disp.Address == s) { disp.SetValue(server.holdingRegisters[s]); };
-            //    }
-            //};
+            //ide kell az rtu szerver
 
+            txtUnitID.Enabled = false;
+            cboNrOfRegs.Enabled = false;
+            btnConnect.Enabled = false;
             panel1.Controls.Clear();
             int nr = int.Parse(cboNrOfRegs.Text);
 
@@ -34,20 +30,20 @@ namespace ModBusSim.Controls
                 disp.Address = i;
                 disp.Value = 0;
                 panel1.Controls.Add(disp);
-
-                HoldingRegs.Add(0);
             }
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
             LoadHoldingRegs();
-            btnConnect.Enabled = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Room.RemoveDevice(this);
+            Room.Building.Cluster.Remove(int.Parse(txtUnitID.Text));
+
+            //ide jön a szerver dispose
         }
     }
 }

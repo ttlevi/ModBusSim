@@ -1,5 +1,4 @@
-﻿using FluentModbus;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +10,7 @@ namespace ModBusSim.Controls
     public class Device : UserControl
     {
         public Room Room { get; set; }
+        public int UnitID { get; set; }
         private int position;
 
         public int Position

@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnConnect = new System.Windows.Forms.Button();
             this.cboNrOfRegs = new System.Windows.Forms.ComboBox();
-            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtUnitID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -42,25 +42,28 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(2, 2);
+            this.label1.Location = new System.Drawing.Point(4, 4);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 13);
+            this.label1.Size = new System.Drawing.Size(253, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Digital ModBus Device";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Location = new System.Drawing.Point(2, 70);
+            this.panel1.Location = new System.Drawing.Point(4, 135);
+            this.panel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(245, 147);
+            this.panel1.Size = new System.Drawing.Size(490, 283);
             this.panel1.TabIndex = 9;
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(147, 37);
+            this.btnConnect.Location = new System.Drawing.Point(294, 71);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(81, 23);
+            this.btnConnect.Size = new System.Drawing.Size(162, 44);
             this.btnConnect.TabIndex = 24;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -75,35 +78,39 @@
             "15",
             "20",
             "25"});
-            this.cboNrOfRegs.Location = new System.Drawing.Point(90, 39);
+            this.cboNrOfRegs.Location = new System.Drawing.Point(180, 75);
+            this.cboNrOfRegs.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboNrOfRegs.Name = "cboNrOfRegs";
-            this.cboNrOfRegs.Size = new System.Drawing.Size(50, 21);
+            this.cboNrOfRegs.Size = new System.Drawing.Size(96, 33);
             this.cboNrOfRegs.TabIndex = 23;
             this.cboNrOfRegs.Text = "5";
             // 
-            // txtID
+            // txtUnitID
             // 
-            this.txtID.Location = new System.Drawing.Point(2, 40);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(82, 20);
-            this.txtID.TabIndex = 22;
-            this.txtID.Text = "1";
+            this.txtUnitID.Location = new System.Drawing.Point(4, 77);
+            this.txtUnitID.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtUnitID.Name = "txtUnitID";
+            this.txtUnitID.Size = new System.Drawing.Size(160, 31);
+            this.txtUnitID.TabIndex = 22;
+            this.txtUnitID.Text = "1";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(87, 23);
+            this.label4.Location = new System.Drawing.Point(174, 44);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.Size = new System.Drawing.Size(107, 25);
             this.label4.TabIndex = 20;
             this.label4.Text = "Nr. of reg.";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 25);
+            this.label2.Location = new System.Drawing.Point(4, 48);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(76, 25);
             this.label2.TabIndex = 18;
             this.label2.Text = "Unit ID";
             // 
@@ -112,9 +119,10 @@
             this.btnDelete.BackColor = System.Drawing.Color.White;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(220, 3);
+            this.btnDelete.Location = new System.Drawing.Point(440, 6);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(27, 27);
+            this.btnDelete.Size = new System.Drawing.Size(54, 52);
             this.btnDelete.TabIndex = 25;
             this.btnDelete.Text = "X\r\n";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -122,7 +130,7 @@
             // 
             // DigitalDevice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -131,11 +139,12 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cboNrOfRegs);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.txtUnitID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "DigitalDevice";
-            this.Size = new System.Drawing.Size(250, 220);
+            this.Size = new System.Drawing.Size(500, 423);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,7 +156,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.ComboBox cboNrOfRegs;
-        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtUnitID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDelete;

@@ -1,6 +1,8 @@
-﻿using FluentModbus;
+﻿using EasyModBus;
+using ModBusTest.EasyModBus;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -8,11 +10,6 @@ namespace ModBusSim.Controls
 {
     public partial class DigitalDevice : Device
     {
-        public List<bool> Coils { get; set; } = new List<bool>();
-        public ModbusTcpServer tcpServer;
-        public ModbusRtuServer rtuServer;
-
-        private bool isconnected = false;
         public DigitalDevice()
         {
             InitializeComponent();
@@ -20,45 +17,55 @@ namespace ModBusSim.Controls
 
         private void LoadCoils()
         {
-            rtuServer = new ModbusRtuServer(byte.Parse(txtID.Text));
-            rtuServer.Start($"COM{txtID.Text}");
-            rtuServer.CoilsChanged += (s, e) =>
-            {
-                Console.WriteLine(e.Coils);
-                //foreach (Led led in panel1.Controls)
-                //{
-                //    if (led.Text == e.Coils[s].ToString()) { led.Switch(true); };
-                //}
-            };
 
+            //ide kell az rtu szerver
+            ModbusServerCluster cluster = Room.Building.Cluster;
+            cluster.Add(int.Parse(txtUnitID.Text));
+            UnitID = int.Parse(txtUnitID.Text);
+
+            txtUnitID.Enabled = false;
+            cboNrOfRegs.Enabled = false;
+            btnConnect.Enabled = false;
             panel1.Controls.Clear();
             int nr = int.Parse(cboNrOfRegs.Text);
 
             for (int i = 0; i < nr; i++)
             {
                 Led led = new Led();
-                led.Text = i.ToString();
+                led.Text = (i+1).ToString();
                 led.Top = (i / 5) * 30;
                 led.Left = 10 + (i % 5) * 50;
+                led.Address = i+1;
                 panel1.Controls.Add(led);
-
-                Coils.Add(false);
             }
+
+            int j = 0;
+            foreach (ModbusServer unit in cluster.Servers) {
+                if (unit.UnitIdentifier == UnitID) { break; }
+                j++;
+            }
+
+            cluster.Servers[j].CoilsChanged += (int coil, int numberOfCoils) =>
+            {
+                bool value = cluster.Servers[j].coils[coil];
+                foreach (Led led in panel1.Controls)
+                {
+                    if (led.Address == coil) { led.Switch(value); };
+                }
+            };
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            if (!isconnected)
-            {;
-                LoadCoils();
-                btnConnect.Enabled = false;
-            }
+            LoadCoils();            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Room.RemoveDevice(this);
-            rtuServer.Dispose();
+            Room.Building.Cluster.Remove(int.Parse(txtUnitID.Text));
+            //ide jön a szerver dispose
         }
+
     }
 }

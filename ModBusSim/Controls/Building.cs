@@ -1,25 +1,21 @@
-﻿using FluentModbus;
-using ModBusSim.Controls;
+﻿using ModBusSim.Controls;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ModBusTest.EasyModBus;
 
 namespace ModBusSim
 {
     public partial class Building : Form
     {
         private List<Room> rooms = new List<Room>();
+        public ModbusServerCluster Cluster { get; set; }
         public Building()
         {
             InitializeComponent();
-
-            ModbusTcpServer server = new ModbusTcpServer();
-            server.Start();
-
-            server.CoilsChanged += (s, regAddresses) =>
-            {
-                Console.WriteLine(regAddresses.Coils[0].ToString());
-            };
+            Cluster = new ModbusServerCluster();
+            Cluster.Port = 502;
+            Cluster.Listen();
 
             //server.HoldingRegistersChanged += (s, e) =>
             //{
