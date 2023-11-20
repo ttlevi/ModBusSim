@@ -31,8 +31,8 @@ namespace ModBusSim.Controls
             set
             {
                 position = value;
-                Left = 10 + (position % 5) * 210;
-                Top = 10 + (position / 5) * 80;
+                Left = 20 + (position % 5) * 420;
+                Top = 20 + (position / 5) * 135;
             }
         }
 
@@ -58,6 +58,8 @@ namespace ModBusSim.Controls
         private void btnOpen_Click(object sender, EventArgs e)
         {
             Room.Visible = true;
+            Room.TopMost = true;
+            Room.WindowState = FormWindowState.Normal;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

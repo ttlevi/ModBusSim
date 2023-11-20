@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using ModBusTest.EasyModBus;
+using System.Net;
 
 namespace ModBusSim
 {
@@ -17,6 +18,7 @@ namespace ModBusSim
             Cluster = new ModbusServerCluster();
             Cluster.Port = 502;
             Cluster.Listen();
+            WindowState = FormWindowState.Maximized;
         }
 
         public void RefreshRoomDisplays(Room newroom)
