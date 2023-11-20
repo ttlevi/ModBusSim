@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModBusClient));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chCoilVal = new System.Windows.Forms.CheckBox();
+            this.rbtnHoldingReg = new System.Windows.Forms.RadioButton();
+            this.rbtnCoil = new System.Windows.Forms.RadioButton();
+            this.nuRegVal = new System.Windows.Forms.NumericUpDown();
             this.nuRegAddr = new System.Windows.Forms.NumericUpDown();
             this.nuUnitID = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -38,19 +42,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboRegType = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.txtIPAddr = new System.Windows.Forms.TextBox();
-            this.nuRegVal = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nuRegVal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nuRegAddr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nuUnitID)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nuRegVal)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -58,6 +60,9 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.chCoilVal);
+            this.groupBox1.Controls.Add(this.rbtnHoldingReg);
+            this.groupBox1.Controls.Add(this.rbtnCoil);
             this.groupBox1.Controls.Add(this.nuRegVal);
             this.groupBox1.Controls.Add(this.nuRegAddr);
             this.groupBox1.Controls.Add(this.nuUnitID);
@@ -67,7 +72,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cboRegType);
             this.groupBox1.Location = new System.Drawing.Point(12, 239);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
@@ -76,6 +80,46 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change Data";
+            // 
+            // chCoilVal
+            // 
+            this.chCoilVal.AutoSize = true;
+            this.chCoilVal.Location = new System.Drawing.Point(262, 197);
+            this.chCoilVal.Name = "chCoilVal";
+            this.chCoilVal.Size = new System.Drawing.Size(88, 29);
+            this.chCoilVal.TabIndex = 18;
+            this.chCoilVal.Text = "True";
+            this.chCoilVal.UseVisualStyleBackColor = true;
+            // 
+            // rbtnHoldingReg
+            // 
+            this.rbtnHoldingReg.AutoSize = true;
+            this.rbtnHoldingReg.Location = new System.Drawing.Point(418, 94);
+            this.rbtnHoldingReg.Name = "rbtnHoldingReg";
+            this.rbtnHoldingReg.Size = new System.Drawing.Size(202, 29);
+            this.rbtnHoldingReg.TabIndex = 17;
+            this.rbtnHoldingReg.Text = "Holding Register";
+            this.rbtnHoldingReg.UseVisualStyleBackColor = true;
+            // 
+            // rbtnCoil
+            // 
+            this.rbtnCoil.AutoSize = true;
+            this.rbtnCoil.Checked = true;
+            this.rbtnCoil.Location = new System.Drawing.Point(262, 94);
+            this.rbtnCoil.Name = "rbtnCoil";
+            this.rbtnCoil.Size = new System.Drawing.Size(150, 29);
+            this.rbtnCoil.TabIndex = 16;
+            this.rbtnCoil.TabStop = true;
+            this.rbtnCoil.Text = "Coil Output";
+            this.rbtnCoil.UseVisualStyleBackColor = true;
+            this.rbtnCoil.CheckedChanged += new System.EventHandler(this.rbtnCoil_CheckedChanged);
+            // 
+            // nuRegVal
+            // 
+            this.nuRegVal.Location = new System.Drawing.Point(262, 196);
+            this.nuRegVal.Name = "nuRegVal";
+            this.nuRegVal.Size = new System.Drawing.Size(358, 31);
+            this.nuRegVal.TabIndex = 15;
             // 
             // nuRegAddr
             // 
@@ -189,19 +233,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Register Type";
             // 
-            // cboRegType
-            // 
-            this.cboRegType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboRegType.FormattingEnabled = true;
-            this.cboRegType.Items.AddRange(new object[] {
-            "Holding Register",
-            "Coil Output"});
-            this.cboRegType.Location = new System.Drawing.Point(261, 89);
-            this.cboRegType.Margin = new System.Windows.Forms.Padding(6);
-            this.cboRegType.Name = "cboRegType";
-            this.cboRegType.Size = new System.Drawing.Size(360, 33);
-            this.cboRegType.TabIndex = 0;
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -230,7 +261,7 @@
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnStartStop_Click);
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // label5
             // 
@@ -274,13 +305,6 @@
             this.txtIPAddr.TabIndex = 2;
             this.txtIPAddr.Text = "127.0.0.1";
             // 
-            // nuRegVal
-            // 
-            this.nuRegVal.Location = new System.Drawing.Point(262, 196);
-            this.nuRegVal.Name = "nuRegVal";
-            this.nuRegVal.Size = new System.Drawing.Size(358, 31);
-            this.nuRegVal.TabIndex = 15;
-            // 
             // ModBusClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -294,11 +318,11 @@
             this.Text = "ModBusClient";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nuRegVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nuRegAddr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nuUnitID)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nuRegVal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,7 +334,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboRegType;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -322,6 +345,9 @@
         private System.Windows.Forms.NumericUpDown nuUnitID;
         private System.Windows.Forms.NumericUpDown nuRegAddr;
         private System.Windows.Forms.NumericUpDown nuRegVal;
+        private System.Windows.Forms.RadioButton rbtnHoldingReg;
+        private System.Windows.Forms.RadioButton rbtnCoil;
+        private System.Windows.Forms.CheckBox chCoilVal;
     }
 }
 

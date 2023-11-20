@@ -20,16 +20,22 @@ namespace ModBusClient
         {
             InitializeComponent();
             RefreshClient();
+            RefreshControls();
         }
 
-        private void btnStartStop_Click(object sender, EventArgs e)
+        private void RefreshControls()
+        {
+            if (rbtnCoil.Checked) {chCoilVal.Visible = true; nuRegVal.Visible = false; }
+            else { chCoilVal.Visible = false; nuRegVal.Visible = true; }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshClient();
         }
 
         private void RefreshClient()
         {
-
             try
             {
                 client.Connect(new IPEndPoint(IPAddress.Parse(txtIPAddr.Text), int.Parse(txtPort.Text)));
@@ -41,22 +47,15 @@ namespace ModBusClient
         }
 
         private void btnSetValue_Click(object sender, EventArgs e) {
-            
-            //set register address of client (master)
+
             int raddr = int.Parse(nuRegAddr.Text);
             int unitid = int.Parse(nuUnitID.Text);
 
-            if (cboRegType.Text == "Coil Output")
+            if (rbtnCoil.Checked)
             {
                 bool rval = false;
-                if (nuRegVal.Text == "1" || nuRegVal.Text == "true")
-                {
-                    rval = true;
-                }
-                else if (nuRegVal.Text == "0" || nuRegVal.Text == "false")
-                {
-                    rval = false;
-                }
+                if (chCoilVal.Checked) { rval = true; }
+
                 try
                 {
                     client.WriteSingleCoil(unitid, raddr-1, rval);
@@ -67,7 +66,7 @@ namespace ModBusClient
                 }
             }
 
-            if (cboRegType.Text == "Holding Register")
+            if (rbtnHoldingReg.Checked)
             {
                 short rval = short.Parse(nuRegVal.Text);
                 try
@@ -79,6 +78,11 @@ namespace ModBusClient
                     MessageBox.Show("Check if you misspelled something and try again!", "Error");
                 }
             }
+        }
+
+        private void rbtnCoil_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshControls();
         }
     }
 }
