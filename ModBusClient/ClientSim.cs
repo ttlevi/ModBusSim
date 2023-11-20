@@ -49,11 +49,11 @@ namespace ModBusClient
             if (cboRegType.Text == "Coil Output")
             {
                 bool rval = false;
-                if (txtRegVal.Text == "1" || txtRegVal.Text == "true")
+                if (nuRegVal.Text == "1" || nuRegVal.Text == "true")
                 {
                     rval = true;
                 }
-                else if (txtRegVal.Text == "0" || txtRegVal.Text == "false")
+                else if (nuRegVal.Text == "0" || nuRegVal.Text == "false")
                 {
                     rval = false;
                 }
@@ -69,7 +69,7 @@ namespace ModBusClient
 
             if (cboRegType.Text == "Holding Register")
             {
-                short rval = short.Parse(txtRegVal.Text);
+                short rval = short.Parse(nuRegVal.Text);
                 try
                 {
                     client.WriteSingleRegister(unitid, raddr - 1, rval);

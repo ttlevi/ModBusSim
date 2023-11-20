@@ -39,7 +39,7 @@
             this.lblAddr.Location = new System.Drawing.Point(-2, 0);
             this.lblAddr.Margin = new System.Windows.Forms.Padding(0);
             this.lblAddr.Name = "lblAddr";
-            this.lblAddr.Size = new System.Drawing.Size(13, 13);
+            this.lblAddr.Size = new System.Drawing.Size(24, 25);
             this.lblAddr.TabIndex = 0;
             this.lblAddr.Text = "1";
             // 

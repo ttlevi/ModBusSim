@@ -17,13 +17,11 @@ namespace ModBusSim.Controls
 
         private void LoadCoils()
         {
-
-            //ide kell az rtu szerver
             ModbusServerCluster cluster = Room.Building.Cluster;
-            cluster.Add(int.Parse(txtUnitID.Text));
-            UnitID = int.Parse(txtUnitID.Text);
+            cluster.Add(int.Parse(nuUnitID.Text));
+            UnitID = int.Parse(nuUnitID.Text);
 
-            txtUnitID.Enabled = false;
+            nuUnitID.Enabled = false;
             cboNrOfRegs.Enabled = false;
             btnConnect.Enabled = false;
             panel1.Controls.Clear();
@@ -32,7 +30,6 @@ namespace ModBusSim.Controls
             for (int i = 0; i < nr; i++)
             {
                 Led led = new Led();
-                led.Text = (i+1).ToString();
                 led.Top = (i / 5) * 30;
                 led.Left = 10 + (i % 5) * 50;
                 led.Address = i+1;
@@ -63,8 +60,7 @@ namespace ModBusSim.Controls
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Room.RemoveDevice(this);
-            Room.Building.Cluster.Remove(int.Parse(txtUnitID.Text));
-            //ide jön a szerver dispose
+            Room.Building.Cluster.Remove(int.Parse(nuUnitID.Text));
         }
 
     }

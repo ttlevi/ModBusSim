@@ -5,7 +5,14 @@ namespace ModBusSim.Controls
 {
     public class Led : Label
     {
-        public int Address { get; set; }
+        private int address;
+
+        public int Address
+        {
+            get { return address; }
+            set { address = value; Text = address.ToString(); }
+        }
+
         public Led()
         {
             Width = 20;

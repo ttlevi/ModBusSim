@@ -8,22 +8,21 @@ namespace ModBusSim.Controls
 
         public int Address
         {
-            get { return Address; }
+            get { return address; }
             set { address = value; lblAddr.Text = address.ToString(); }
         }
 
-        private int holdingValue;
-
-        public int Value
-        {
-            get { return holdingValue; }
-            set { holdingValue = value; lblValue.Text = holdingValue.ToString(); }
-        }
+        public int Value { get; set; }
 
 
         public Display()
         {
             InitializeComponent();
+        }
+
+        public void SetValue(int value)
+        {
+            lblValue.Text = value.ToString();
         }
     }
 }
