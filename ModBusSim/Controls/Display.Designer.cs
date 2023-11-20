@@ -35,31 +35,33 @@
             // lblAddr
             // 
             this.lblAddr.AutoSize = true;
-            this.lblAddr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblAddr.Location = new System.Drawing.Point(-2, 0);
+            this.lblAddr.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblAddr.Location = new System.Drawing.Point(-2, 3);
             this.lblAddr.Margin = new System.Windows.Forms.Padding(0);
             this.lblAddr.Name = "lblAddr";
             this.lblAddr.Size = new System.Drawing.Size(24, 25);
             this.lblAddr.TabIndex = 0;
             this.lblAddr.Text = "1";
+            this.lblAddr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblValue
             // 
             this.lblValue.BackColor = System.Drawing.Color.Black;
             this.lblValue.ForeColor = System.Drawing.Color.White;
-            this.lblValue.Location = new System.Drawing.Point(15, 0);
+            this.lblValue.Location = new System.Drawing.Point(30, 0);
             this.lblValue.Margin = new System.Windows.Forms.Padding(0);
             this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(25, 15);
+            this.lblValue.Size = new System.Drawing.Size(50, 30);
             this.lblValue.TabIndex = 1;
             this.lblValue.Text = "0";
+            this.lblValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Display
             // 
             this.Controls.Add(this.lblValue);
             this.Controls.Add(this.lblAddr);
             this.Name = "Display";
-            this.Size = new System.Drawing.Size(40, 15);
+            this.Size = new System.Drawing.Size(80, 30);
             this.ResumeLayout(false);
             this.PerformLayout();
 

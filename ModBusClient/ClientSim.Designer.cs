@@ -117,6 +117,11 @@
             // nuRegVal
             // 
             this.nuRegVal.Location = new System.Drawing.Point(262, 196);
+            this.nuRegVal.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.nuRegVal.Name = "nuRegVal";
             this.nuRegVal.Size = new System.Drawing.Size(358, 31);
             this.nuRegVal.TabIndex = 15;

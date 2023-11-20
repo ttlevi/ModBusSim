@@ -158,7 +158,7 @@
             this.Controls.Add(this.label4);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "DigitalDevice";
-            this.Size = new System.Drawing.Size(500, 423);
+            this.Size = new System.Drawing.Size(500, 400);
             ((System.ComponentModel.ISupportInitialize)(this.nuUnitID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

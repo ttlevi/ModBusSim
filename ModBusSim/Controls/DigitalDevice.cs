@@ -17,9 +17,10 @@ namespace ModBusSim.Controls
 
         private void LoadCoils()
         {
+            UnitID = int.Parse(nuUnitID.Text);
             ModbusServerCluster cluster = Room.Building.Cluster;
             cluster.Add(int.Parse(nuUnitID.Text));
-            UnitID = int.Parse(nuUnitID.Text);
+            Room.Building.UnitIDsInUse.Add(UnitID);
 
             nuUnitID.Enabled = false;
             cboNrOfRegs.Enabled = false;
@@ -30,8 +31,8 @@ namespace ModBusSim.Controls
             for (int i = 0; i < nr; i++)
             {
                 Led led = new Led();
-                led.Top = (i / 5) * 30;
-                led.Left = 10 + (i % 5) * 50;
+                led.Top = (i / 5) * 50;
+                led.Left = 10 + (i % 5) * 95;
                 led.Address = i+1;
                 panel1.Controls.Add(led);
             }
@@ -47,7 +48,7 @@ namespace ModBusSim.Controls
                 bool value = cluster.Servers[j].coils[coil];
                 foreach (Led led in panel1.Controls)
                 {
-                    if (led.Address == coil) { led.Switch(value); };
+                    if (led.Address == coil) { led.Value = value; };
                 }
             };
         }
@@ -60,7 +61,8 @@ namespace ModBusSim.Controls
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Room.RemoveDevice(this);
-            Room.Building.Cluster.Remove(int.Parse(nuUnitID.Text));
+            Room.Building.Cluster.Remove(UnitID);
+            Room.Building.UnitIDsInUse.Remove(UnitID);
         }
 
     }

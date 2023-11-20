@@ -12,17 +12,26 @@ namespace ModBusSim.Controls
             set { address = value; lblAddr.Text = address.ToString(); }
         }
 
-        public int Value { get; set; }
+        private int valueOfHoldingReg;
 
+        public int Value
+        {
+            get { return valueOfHoldingReg; }
+            set { valueOfHoldingReg = value;
+                if (lblValue.InvokeRequired)
+                {
+                    this.Invoke((MethodInvoker)delegate { lblValue.Text = value.ToString(); });
+                }
+                else
+                {
+                    lblValue.Text = value.ToString();
+                }
+            }
+        }
 
         public Display()
         {
             InitializeComponent();
-        }
-
-        public void SetValue(int value)
-        {
-            lblValue.Text = value.ToString();
         }
     }
 }

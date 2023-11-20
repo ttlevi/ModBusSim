@@ -15,9 +15,10 @@ namespace ModBusSim.Controls
 
         private void LoadHoldingRegs()
         {
-            ModbusServerCluster cluster = Room.Building.Cluster;
-            cluster.Add(int.Parse(nuUnitID.Text));
             UnitID = int.Parse(nuUnitID.Text);
+            ModbusServerCluster cluster = Room.Building.Cluster;
+            cluster.Add(UnitID);
+            Room.Building.UnitIDsInUse.Add(UnitID);
 
             nuUnitID.Enabled = false;
             cboNrOfRegs.Enabled = false;
@@ -28,8 +29,8 @@ namespace ModBusSim.Controls
             for (int i = 0; i < nr; i++)
             {
                 Display disp = new Display();
-                disp.Top = (i / 5) * 30;
-                disp.Left = (i % 5) * 50;
+                disp.Top = (i / 5) * 50;
+                disp.Left = (i % 5) * 100;
                 disp.Address = i+1;
                 disp.Value = 0;
                 panel1.Controls.Add(disp);
@@ -44,10 +45,10 @@ namespace ModBusSim.Controls
 
             cluster.Servers[j].HoldingRegistersChanged += (int register, int numberOfRegisters) =>
             {
-                int value = cluster.Servers[j].holdingRegisters[register];
+                int value = cluster.Servers[j].holdingRegisters[register] / 256;
                 foreach (Display disp in panel1.Controls)
                 {
-                    if (disp.Address == register) {disp.SetValue(value); };
+                    if (disp.Address == register) {disp.Value = value; };
                 }
             };
         }
@@ -60,7 +61,8 @@ namespace ModBusSim.Controls
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Room.RemoveDevice(this);
-            Room.Building.Cluster.Remove(int.Parse(nuUnitID.Text));
+            Room.Building.Cluster.Remove(UnitID);
+            Room.Building.UnitIDsInUse.Remove(UnitID);
         }
     }
 }

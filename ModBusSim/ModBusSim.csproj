@@ -138,6 +138,9 @@
     <EmbeddedResource Include="Controls\Display.resx">
       <DependentUpon>Display.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Led.resx">
+      <DependentUpon>Led.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Log.resx">
       <DependentUpon>Log.cs</DependentUpon>
     </EmbeddedResource>

@@ -10,28 +10,13 @@ namespace ModBusSim
     {
         private List<Room> rooms = new List<Room>();
         public ModbusServerCluster Cluster { get; set; }
+        public List<int> UnitIDsInUse { get; set; } = new List<int>();
         public Building()
         {
             InitializeComponent();
             Cluster = new ModbusServerCluster();
             Cluster.Port = 502;
             Cluster.Listen();
-
-            //server.HoldingRegistersChanged += (s, e) =>
-            //{
-            //    Console.WriteLine($"A megváltozott holding regiszter száma: {s}");
-            //    Console.WriteLine($"Értéke: {server.holdingRegisters[s]}");
-            //    for (int i = 1; i < 10; i++) { Console.Write($"{server.holdingRegisters[i]}, "); };
-            //    Console.WriteLine();
-            //};
-
-            //server.CoilsChanged += (s, e) =>
-            //{
-            //    Console.WriteLine($"A megváltozott coil regiszter száma: {s}");
-            //    Console.WriteLine($"Értéke: {server.coils[s]}");
-            //    for (int i = 1; i < 10; i++) { Console.Write($"{server.coils[i]}, "); };
-            //    Console.WriteLine();
-            //};
         }
 
         public void RefreshRoomDisplays(Room newroom)
@@ -68,7 +53,6 @@ namespace ModBusSim
                 if (disp.Room == toremove) { panel1.Controls.Remove(disp); }
                 RefreshRoomDisplays(disp.Room);
             }
-
         }
     }
 }

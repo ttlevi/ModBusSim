@@ -68,7 +68,10 @@ namespace ModBusTest.EasyModBus
             modbusServer.directFlag = true;
 
             //Ellenőrizzük, hogy van-e már ilyen
-            if (Servers.Where(s => s.UnitIdentifier == id).Count() > 0) return null;
+            if (Servers.Where(s => s.UnitIdentifier == id).Count() > 0) {
+                MessageBox.Show("This Unit ID is already in use. Values that you change will be changed on all the devices with the same ID.","Warning");
+                return null;
+            };
 
             //Betesszük a listába
             Servers.Add(modbusServer);

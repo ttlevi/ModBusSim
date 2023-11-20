@@ -78,6 +78,10 @@ namespace ModBusSim
         {
             panel1.Controls.Add(device);
             Devices.Add(device);
+            for (int i = 1; i < 255; i++)
+            {
+                if (!Building.UnitIDsInUse.Contains(i)) { device.UnitID = i; break; }
+            }
             SaveRoom();
         }
 
