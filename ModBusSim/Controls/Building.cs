@@ -9,6 +9,9 @@ namespace ModBusSim
 {
     public partial class Building : Form
     {
+        private int w = 200;
+        private int h = 200;
+
         private List<Room> rooms = new List<Room>();
         public ModbusServerCluster Cluster { get; set; }
         public List<int> UnitIDsInUse { get; set; } = new List<int>();
@@ -18,6 +21,10 @@ namespace ModBusSim
             Cluster = new ModbusServerCluster();
             Cluster.Port = 502;
             Cluster.Listen();
+
+            Width = w;
+            Height = h;
+
             WindowState = FormWindowState.Maximized;
         }
 

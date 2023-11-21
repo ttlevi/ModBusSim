@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnConnect = new System.Windows.Forms.Button();
             this.cboNrOfRegs = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -36,17 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.nuUnitID = new System.Windows.Forms.NumericUpDown();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.nuUnitID)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Location = new System.Drawing.Point(4, 135);
-            this.panel1.Margin = new System.Windows.Forms.Padding(6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 283);
-            this.panel1.TabIndex = 18;
             // 
             // btnConnect
             // 
@@ -143,15 +134,26 @@
             0,
             0});
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Location = new System.Drawing.Point(9, 121);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(485, 271);
+            this.panel1.TabIndex = 28;
+            // 
             // AnalogDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.nuUnitID);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.cboNrOfRegs);
             this.Controls.Add(this.label4);
@@ -167,8 +169,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.ComboBox cboNrOfRegs;
         private System.Windows.Forms.Label label4;
@@ -176,5 +176,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.NumericUpDown nuUnitID;
+        private System.Windows.Forms.Panel panel1;
     }
 }

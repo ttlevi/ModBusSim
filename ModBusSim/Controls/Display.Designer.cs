@@ -36,8 +36,7 @@
             // 
             this.lblAddr.AutoSize = true;
             this.lblAddr.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblAddr.Location = new System.Drawing.Point(-2, 3);
-            this.lblAddr.Margin = new System.Windows.Forms.Padding(0);
+            this.lblAddr.Location = new System.Drawing.Point(0, 0);
             this.lblAddr.Name = "lblAddr";
             this.lblAddr.Size = new System.Drawing.Size(24, 25);
             this.lblAddr.TabIndex = 0;
@@ -49,7 +48,6 @@
             this.lblValue.BackColor = System.Drawing.Color.Black;
             this.lblValue.ForeColor = System.Drawing.Color.White;
             this.lblValue.Location = new System.Drawing.Point(30, 0);
-            this.lblValue.Margin = new System.Windows.Forms.Padding(0);
             this.lblValue.Name = "lblValue";
             this.lblValue.Size = new System.Drawing.Size(50, 30);
             this.lblValue.TabIndex = 1;

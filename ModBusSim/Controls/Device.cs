@@ -9,6 +9,10 @@ namespace ModBusSim.Controls
 {
     public class Device : UserControl
     {
+        private int w = 250;
+        private int h = 200;
+        private int d = 10;
+
         public Room Room { get; set; }
 
         private int unitID;
@@ -28,8 +32,10 @@ namespace ModBusSim.Controls
             get { return position; }
             set {
                 position = value;
-                Left = 20 + (position % 4) * 520;
-                Top = 20 + (position / 4) * 420;
+                Left = d + (position % 4) * (w+d);
+                Top = d + (position / 4) * (h+d);
+                Width = w;
+                Height = h;
             }
         }
     }

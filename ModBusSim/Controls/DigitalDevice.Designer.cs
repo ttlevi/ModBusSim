@@ -52,11 +52,13 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Location = new System.Drawing.Point(4, 135);
-            this.panel1.Margin = new System.Windows.Forms.Padding(6);
+            this.panel1.Location = new System.Drawing.Point(9, 121);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 283);
+            this.panel1.Size = new System.Drawing.Size(485, 271);
             this.panel1.TabIndex = 9;
             // 
             // btnConnect

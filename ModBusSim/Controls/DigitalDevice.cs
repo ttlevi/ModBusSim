@@ -10,6 +10,8 @@ namespace ModBusSim.Controls
 {
     public partial class DigitalDevice : Device
     {
+        private int d = 10;
+
         public DigitalDevice()
         {
             InitializeComponent();
@@ -31,8 +33,8 @@ namespace ModBusSim.Controls
             for (int i = 0; i < nr; i++)
             {
                 Led led = new Led();
-                led.Top = (i / 5) * 50;
-                led.Left = 10 + (i % 5) * 95;
+                led.Top = (i / 5) * (led.h+d);
+                led.Left = (i % 5) * (led.w+d);
                 led.Address = i+1;
                 panel1.Controls.Add(led);
             }
@@ -64,6 +66,5 @@ namespace ModBusSim.Controls
             Room.Building.Cluster.Remove(UnitID);
             Room.Building.UnitIDsInUse.Remove(UnitID);
         }
-
     }
 }

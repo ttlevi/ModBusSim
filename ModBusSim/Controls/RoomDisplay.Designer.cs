@@ -46,7 +46,7 @@
             this.lblName.Location = new System.Drawing.Point(0, 0);
             this.lblName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(400, 45);
+            this.lblName.Size = new System.Drawing.Size(405, 45);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "NewRoom";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -100,7 +100,7 @@
             // btnOpen
             // 
             this.btnOpen.Location = new System.Drawing.Point(244, 51);
-            this.btnOpen.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnOpen.Margin = new System.Windows.Forms.Padding(6);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(150, 58);
             this.btnOpen.TabIndex = 5;
@@ -135,9 +135,9 @@
             this.Controls.Add(this.lblNrOfAn);
             this.Controls.Add(this.lblNrOfDig);
             this.Controls.Add(this.lblName);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "RoomDisplay";
-            this.Size = new System.Drawing.Size(400, 115);
+            this.Size = new System.Drawing.Size(405, 120);
             this.ResumeLayout(false);
             this.PerformLayout();
 

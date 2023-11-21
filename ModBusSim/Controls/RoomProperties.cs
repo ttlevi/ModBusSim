@@ -23,6 +23,8 @@ namespace ModBusSim.Controls
         public RoomProperties()
         {
             InitializeComponent();
+            MaximizeBox = false;
+            MinimizeBox = false;
         }
 
         private void btnChangeColor_Click(object sender, EventArgs e)

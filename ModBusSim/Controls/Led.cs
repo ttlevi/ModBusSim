@@ -6,8 +6,17 @@ namespace ModBusSim.Controls
 {
     public class Led : Label
     {
+        public int w = 40;
+        public int h = 15;
+
         private int address;
         private bool valueOfCoil;
+
+        public int Address
+        {
+            get { return address; }
+            set { address = value; Text = address.ToString(); }
+        }
 
         public bool Value
         {
@@ -19,32 +28,13 @@ namespace ModBusSim.Controls
             }
         }
 
-
-        public int Address
-        {
-            get { return address; }
-            set { address = value; Text = address.ToString(); }
-        }
-
         public Led()
         {
-            Width = 80;
-            Height = 30;
+            Width = w;
+            Height = h;
             TextAlign = ContentAlignment.MiddleCenter;
             BackColor = Color.Red;
             ForeColor = Color.White;
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // Led
-            // 
-            this.Margin = new System.Windows.Forms.Padding(3);
-            this.Size = new System.Drawing.Size(0, 0);
-            this.ResumeLayout(false);
-
         }
     }
 }

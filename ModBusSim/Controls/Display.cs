@@ -4,15 +4,17 @@ namespace ModBusSim.Controls
 {
     public partial class Display : UserControl
     {
+        public int w = 40;
+        public int h = 15;
+
         private int address;
+        private int valueOfHoldingReg;
 
         public int Address
         {
             get { return address; }
             set { address = value; lblAddr.Text = address.ToString(); }
         }
-
-        private int valueOfHoldingReg;
 
         public int Value
         {
@@ -32,6 +34,13 @@ namespace ModBusSim.Controls
         public Display()
         {
             InitializeComponent();
+            Width = w;
+            Height = h;
+            lblAddr.Height = h;
+            lblValue.Height = h;
+            lblAddr.Width = w / 3;
+            lblValue.Left = w / 3 + 3;
+            lblValue.Width = w / 3 * 2;
         }
     }
 }

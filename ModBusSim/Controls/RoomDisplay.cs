@@ -6,6 +6,10 @@ namespace ModBusSim.Controls
 {
     public partial class RoomDisplay : UserControl
     {
+        private int w = 200;
+        private int h = 60;
+        private int d = 10;
+
         private int nrOfDig;
         private int nrOfAn;
         private int position;
@@ -31,8 +35,10 @@ namespace ModBusSim.Controls
             set
             {
                 position = value;
-                Left = 20 + (position % 5) * 420;
-                Top = 20 + (position / 5) * 135;
+                Left = (position % 5) * (w+d);
+                Top = (position / 5) * (h+d);
+                Width = w;
+                Height = h;
             }
         }
 

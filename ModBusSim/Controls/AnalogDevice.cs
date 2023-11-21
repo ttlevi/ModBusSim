@@ -8,6 +8,8 @@ namespace ModBusSim.Controls
 {
     public partial class AnalogDevice : Device
     {
+        private int d = 10;
+
         public AnalogDevice()
         {
             InitializeComponent();
@@ -29,8 +31,8 @@ namespace ModBusSim.Controls
             for (int i = 0; i < nr; i++)
             {
                 Display disp = new Display();
-                disp.Top = (i / 5) * 50;
-                disp.Left = (i % 5) * 100;
+                disp.Top = (i / 5) * (disp.h + d);
+                disp.Left = (i % 5) * (disp.w + d);
                 disp.Address = i+1;
                 disp.Value = 0;
                 panel1.Controls.Add(disp);
