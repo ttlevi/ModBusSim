@@ -42,11 +42,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(4, 4);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 26);
+            this.label1.Size = new System.Drawing.Size(229, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Digital ModBus Device";
             // 
@@ -66,7 +65,7 @@
             this.btnConnect.Location = new System.Drawing.Point(293, 68);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(6);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(162, 44);
+            this.btnConnect.Size = new System.Drawing.Size(201, 44);
             this.btnConnect.TabIndex = 24;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -111,7 +110,6 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
             this.btnDelete.Location = new System.Drawing.Point(440, 6);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6);

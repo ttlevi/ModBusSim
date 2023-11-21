@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
@@ -132,6 +135,9 @@
     <EmbeddedResource Include="Controls\AnalogDevice.resx">
       <DependentUpon>AnalogDevice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Device.resx">
+      <DependentUpon>Device.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\DigitalDevice.resx">
       <DependentUpon>DigitalDevice.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +171,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

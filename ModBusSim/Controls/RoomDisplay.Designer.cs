@@ -42,7 +42,6 @@
             this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblName.BackColor = System.Drawing.Color.White;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblName.Location = new System.Drawing.Point(0, 0);
             this.lblName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblName.Name = "lblName";
@@ -111,7 +110,6 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
             this.btnDelete.Location = new System.Drawing.Point(354, 3);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6);
