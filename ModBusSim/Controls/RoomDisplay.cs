@@ -6,9 +6,9 @@ namespace ModBusSim.Controls
 {
     public partial class RoomDisplay : UserControl
     {
-        private int w = 200;
-        private int h = 60;
-        private int d = 10;
+        private int w;
+        private int h;
+        private int d;
 
         private int nrOfDig;
         private int nrOfAn;
@@ -37,14 +37,16 @@ namespace ModBusSim.Controls
                 position = value;
                 Left = (position % 5) * (w+d);
                 Top = (position / 5) * (h+d);
-                Width = w;
-                Height = h;
             }
         }
 
         public RoomDisplay()
         {
             InitializeComponent();
+
+            w = Width;
+            h = Height;
+            d = DeviceDpi / 96 * 10;
         }
 
         public void SetPropOfRoomDisplay(Room source)
@@ -64,8 +66,7 @@ namespace ModBusSim.Controls
         private void btnOpen_Click(object sender, EventArgs e)
         {
             Room.Visible = true;
-            Room.TopMost = true;
-            Room.WindowState = FormWindowState.Normal;
+            Room.Activate();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

@@ -118,7 +118,7 @@
             // 
             this.nuRegVal.Location = new System.Drawing.Point(262, 196);
             this.nuRegVal.Maximum = new decimal(new int[] {
-            999,
+            127,
             0,
             0,
             0});

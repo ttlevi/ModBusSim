@@ -10,11 +10,13 @@ namespace ModBusSim.Controls
 {
     public partial class DigitalDevice : Device
     {
-        private int d = 10;
+        private int d;
 
         public DigitalDevice()
         {
             InitializeComponent();
+
+            d = DeviceDpi / 96 * 5;
         }
 
         private void LoadCoils()
@@ -33,9 +35,15 @@ namespace ModBusSim.Controls
             for (int i = 0; i < nr; i++)
             {
                 Led led = new Led();
-                led.Top = (i / 5) * (led.h+d);
-                led.Left = (i % 5) * (led.w+d);
+
+                led.Width = Width / 5 - (d + d / 5);
+                led.Height = panel1.Height / 5 - d;
+
+                led.Top = (i / 5) * (led.Height+d);
+                led.Left = d + (i % 5) * (led.Width+d);
+
                 led.Address = i+1;
+
                 panel1.Controls.Add(led);
             }
 

@@ -51,13 +51,11 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Location = new System.Drawing.Point(9, 121);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 129);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(485, 271);
+            this.panel1.Size = new System.Drawing.Size(520, 271);
             this.panel1.TabIndex = 9;
             // 
             // btnConnect
@@ -65,7 +63,7 @@
             this.btnConnect.Location = new System.Drawing.Point(293, 68);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(6);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(201, 44);
+            this.btnConnect.Size = new System.Drawing.Size(221, 44);
             this.btnConnect.TabIndex = 24;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -111,7 +109,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(440, 6);
+            this.btnDelete.Location = new System.Drawing.Point(460, 6);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(54, 52);
@@ -158,7 +156,7 @@
             this.Controls.Add(this.label4);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "DigitalDevice";
-            this.Size = new System.Drawing.Size(500, 400);
+            this.Size = new System.Drawing.Size(520, 400);
             ((System.ComponentModel.ISupportInitialize)(this.nuUnitID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,12 +166,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.ComboBox cboNrOfRegs;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.NumericUpDown nuUnitID;
+        public System.Windows.Forms.Panel panel1;
     }
 }

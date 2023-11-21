@@ -8,11 +8,13 @@ namespace ModBusSim.Controls
 {
     public partial class AnalogDevice : Device
     {
-        private int d = 10;
+        private int d;
 
         public AnalogDevice()
         {
             InitializeComponent();
+
+            d = DeviceDpi / 96 * 5;
         }
 
         private void LoadHoldingRegs()
@@ -31,10 +33,17 @@ namespace ModBusSim.Controls
             for (int i = 0; i < nr; i++)
             {
                 Display disp = new Display();
-                disp.Top = (i / 5) * (disp.h + d);
-                disp.Left = (i % 5) * (disp.w + d);
+
+                disp.Width = (Width - 2*d) / 5;
+                disp.Height = panel1.Height / 5 - d;
+
+                disp.Top = (i / 5) * (disp.Height + d);
+                disp.Left = d + (i % 5) * disp.Width;
+                disp.SetLabelsLayout();
+
                 disp.Address = i+1;
                 disp.Value = 0;
+
                 panel1.Controls.Add(disp);
             }
 

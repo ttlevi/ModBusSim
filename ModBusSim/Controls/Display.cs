@@ -4,9 +4,6 @@ namespace ModBusSim.Controls
 {
     public partial class Display : UserControl
     {
-        public int w = 40;
-        public int h = 15;
-
         private int address;
         private int valueOfHoldingReg;
 
@@ -34,13 +31,20 @@ namespace ModBusSim.Controls
         public Display()
         {
             InitializeComponent();
-            Width = w;
-            Height = h;
-            lblAddr.Height = h;
-            lblValue.Height = h;
-            lblAddr.Width = w / 3;
-            lblValue.Left = w / 3 + 3;
-            lblValue.Width = w / 3 * 2;
+        }
+
+        public void SetLabelsLayout() {
+            lblAddr.Top = 0;
+            lblValue.Top = 0;
+
+            lblAddr.Left = 0;
+            lblAddr.Width = Width / 2;
+
+            lblValue.Left = Width / 2;
+            lblValue.Width = Width / 2;
+
+            lblAddr.Height = Height;
+            lblValue.Height = Height;
         }
     }
 }

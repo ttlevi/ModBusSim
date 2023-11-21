@@ -6,9 +6,6 @@ namespace ModBusSim.Controls
 {
     public class Led : Label
     {
-        public int w = 40;
-        public int h = 15;
-
         private int address;
         private bool valueOfCoil;
 
@@ -30,8 +27,6 @@ namespace ModBusSim.Controls
 
         public Led()
         {
-            Width = w;
-            Height = h;
             TextAlign = ContentAlignment.MiddleCenter;
             BackColor = Color.Red;
             ForeColor = Color.White;

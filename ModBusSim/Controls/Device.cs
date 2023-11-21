@@ -9,9 +9,9 @@ namespace ModBusSim.Controls
 {
     public class Device : UserControl
     {
-        private int w = 250;
-        private int h = 200;
-        private int d = 10;
+        private int w;
+        private int h;
+        private int d;
 
         public Room Room { get; set; }
 
@@ -32,11 +32,27 @@ namespace ModBusSim.Controls
             get { return position; }
             set {
                 position = value;
+
+                w = Width;
+                h = Height;
+                d = DeviceDpi / 96 * 10;
                 Left = d + (position % 4) * (w+d);
                 Top = d + (position / 4) * (h+d);
                 Width = w;
                 Height = h;
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Device
+            // 
+            this.Name = "Device";
+            this.Size = new System.Drawing.Size(500, 450);
+            this.ResumeLayout(false);
+
         }
     }
 }

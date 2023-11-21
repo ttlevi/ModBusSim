@@ -10,10 +10,6 @@ namespace ModBusSim
 {
     public partial class Room : Form
     {
-        private int w = 1080;
-        private int h = 500;
-        private int d = 10;
-
         private Color roomcolor;
         public RoomProperties RoomProperties { get; set; }
 
@@ -31,9 +27,6 @@ namespace ModBusSim
         {
             InitializeComponent();
             Color = panel1.BackColor;
-            Width = w;
-            Height = h;
-            MaximumSize = new Size(w, int.MaxValue);
             panel1.AutoScroll = true;
             MaximizeBox = false;
             MinimizeBox = false;
