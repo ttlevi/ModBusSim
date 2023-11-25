@@ -28,14 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Log));
-            this.bsrcCoilRegs = new System.Windows.Forms.BindingSource(this.components);
-            this.bsrcHoldingRegs = new System.Windows.Forms.BindingSource(this.components);
             this.txtData = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcCoilRegs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcHoldingRegs)).BeginInit();
             this.SuspendLayout();
             // 
             // txtData
@@ -44,7 +39,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtData.Location = new System.Drawing.Point(6, 6);
-            this.txtData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtData.Margin = new System.Windows.Forms.Padding(2);
             this.txtData.Multiline = true;
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
@@ -57,7 +52,7 @@
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClear.Location = new System.Drawing.Point(6, 238);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(356, 40);
             this.btnClear.TabIndex = 1;
@@ -75,16 +70,13 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Log";
             this.Text = "Log";
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcCoilRegs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsrcHoldingRegs)).EndInit();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Log_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource bsrcCoilRegs;
-        private System.Windows.Forms.BindingSource bsrcHoldingRegs;
         private System.Windows.Forms.TextBox txtData;
         private System.Windows.Forms.Button btnClear;
     }

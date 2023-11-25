@@ -21,10 +21,14 @@ namespace ModBusSim.Controls
 
         private void LoadCoils()
         {
+            // Adding a new Server instance to the Cluster
+
             UnitID = int.Parse(nuUnitID.Text);
             ModbusServerCluster cluster = Room.Building.Cluster;
             cluster.Add(int.Parse(nuUnitID.Text));
             Room.Building.UnitIDsInUse.Add(UnitID);
+
+            // Loading the visual elements (Led) for the necessary coils
 
             nuUnitID.Enabled = false;
             cboNrOfRegs.Enabled = false;
@@ -47,6 +51,8 @@ namespace ModBusSim.Controls
                 panel1.Controls.Add(led);
             }
 
+            // Finding the Device in the Cluster list of the Building and setting up the event listener, that changes the values of Leds
+
             int j = 0;
             foreach (ModbusServer unit in cluster.Servers) {
                 if (unit.UnitIdentifier == UnitID) { break; }
@@ -62,6 +68,8 @@ namespace ModBusSim.Controls
                 }
             };
         }
+
+        // Buttons to connect and remove the device
 
         private void btnConnect_Click(object sender, EventArgs e)
         {

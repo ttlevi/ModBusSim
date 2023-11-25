@@ -6,14 +6,17 @@ namespace ModBusSim.Controls
 {
     public partial class RoomDisplay : UserControl
     {
+        // Variables for width, height and distance
         private int w;
         private int h;
         private int d;
 
+        // Variables for device info
         private int nrOfDig;
         private int nrOfAn;
         private int position;
 
+        // Properties for the RoomDisplays Room and Building relation
         public Room Room { get; set; }
         public Building Building { get; set; }
 
@@ -51,6 +54,8 @@ namespace ModBusSim.Controls
 
         public void SetPropOfRoomDisplay(Room source)
         {
+            // Set up RoomDisplay visuals and Room relation
+
             Room = source;
             BackColor = source.Color;
             lblName.Text = source.Text;
@@ -63,6 +68,7 @@ namespace ModBusSim.Controls
             }
         }
 
+        // Buttons to open and remove Room instance
         private void btnOpen_Click(object sender, EventArgs e)
         {
             Room.Visible = true;

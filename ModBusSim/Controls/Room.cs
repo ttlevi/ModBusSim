@@ -27,9 +27,7 @@ namespace ModBusSim
         {
             InitializeComponent();
             Color = panel1.BackColor;
-            panel1.AutoScroll = true;
-            MaximizeBox = false;
-            MinimizeBox = false;
+            OpenRoomProperties();
         }
 
         private void roomPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,6 +37,8 @@ namespace ModBusSim
 
         private void digitalcoilDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Creating new DigitalDevice
+
             DigitalDevice device = new DigitalDevice();
             device.Room = this;
             device.Position = Devices.Count;
@@ -47,6 +47,8 @@ namespace ModBusSim
 
         private void analogholdingDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Creating new AnalogDevice
+
             AnalogDevice device = new AnalogDevice();
             device.Room = this;
             device.Position = Devices.Count;
@@ -55,12 +57,16 @@ namespace ModBusSim
 
         public void SaveRoom()
         {
+            // Setting the proper Device positions and RoomDisplay properties on the screen
+
             SetDevicePositions();
             Building.RefreshRoomDisplays(this);
         }
 
         public void SetDevicePositions()
         {
+            // Resetting the Device positions
+
             int nr = 0;
             foreach (Device device in panel1.Controls)
             {
@@ -71,6 +77,8 @@ namespace ModBusSim
 
         private void OpenRoomProperties()
         {
+            // Opening new RoomProperties window
+
             RoomProperties roomProperties = new RoomProperties();
             roomProperties.Room = this;
             roomProperties.TopMost = true;
@@ -79,6 +87,8 @@ namespace ModBusSim
 
         private void AddDevice(Device device)
         {
+            // Adding the given Device to the screen and to the Devices list property of the room
+
             panel1.Controls.Add(device);
             Devices.Add(device);
             for (int i = 1; i < 255; i++)
@@ -90,6 +100,8 @@ namespace ModBusSim
 
         public void RemoveDevice(Device toremove)
         {
+            // Removing the given Device from everywhere and resetting the control positions
+
             Devices.Remove(toremove);
             panel1.Controls.Remove(toremove);
             SetDevicePositions();
@@ -98,15 +110,12 @@ namespace ModBusSim
 
         private void Room_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // To prevent the Room from dispatching when closed
+
             SaveRoom();
             e.Cancel = true;
             this.Visible = false;
             RoomProperties.Close();
-        }
-
-        private void Room_Load(object sender, EventArgs e)
-        {
-            OpenRoomProperties();
         }
     }
 }

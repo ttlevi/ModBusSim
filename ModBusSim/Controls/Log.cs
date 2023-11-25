@@ -29,5 +29,11 @@ namespace ModBusSim
         {
             txtData.Clear();
         }
+
+        private void Log_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
     }
 }

@@ -9,12 +9,14 @@ namespace ModBusSim.Controls
         private int address;
         private bool valueOfCoil;
 
+        // Property for Coil Address
         public int Address
         {
             get { return address; }
             set { address = value; Text = address.ToString(); }
         }
 
+        // Property for Coil Value
         public bool Value
         {
             get { return valueOfCoil; }
@@ -25,6 +27,7 @@ namespace ModBusSim.Controls
             }
         }
 
+        // Constructor sets up the visuals of the label
         public Led()
         {
             TextAlign = ContentAlignment.MiddleCenter;

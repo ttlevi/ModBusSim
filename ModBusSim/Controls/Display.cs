@@ -7,12 +7,14 @@ namespace ModBusSim.Controls
         private int address;
         private int valueOfHoldingReg;
 
+        // Property for Register Address
         public int Address
         {
             get { return address; }
             set { address = value; lblAddr.Text = address.ToString(); }
         }
 
+        // Property for Register Value
         public int Value
         {
             get { return valueOfHoldingReg; }
@@ -32,6 +34,8 @@ namespace ModBusSim.Controls
         {
             InitializeComponent();
         }
+
+        // Setting up the controls (labels) alignment responsively to the scaling of the computer display
 
         public void SetLabelsLayout() {
             lblAddr.Top = 0;

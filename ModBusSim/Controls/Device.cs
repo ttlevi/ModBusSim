@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace ModBusSim.Controls
 {
+
+    // This class is an abstraction of the two kinds of devices, helps to set up the common parameters in one place.
+
     public class Device : UserControl
     {
         private int w;
@@ -41,18 +44,6 @@ namespace ModBusSim.Controls
                 Width = w;
                 Height = h;
             }
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // Device
-            // 
-            this.Name = "Device";
-            this.Size = new System.Drawing.Size(500, 450);
-            this.ResumeLayout(false);
-
         }
     }
 }

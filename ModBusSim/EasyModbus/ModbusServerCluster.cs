@@ -63,20 +63,22 @@ namespace ModBusTest.EasyModBus
 
         public ModbusServer Add(int id)
         {
+            //Method to add new modbus Server to the cluster
+
             ModbusServer modbusServer = new ModbusServer();
             modbusServer.UnitIdentifier = (byte)id;
             modbusServer.directFlag = true;
-
-            //Ellenőrizzük, hogy van-e már ilyen
+            
+            // Check if UnitID is already given to another Device
             if (Servers.Where(s => s.UnitIdentifier == id).Count() > 0) {
                 MessageBox.Show("This Unit ID is already in use. Values that you change will be changed on all the devices with the same ID.","Warning");
                 return null;
             };
 
-            //Betesszük a listába
+            // Adding it to the servers list, if not
             Servers.Add(modbusServer);
 
-            //Tesztelési céllal feliratkozunk az eseményeire
+            // Creating event handlers for DebugMessages
             modbusServer.HoldingRegistersChanged += (register, numberOfRegisters) =>
             {
                 if (DebugMessage != null)
@@ -99,11 +101,13 @@ namespace ModBusTest.EasyModBus
                 }
             };
 
+
+            // Creating event handler for the modbus reply
             modbusServer.ModbusDirectReply += (sender, byteArray, transctionID, stream) =>
             {
-
-                //ToDo: hanle concurrency
                 stream.Write(byteArray, 0, byteArray.Length);
+
+                // Remove comment tag below if you wish to log the reply message
 
                 //if (DebugMessage != null)
                 //{
@@ -116,11 +120,15 @@ namespace ModBusTest.EasyModBus
 
         public void Remove(int id)
         {
+            // Removing given server from the servers list
+
             foreach (ModbusServer server in Servers)
             {
                 if (server.UnitIdentifier == id) { Servers.Remove(server); break; }
             }
         }
+
+        // The rest of the code is default part of the EasyModbus package, in comments the unused parts
 
         public void Listen()
         {
@@ -169,20 +177,20 @@ namespace ModBusTest.EasyModBus
                 //int portIn = ((NetworkConnectionParameter)networkConnectionParameter).portIn;
                 //IPAddress ipAddressIn = ((NetworkConnectionParameter)networkConnectionParameter).ipAddressIn;
 
-
                 Array.Copy(((NetworkConnectionParameter)networkConnectionParameter).bytes, 0, bytes, 0, ((NetworkConnectionParameter)networkConnectionParameter).bytes.Length);
 
                 //Hand data over to all servers
+                foreach (var server in Servers)
+                {
+                    server.ProcessModbusFrame(bytes, ((NetworkConnectionParameter)networkConnectionParameter).stream);
+                }
+
+                // Remove comment tag below if you wish to log the reply message
 
                 //if (DebugMessage != null)
                 //{
                 //    DebugMessage(this, $">>>:{Helpers.ByteArrayToString(bytes)}");
                 //}
-
-                foreach (var server in Servers)
-                {
-                    server.ProcessModbusFrame(bytes, ((NetworkConnectionParameter)networkConnectionParameter).stream);
-                }
             }
 
         }

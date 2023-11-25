@@ -19,15 +19,19 @@ namespace ModBusSim.Controls
 
         private void LoadHoldingRegs()
         {
+            // Adding a new Server instance to the Cluster
+
             UnitID = int.Parse(nuUnitID.Text);
             ModbusServerCluster cluster = Room.Building.Cluster;
             cluster.Add(UnitID);
             Room.Building.UnitIDsInUse.Add(UnitID);
 
+            // Loading the visual elements (Display) for the necessary holding registers
+
             nuUnitID.Enabled = false;
             cboNrOfRegs.Enabled = false;
             btnConnect.Enabled = false;
-            panel1.Controls.Clear();
+
             int nr = int.Parse(cboNrOfRegs.Text);
 
             for (int i = 0; i < nr; i++)
@@ -47,6 +51,8 @@ namespace ModBusSim.Controls
                 panel1.Controls.Add(disp);
             }
 
+            // Finding the Device in the Cluster list of the Building and setting up the event listener, that changes the values on the Displays
+
             int j = 0;
             foreach (ModbusServer unit in cluster.Servers)
             {
@@ -64,6 +70,8 @@ namespace ModBusSim.Controls
                 
             };
         }
+
+        // Buttons to connect and remove the device
 
         private void btnConnect_Click(object sender, EventArgs e)
         {

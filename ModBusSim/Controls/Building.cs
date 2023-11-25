@@ -17,6 +17,18 @@ namespace ModBusSim
         public Building()
         {
             InitializeComponent();
+
+            SetUpCluster();
+
+            WindowState = FormWindowState.Maximized;
+        }
+
+        private void SetUpCluster()
+        {
+            // This method sets up a new server cluster (one instance in the whole program).
+            // A cluster is a list of connected servers (devices) running on the same ip and port.
+            // It handles the difference between devices based on the Unit ID field of a modbus message.
+
             Cluster = new ModbusServerCluster();
             Cluster.Port = 502;
             Cluster.Listen();
@@ -27,12 +39,12 @@ namespace ModBusSim
                     log.Data += m + Environment.NewLine;
                 });
             };
-
-            WindowState = FormWindowState.Maximized;
         }
 
         public void RefreshRoomDisplays(Room newroom)
         {
+            // Function to create RoomDisplay instances on the Building Form.
+
             if (!newroom.Exists) { newroom.Exists = true; rooms.Add(newroom); }
             int nr = 0;
             foreach (RoomDisplay disp in panel1.Controls)
@@ -45,6 +57,8 @@ namespace ModBusSim
 
         private void newRoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Function to create a new Room Form instance.
+
             Room newroom = new Room();
             RoomDisplay disp = new RoomDisplay();
             disp.Room = newroom;
@@ -57,6 +71,9 @@ namespace ModBusSim
 
         public void RemoveRoom(Room toremove)
         {
+            // Function to remove every visual element related to the given room.
+            // It also removes it from the "rooms" list.
+
             toremove.Close();
             toremove.Dispose();
             rooms.Remove(toremove);
@@ -69,6 +86,8 @@ namespace ModBusSim
 
         private void changeLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Function to show the Log Form.
+
             log.Show();
             log.Activate();
         }
