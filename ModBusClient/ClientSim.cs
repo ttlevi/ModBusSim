@@ -1,4 +1,4 @@
-﻿using FluentModbus;
+﻿using EasyModbus;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace ModBusClient
 {
-    public partial class ModBusClient : Form
+    public partial class ModbusClientForm : Form
     {
-        ModbusTcpClient client = new ModbusTcpClient();
+        ModbusClient client = new ModbusClient();
 
-        public ModBusClient()
+        public ModbusClientForm()
         {
             InitializeComponent();
             RefreshClient();
@@ -38,7 +38,7 @@ namespace ModBusClient
         {
             try
             {
-                client.Connect(new IPEndPoint(IPAddress.Parse(txtIPAddr.Text), int.Parse(txtPort.Text)));
+                client.Connect(txtIPAddr.Text, int.Parse(txtPort.Text));
             }
             catch (Exception)
             {
@@ -48,35 +48,23 @@ namespace ModBusClient
 
         private void btnSetValue_Click(object sender, EventArgs e) {
 
-            int raddr = int.Parse(nuRegAddr.Text);
-            int unitid = int.Parse(nuUnitID.Text);
-
-            if (rbtnCoil.Checked)
+            try
             {
-                bool rval = false;
-                if (chCoilVal.Checked) { rval = true; }
+                client.UnitIdentifier = (byte)nuUnitID.Value;
 
-                try
+                if (rbtnCoil.Checked)
                 {
-                    client.WriteSingleCoil(unitid, raddr-1, rval);
+                    client.WriteSingleCoil((int)nuRegAddr.Value - 1, chCoilVal.Checked);
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Check if you misspelled something and try again!", "Error");
+                    client.WriteSingleRegister((int)nuRegAddr.Value - 1, (int)nuRegVal.Value);
                 }
+
             }
-
-            if (rbtnHoldingReg.Checked)
+            catch (Exception)
             {
-                short rval = short.Parse(nuRegVal.Text);
-                try
-                {
-                    client.WriteSingleRegister(unitid, raddr - 1, rval);
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Check if you misspelled something and try again!", "Error");
-                }
+                MessageBox.Show("Check if you misspelled something and try again!", "Error");
             }
         }
 

@@ -105,10 +105,10 @@ namespace ModBusTest.EasyModBus
                 //ToDo: hanle concurrency
                 stream.Write(byteArray, 0, byteArray.Length);
 
-                if (DebugMessage != null)
-                {
-                    DebugMessage(this, $"<<<:{Helpers.ByteArrayToString(byteArray)} from Unit ID #{modbusServer.UnitIdentifier}");
-                }
+                //if (DebugMessage != null)
+                //{
+                //    DebugMessage(this, $"<<<:{Helpers.ByteArrayToString(byteArray)} from Unit ID #{modbusServer.UnitIdentifier}");
+                //}
             };
 
             return modbusServer;
@@ -174,10 +174,10 @@ namespace ModBusTest.EasyModBus
 
                 //Hand data over to all servers
 
-                if (DebugMessage != null)
-                {
-                    DebugMessage(this, $">>>:{Helpers.ByteArrayToString(bytes)}");
-                }
+                //if (DebugMessage != null)
+                //{
+                //    DebugMessage(this, $">>>:{Helpers.ByteArrayToString(bytes)}");
+                //}
 
                 foreach (var server in Servers)
                 {

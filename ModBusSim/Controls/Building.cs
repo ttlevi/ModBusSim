@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ModBusTest.EasyModBus;
 using System.Net;
+using System.Diagnostics;
 
 namespace ModBusSim
 {
     public partial class Building : Form
     {
+        private Log log = new Log();
         private List<Room> rooms = new List<Room>();
         public ModbusServerCluster Cluster { get; set; }
         public List<int> UnitIDsInUse { get; set; } = new List<int>();
@@ -18,6 +20,13 @@ namespace ModBusSim
             Cluster = new ModbusServerCluster();
             Cluster.Port = 502;
             Cluster.Listen();
+            Cluster.DebugMessage += (s, m) =>
+            {
+                this.Invoke((MethodInvoker)delegate ()
+                {
+                    log.Data += m + Environment.NewLine;
+                });
+            };
 
             WindowState = FormWindowState.Maximized;
         }
@@ -56,6 +65,12 @@ namespace ModBusSim
                 if (disp.Room == toremove) { panel1.Controls.Remove(disp); }
                 RefreshRoomDisplays(disp.Room);
             }
+        }
+
+        private void changeLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            log.Show();
+            log.Activate();
         }
     }
 }

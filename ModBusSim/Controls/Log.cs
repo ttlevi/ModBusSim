@@ -12,9 +12,22 @@ namespace ModBusSim
 {
     public partial class Log : Form
     {
+        private string data;
+
+        public string Data
+        {
+            get { return data; }
+            set { data = value; txtData.Text = data; }
+        }
+
         public Log()
         {
             InitializeComponent();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtData.Clear();
         }
     }
 }

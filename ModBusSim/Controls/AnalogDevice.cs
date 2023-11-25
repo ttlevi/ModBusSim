@@ -56,11 +56,12 @@ namespace ModBusSim.Controls
 
             cluster.Servers[j].HoldingRegistersChanged += (int register, int numberOfRegisters) =>
             {
-                int value = cluster.Servers[j].holdingRegisters[register] / 256;
+                int value = cluster.Servers[j].holdingRegisters[register];
                 foreach (Display disp in panel1.Controls)
                 {
                     if (disp.Address == register) {disp.Value = value; };
                 }
+                
             };
         }
 
