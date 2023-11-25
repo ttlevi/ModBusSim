@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Building));
             this.newRoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.changeLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,28 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.savePresetToolStripMenuItem,
+            this.loadPresetToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // savePresetToolStripMenuItem
+            // 
+            this.savePresetToolStripMenuItem.Name = "savePresetToolStripMenuItem";
+            this.savePresetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.savePresetToolStripMenuItem.Text = "Save Preset";
+            this.savePresetToolStripMenuItem.Click += new System.EventHandler(this.savePresetToolStripMenuItem_Click);
+            // 
+            // loadPresetToolStripMenuItem
+            // 
+            this.loadPresetToolStripMenuItem.Name = "loadPresetToolStripMenuItem";
+            this.loadPresetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadPresetToolStripMenuItem.Text = "Load Preset";
+            // 
             // changeLogToolStripMenuItem
             // 
             this.changeLogToolStripMenuItem.Name = "changeLogToolStripMenuItem";
@@ -77,27 +99,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(544, 280);
             this.panel1.TabIndex = 1;
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.savePresetToolStripMenuItem,
-            this.loadPresetToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // savePresetToolStripMenuItem
-            // 
-            this.savePresetToolStripMenuItem.Name = "savePresetToolStripMenuItem";
-            this.savePresetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.savePresetToolStripMenuItem.Text = "Save Preset";
-            // 
-            // loadPresetToolStripMenuItem
-            // 
-            this.loadPresetToolStripMenuItem.Name = "loadPresetToolStripMenuItem";
-            this.loadPresetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadPresetToolStripMenuItem.Text = "Load Preset";
             // 
             // Building
             // 

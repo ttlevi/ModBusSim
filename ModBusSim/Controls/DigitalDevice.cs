@@ -33,10 +33,13 @@ namespace ModBusSim.Controls
             nuUnitID.Enabled = false;
             cboNrOfRegs.Enabled = false;
             btnConnect.Enabled = false;
-            panel1.Controls.Clear();
-            int nr = int.Parse(cboNrOfRegs.Text);
+            txtName.Enabled = false;
 
-            for (int i = 0; i < nr; i++)
+            NrOfRegs = int.Parse(cboNrOfRegs.Text);
+            DeviceName = txtName.Text;
+            Type = "digital";
+
+            for (int i = 0; i < NrOfRegs; i++)
             {
                 Led led = new Led();
 

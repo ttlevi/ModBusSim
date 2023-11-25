@@ -44,7 +44,7 @@
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtData.Size = new System.Drawing.Size(356, 230);
+            this.txtData.Size = new System.Drawing.Size(408, 230);
             this.txtData.TabIndex = 0;
             // 
             // btnClear
@@ -54,7 +54,7 @@
             this.btnClear.Location = new System.Drawing.Point(6, 238);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(356, 40);
+            this.btnClear.Size = new System.Drawing.Size(408, 40);
             this.btnClear.TabIndex = 1;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -64,7 +64,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 283);
+            this.ClientSize = new System.Drawing.Size(418, 283);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtData);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

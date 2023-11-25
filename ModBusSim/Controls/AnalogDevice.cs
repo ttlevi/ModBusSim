@@ -31,10 +31,13 @@ namespace ModBusSim.Controls
             nuUnitID.Enabled = false;
             cboNrOfRegs.Enabled = false;
             btnConnect.Enabled = false;
+            txtName.Enabled = false;
 
-            int nr = int.Parse(cboNrOfRegs.Text);
+            NrOfRegs = int.Parse(cboNrOfRegs.Text);
+            DeviceName = txtName.Text;
+            Type = "analog";
 
-            for (int i = 0; i < nr; i++)
+            for (int i = 0; i < NrOfRegs; i++)
             {
                 Display disp = new Display();
 

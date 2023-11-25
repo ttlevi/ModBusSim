@@ -17,6 +17,9 @@ namespace ModBusSim.Controls
         private int d;
 
         public Room Room { get; set; }
+        public string DeviceName { get; set; }
+        public int NrOfRegs { get; set; }
+        public string Type { get; set; }
 
         private int unitID;
 

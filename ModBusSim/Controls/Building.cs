@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using ModBusTest.EasyModBus;
 using System.Net;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 
 namespace ModBusSim
 {
@@ -90,6 +92,42 @@ namespace ModBusSim
 
             log.Show();
             log.Activate();
+        }
+
+        private void savePresetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+
+            save.InitialDirectory = Application.StartupPath + "\\Resources";
+
+            // Set other properties as needed
+            save.Filter = "CSV Files (*.csv) | *.csv";
+            save.DefaultExt = "csv";
+            save.AddExtension = true;
+
+            if (save.ShowDialog() == DialogResult.OK) {
+
+                try
+                {
+                    StreamWriter sw = new StreamWriter(save.FileName, false, Encoding.Default);
+
+                    foreach (Room r in rooms)
+                    {
+                        sw.Write($"{r.Text};{r.Color};");
+                        foreach (Device d in r.Devices)
+                        {
+                            sw.Write($"{d.UnitID};{d.Type};{d.DeviceName};{d.NrOfRegs};"); // valamiért a nem connected eszközöknél is ír egy 0-t a norofregs-hez
+                        }
+                        sw.Write("\n");
+                    }
+                    sw.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("File is open in another program.", "Error");
+                }
+
+            }
         }
     }
 }
