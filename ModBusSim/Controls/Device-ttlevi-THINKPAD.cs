@@ -7,10 +7,6 @@ using System.Windows.Forms;
 
 namespace ModBusSim.Controls
 {
-
-    // This class is an abstraction of the two kinds of devices, helps to set up the common parameters in one place.
-
-    [Serializable]
     public class Device : UserControl
     {
         private int w;
@@ -18,9 +14,6 @@ namespace ModBusSim.Controls
         private int d;
 
         public Room Room { get; set; }
-        public string DeviceName { get; set; }
-        public int NrOfRegs { get; set; }
-        public string Type { get; set; }
 
         private int unitID;
 

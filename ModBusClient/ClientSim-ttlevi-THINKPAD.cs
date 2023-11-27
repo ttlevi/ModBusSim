@@ -1,4 +1,4 @@
-﻿using EasyModbus;
+﻿using FluentModbus;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace ModBusClient
 {
-    public partial class ModbusClientForm : Form
+    public partial class ModBusClient : Form
     {
-        ModbusClient client = new ModbusClient();
+        ModbusTcpClient client = new ModbusTcpClient();
 
-        public ModbusClientForm()
+        public ModBusClient()
         {
             InitializeComponent();
             RefreshClient();
@@ -38,7 +38,7 @@ namespace ModBusClient
         {
             try
             {
-                client.Connect(txtIPAddr.Text, int.Parse(txtPort.Text));
+                client.Connect(new IPEndPoint(IPAddress.Parse(txtIPAddr.Text), int.Parse(txtPort.Text)));
             }
             catch (Exception)
             {
@@ -48,23 +48,35 @@ namespace ModBusClient
 
         private void btnSetValue_Click(object sender, EventArgs e) {
 
-            try
+            int raddr = int.Parse(nuRegAddr.Text);
+            int unitid = int.Parse(nuUnitID.Text);
+
+            if (rbtnCoil.Checked)
             {
-                client.UnitIdentifier = (byte)nuUnitID.Value;
+                bool rval = false;
+                if (chCoilVal.Checked) { rval = true; }
 
-                if (rbtnCoil.Checked)
+                try
                 {
-                    client.WriteSingleCoil((int)nuRegAddr.Value - 1, chCoilVal.Checked);
+                    client.WriteSingleCoil(unitid, raddr-1, rval);
                 }
-                else
+                catch (Exception)
                 {
-                    client.WriteSingleRegister((int)nuRegAddr.Value - 1, (int)nuRegVal.Value);
+                    MessageBox.Show("Check if you misspelled something and try again!", "Error");
                 }
-
             }
-            catch (Exception)
+
+            if (rbtnHoldingReg.Checked)
             {
-                MessageBox.Show("There's no device connected with the given UnitID, or it's connection is not yet established. Try again, or try a different UnitID.", "Error");
+                short rval = short.Parse(nuRegVal.Text);
+                try
+                {
+                    client.WriteSingleRegister(unitid, raddr - 1, rval);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Check if you misspelled something and try again!", "Error");
+                }
             }
         }
 

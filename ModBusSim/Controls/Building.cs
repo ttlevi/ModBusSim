@@ -1,4 +1,5 @@
-﻿using ModBusSim.Controls;
+﻿using FormSerialisation;
+using ModBusSim.Controls;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -7,13 +8,20 @@ using System.Net;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Security.Policy;
 
 namespace ModBusSim
 {
+
+    [Serializable]
     public partial class Building : Form
     {
         private Log log = new Log();
-        private List<Room> rooms = new List<Room>();
+        private List<Room> Rooms { get; set; } = new List<Room>();
         public ModbusServerCluster Cluster { get; set; }
         public List<int> UnitIDsInUse { get; set; } = new List<int>();
         public Building()
@@ -47,7 +55,7 @@ namespace ModBusSim
         {
             // Function to create RoomDisplay instances on the Building Form.
 
-            if (!newroom.Exists) { newroom.Exists = true; rooms.Add(newroom); }
+            if (!newroom.Exists) { newroom.Exists = true; Rooms.Add(newroom); }
             int nr = 0;
             foreach (RoomDisplay disp in panel1.Controls)
             {
@@ -78,7 +86,7 @@ namespace ModBusSim
 
             toremove.Close();
             toremove.Dispose();
-            rooms.Remove(toremove);
+            Rooms.Remove(toremove);
             foreach (RoomDisplay disp in panel1.Controls)
             {
                 if (disp.Room == toremove) { panel1.Controls.Remove(disp); }
@@ -96,37 +104,81 @@ namespace ModBusSim
 
         private void savePresetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog save = new SaveFileDialog();
+            //SaveFileDialog save = new SaveFileDialog();
 
-            save.InitialDirectory = Application.StartupPath + "\\Resources";
+            //save.InitialDirectory = Application.StartupPath + "\\Resources";
 
-            // Set other properties as needed
-            save.Filter = "CSV Files (*.csv) | *.csv";
-            save.DefaultExt = "csv";
-            save.AddExtension = true;
+            //// Set other properties as needed
+            //save.Filter = "CSV Files (*.csv) | *.csv";
+            //save.DefaultExt = "csv";
+            //save.AddExtension = true;
 
-            if (save.ShowDialog() == DialogResult.OK) {
+            //if (save.ShowDialog() == DialogResult.OK) {
 
-                try
-                {
-                    StreamWriter sw = new StreamWriter(save.FileName, false, Encoding.Default);
+            //    try
+            //    {
+            //        StreamWriter sw = new StreamWriter(save.FileName, false, Encoding.Default);
 
-                    foreach (Room r in rooms)
-                    {
-                        sw.Write($"{r.Text};{r.Color};");
-                        foreach (Device d in r.Devices)
-                        {
-                            sw.Write($"{d.UnitID};{d.Type};{d.DeviceName};{d.NrOfRegs};"); // valamiért a nem connected eszközöknél is ír egy 0-t a norofregs-hez
-                        }
-                        sw.Write("\n");
-                    }
-                    sw.Close();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("File is open in another program.", "Error");
-                }
+            //        foreach (Room r in rooms)
+            //        {
+            //            sw.Write($"{r.Text};{r.Color};");
+            //            foreach (Device d in r.Devices)
+            //            {
+            //                sw.Write($"{d.UnitID};{d.Type};{d.DeviceName};{d.NrOfRegs};"); // valamiért a nem connected eszközöknél is ír egy 0-t a norofregs-hez
+            //            }
+            //            sw.Write("\n");
+            //        }
+            //        sw.Close();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        MessageBox.Show("File is open in another program.", "Error");
+            //    }
 
+            //}
+
+            //FormSerialisor.Serialise(this, Application.StartupPath + @"\building.xml");
+
+            // Saving to XML
+            //SerializeToXml(this, "building.xml");
+
+
+        }
+
+        private void loadPresetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Loading from XML
+            //Building loadedBuilding = DeserializeFromXml<Building>("building.xml");
+            //loadedBuilding.Show();
+            //this.Close();
+        }
+
+
+        // ChatGPT szülte dolog
+
+        static void SerializeToXml<T>(T objectToSerialize, string filePath)
+        {
+            XmlAttributeOverrides attrOverrides = new XmlAttributeOverrides();
+            XmlAttributes attrs = new XmlAttributes { XmlIgnore = true };
+            attrOverrides.Add(typeof(System.ComponentModel.Component), "Site", attrs);
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+
+            using (StreamWriter streamWriter = new StreamWriter(filePath, false, Encoding.UTF8))
+            using (XmlWriter xmlWriter = XmlWriter.Create(streamWriter, new XmlWriterSettings { Indent = true }))
+            {
+                xmlSerializer.Serialize(xmlWriter, objectToSerialize);
+            }
+        }
+
+        static T DeserializeFromXml<T>(string filePath)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+
+            using (StreamReader streamReader = new StreamReader(filePath))
+            using (XmlReader xmlReader = XmlReader.Create(streamReader))
+            {
+                return (T)xmlSerializer.Deserialize(xmlReader);
             }
         }
     }

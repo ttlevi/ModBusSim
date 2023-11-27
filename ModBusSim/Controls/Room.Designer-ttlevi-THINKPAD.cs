@@ -48,7 +48,6 @@
             this.openToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(2114, 40);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
@@ -87,17 +86,15 @@
             // roomPropertiesToolStripMenuItem
             // 
             this.roomPropertiesToolStripMenuItem.Name = "roomPropertiesToolStripMenuItem";
-            this.roomPropertiesToolStripMenuItem.Size = new System.Drawing.Size(323, 44);
+            this.roomPropertiesToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.roomPropertiesToolStripMenuItem.Text = "Room Properties";
             this.roomPropertiesToolStripMenuItem.Click += new System.EventHandler(this.roomPropertiesToolStripMenuItem_Click);
             // 
             // panel1
             // 
-            this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.Silver;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 40);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2114, 689);
             this.panel1.TabIndex = 2;
@@ -110,12 +107,11 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(12);
             this.Name = "Room";
             this.Text = "NewRoom";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Room_FormClosing);
+            this.Load += new System.EventHandler(this.Room_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

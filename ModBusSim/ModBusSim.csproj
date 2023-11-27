@@ -130,6 +130,7 @@
     <Compile Include="EasyModbus\ModbusServer.cs" />
     <Compile Include="EasyModbus\ModbusServerCluster.cs" />
     <Compile Include="EasyModbus\StoreLogData.cs" />
+    <Compile Include="FormSerialisor\FormSerialisor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\AnalogDevice.resx">

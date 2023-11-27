@@ -1,4 +1,6 @@
-﻿namespace ModBusSim
+﻿using System;
+
+namespace ModBusSim
 {
     partial class Building
     {
@@ -81,6 +83,7 @@
             this.loadPresetToolStripMenuItem.Name = "loadPresetToolStripMenuItem";
             this.loadPresetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadPresetToolStripMenuItem.Text = "Load Preset";
+            this.loadPresetToolStripMenuItem.Click += new System.EventHandler(this.loadPresetToolStripMenuItem_Click);
             // 
             // changeLogToolStripMenuItem
             // 
