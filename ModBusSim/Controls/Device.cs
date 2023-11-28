@@ -21,15 +21,30 @@ namespace ModBusSim.Controls
         private int d;
 
         public Room Room { get; set; }
-        public string DeviceName { get; set; } = "ModBus Device";
-        public int NrOfRegs { get; set; } = 5;
+
+        private string deviceName;
+
+        public string DeviceName
+        {
+            get { return deviceName; }
+            set { deviceName = value; txtName.Text = value.ToString(); }
+        }
+
+        private int nrOfRegs;
+
+        public int NrOfRegs
+        {
+            get { return nrOfRegs; }
+            set { nrOfRegs = value; cboNrOfRegs.Text = value.ToString(); }
+        }
+
 
         private bool isdigital;
 
         public bool IsDigital
         {
             get { isdigital = rbtnDigital.Checked; return isdigital; }
-            set { isdigital = value; }
+            set { isdigital = value; rbtnDigital.Checked = value; rbtnAnalog.Checked = !value; }
         }
 
 
@@ -39,11 +54,7 @@ namespace ModBusSim.Controls
         public int UnitID
         {
             get { return unitID; }
-            set
-            {
-                unitID = value;
-                foreach (Control o in Controls) { if (o is NumericUpDown) { o.Text = UnitID.ToString(); } }
-            }
+            set { unitID = value; nuUnitID.Text = value.ToString(); }
         }
 
         private int position;
@@ -69,18 +80,25 @@ namespace ModBusSim.Controls
         {
             InitializeComponent();
             
-            txtName.Text = DeviceName;
-            cboNrOfRegs.Text = NrOfRegs.ToString();
+            txtName.Text = "ModBus Device";
+            cboNrOfRegs.Text = "5";
+            //for (int i = 1; i < 255; i++)
+            //{
+            //    if (!Room.Building.UnitIDsInUse.Contains(i)) { UnitID = i; break; }
+            //}
         }
 
-        private void LoadRegs(bool isdigital)
+        public void LoadRegs(bool isdigital)
         {
             // Adding a new Server instance to the Cluster
 
             UnitID = int.Parse(nuUnitID.Text);
             ModbusServerCluster cluster = Room.Building.Cluster;
             cluster.Add(UnitID);
-            Room.Building.UnitIDsInUse.Add(UnitID);
+            if (!Room.Building.UnitIDsInUse.Contains(UnitID))
+            {
+                Room.Building.UnitIDsInUse.Add(UnitID);
+            }
             Room.Devices.Add(this);
 
             nuUnitID.Enabled = false;
@@ -132,7 +150,6 @@ namespace ModBusSim.Controls
                     {
                         if (disp.Address == register) { disp.Value = value; };
                     }
-
                 };
             }
 

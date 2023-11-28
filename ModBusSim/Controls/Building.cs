@@ -1,18 +1,10 @@
 ﻿using ModBusSim.Controls;
+using ModBusTest.EasyModBus;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using ModBusTest.EasyModBus;
-using System.Net;
-using System.Diagnostics;
 using System.IO;
-using System.Text;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
-using System.Xml;
+using System.Windows.Forms;
 using System.Xml.Serialization;
-using System.Security.Policy;
-using static System.Net.WebRequestMethods;
 
 namespace ModBusSim
 {
@@ -25,11 +17,23 @@ namespace ModBusSim
         private List<Room> Rooms { get; set; } = new List<Room>();
         public ModbusServerCluster Cluster { get; set; }
         public List<int> UnitIDsInUse { get; set; } = new List<int>();
-        public Building()
+        public List<RoomDisplay> RoomDisplays { get; set; } = new List<RoomDisplay>();
+        public Building(bool connected)
         {
+            if (connected) { SetUpCluster(); }
+
             InitializeComponent();
 
-            SetUpCluster();
+            foreach (Room room in Rooms)
+            {
+                foreach (Device device in room.Devices)
+                {
+                    if (!UnitIDsInUse.Contains(device.UnitID))
+                    {
+                        UnitIDsInUse.Add(device.UnitID);
+                    }
+                }
+            }
 
             WindowState = FormWindowState.Maximized;
         }
@@ -45,11 +49,10 @@ namespace ModBusSim
             Cluster.Listen();
             Cluster.DebugMessage += (s, m) =>
             {
-
-                //this.Invoke((MethodInvoker)delegate ()
-                //{
-                //    log.Data += m + Environment.NewLine;
-                //});
+                this.Invoke((MethodInvoker)delegate ()
+                {
+                    log.Data += m + Environment.NewLine;
+                });
             };
         }
 
@@ -59,7 +62,7 @@ namespace ModBusSim
 
             if (!newroom.Exists) { newroom.Exists = true; Rooms.Add(newroom); }
             int nr = 0;
-            foreach (RoomDisplay disp in panel1.Controls)
+            foreach (RoomDisplay disp in buildingContainer.Controls)
             {
                 disp.SetPropOfRoomDisplay(disp.Room);
                 disp.Position = nr;
@@ -71,14 +74,18 @@ namespace ModBusSim
         {
             // Function to create a new Room Form instance.
 
-            Room newroom = new Room();
+            Room newroom = new Room(false);
+            newroom.Building = this;
+            AddNewRoomDisplay(newroom);
+        }
+
+        public void AddNewRoomDisplay(Room newroom)
+        {
             RoomDisplay disp = new RoomDisplay();
             disp.Room = newroom;
             disp.Building = this;
-            panel1.Controls.Add(disp);
+            buildingContainer.Controls.Add(disp);
             RefreshRoomDisplays(disp.Room);
-            newroom.Building = this;
-            newroom.Show(); 
         }
 
         public void RemoveRoom(Room toremove)
@@ -89,9 +96,12 @@ namespace ModBusSim
             toremove.Close();
             toremove.Dispose();
             Rooms.Remove(toremove);
-            foreach (RoomDisplay disp in panel1.Controls)
+            foreach (RoomDisplay disp in buildingContainer.Controls)
             {
-                if (disp.Room == toremove) { panel1.Controls.Remove(disp); }
+                if (disp.Room == toremove) {
+                    buildingContainer.Controls.Remove(disp);
+                    RoomDisplays.Remove(disp);
+                }
                 RefreshRoomDisplays(disp.Room);
             }
         }
@@ -106,7 +116,7 @@ namespace ModBusSim
 
         private void savePresetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // xml serialize here
+            // XmlSerializer
             var output = this.ToBuildingSettings();
 
             SaveFileDialog sfd = new SaveFileDialog()
@@ -134,8 +144,7 @@ namespace ModBusSim
 
         private void loadPresetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Cluster.StopListening();
-            // xml deserialize here
+            // Xml Deserialization
             OpenFileDialog ofd = new OpenFileDialog
             {
                 Filter = "XML Files|*.xml|All Files|*.*",
@@ -148,21 +157,28 @@ namespace ModBusSim
             string xml = sr.ReadToEnd();
 
             XmlSerializer serializer = new XmlSerializer(typeof(BuildingSettings));
+            StringReader r = new StringReader(xml);
 
-            using (StringReader r = new StringReader(xml))
-            {
-                var newBuildingSettings = (BuildingSettings)serializer.Deserialize(r);
-
-
-                var newBuilding = Building.FromBuildingSettings(newBuildingSettings);
-                newBuilding.Show();
-            }
+            var newBuildingSettings = (BuildingSettings)serializer.Deserialize(r);
+            Building newBuilding = new Building(false);
+            newBuilding = Building.FromBuildingSettings(newBuildingSettings);
+            
             sr.Close();
 
-            
+            Rooms.Clear();
+            UnitIDsInUse.Clear();
 
-            foreach (Room room in Rooms) {
-                RefreshRoomDisplays(room);
+            foreach (Room room in newBuilding.Rooms) {
+                room.Building = this;
+                room.Visible = false;
+                foreach (Device device in room.Devices)
+                {
+                    if (!UnitIDsInUse.Contains(device.UnitID)) { UnitIDsInUse.Add(device.UnitID); };
+                    device.Room = room;
+                    room.AddDevice(device);
+                }
+                Rooms.Add(room);
+                AddNewRoomDisplay(room);
             }
         }
 
@@ -172,14 +188,16 @@ namespace ModBusSim
 
             buildingSettings.Rooms = new List<RoomSettings>();
 
-            foreach (Room room in Rooms) { buildingSettings.Rooms.Add(room.ToRoomSettings()); }
+            foreach (Room room in Rooms) {
+                buildingSettings.Rooms.Add(room.ToRoomSettings());
+            }
 
             return buildingSettings;
         }
 
         public static Building FromBuildingSettings(BuildingSettings buildingSettings)
         {
-            Building building = new Building();
+            Building building = new Building(false);
 
             foreach (RoomSettings room in buildingSettings.Rooms)
             {

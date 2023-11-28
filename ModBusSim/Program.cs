@@ -16,7 +16,7 @@ namespace ModBusSim
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Building());
+            Application.Run(new Building(true));
         }
     }
 }

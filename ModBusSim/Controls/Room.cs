@@ -26,11 +26,14 @@ namespace ModBusSim
         public Building Building { get; set; }
         public bool Exists { get; set; } = false;
 
-        public Room()
+        public Room(bool presaved)
         {
             InitializeComponent();
-            Color = panel1.BackColor;
-            OpenRoomProperties();
+
+            if (!presaved) { OpenRoomProperties();}
+
+            this.Color = Color.LightGray;
+            this.Show();
         }
 
         private void roomPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,15 +81,11 @@ namespace ModBusSim
             roomProperties.Show();
         }
 
-        private void AddDevice(Device device)
+        public void AddDevice(Device device)
         {
             // Adding the given Device to the screen
 
             panel1.Controls.Add(device);
-            for (int i = 1; i < 255; i++)
-            {
-                if (!Building.UnitIDsInUse.Contains(i)) { device.UnitID = i; break; }
-            }
             SaveRoom();
         }
 
@@ -107,7 +106,7 @@ namespace ModBusSim
             SaveRoom();
             e.Cancel = true;
             this.Visible = false;
-            RoomProperties.Close();
+            if (RoomProperties != null) { RoomProperties.Close(); }
         }
 
         public RoomSettings ToRoomSettings()
@@ -115,7 +114,7 @@ namespace ModBusSim
             RoomSettings roomSettings = new RoomSettings()
             {
                 Text = this.Text,
-                Color = this.Color,
+                Color = this.Color.ToArgb(),
                 Exists = this.Exists
             };
 
@@ -128,9 +127,9 @@ namespace ModBusSim
 
         public static Room FromRoomSettings(RoomSettings roomSettings)
         {
-            Room room = new Room();
+            Room room = new Room(true);
             room.Text = roomSettings.Text;
-            room.Color = roomSettings.Color;
+            room.Color = Color.FromArgb(roomSettings.Color);
             room.Exists = roomSettings.Exists;
             
             foreach (DeviceSettings device in roomSettings.Devices) {
@@ -144,7 +143,7 @@ namespace ModBusSim
     public class RoomSettings
     {
         public string Text { get; set; }
-        public Color Color { get; set; }
+        public int Color { get; set; }
         public List<DeviceSettings> Devices { get; set; }
         public bool Exists { get; set; }
     }

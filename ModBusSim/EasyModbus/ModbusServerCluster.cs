@@ -160,10 +160,10 @@ namespace ModBusTest.EasyModBus
         {
 
             tcpHandler = new TCPHandler(LocalIPAddress, port);
-            if (DebugMessage != null)
-            {
-                DebugMessage(this, $"EasyModbus Server listing for incomming data at Port {port}, local IP {LocalIPAddress}");
-            }
+            //if (DebugMessage != null)
+            //{
+            //    DebugMessage(this, $"EasyModbus Server listing for incomming data at Port {port}, local IP {LocalIPAddress}");
+            //}
             tcpHandler.dataChanged += new TCPHandler.DataChanged(ProcessReceivedData);
             //cpHandler.numberOfClientsChanged += new TCPHandler.NumberOfClientsChanged(numberOfClientsChanged);
         }
