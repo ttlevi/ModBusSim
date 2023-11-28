@@ -70,15 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\AnalogDevice.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\AnalogDevice.Designer.cs">
-      <DependentUpon>AnalogDevice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Device.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Controls\Display.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,17 +103,17 @@
     <Compile Include="Controls\Building.Designer.cs">
       <DependentUpon>Building.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DigitalDevice.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\DigitalDevice.Designer.cs">
-      <DependentUpon>DigitalDevice.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\RoomDisplay.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\RoomDisplay.Designer.cs">
       <DependentUpon>RoomDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Device.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Device.Designer.cs">
+      <DependentUpon>Device.cs</DependentUpon>
     </Compile>
     <Compile Include="EasyModbus\Exceptions.cs" />
     <Compile Include="EasyModbus\Helpers.cs" />
@@ -130,17 +121,10 @@
     <Compile Include="EasyModbus\ModbusServer.cs" />
     <Compile Include="EasyModbus\ModbusServerCluster.cs" />
     <Compile Include="EasyModbus\StoreLogData.cs" />
-    <Compile Include="FormSerialisor\FormSerialisor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\AnalogDevice.resx">
-      <DependentUpon>AnalogDevice.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Device.resx">
       <DependentUpon>Device.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\DigitalDevice.resx">
-      <DependentUpon>DigitalDevice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Display.resx">
       <DependentUpon>Display.cs</DependentUpon>

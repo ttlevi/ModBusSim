@@ -1,5 +1,4 @@
-﻿using FormSerialisation;
-using ModBusSim.Controls;
+﻿using ModBusSim.Controls;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -104,82 +103,22 @@ namespace ModBusSim
 
         private void savePresetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //SaveFileDialog save = new SaveFileDialog();
-
-            //save.InitialDirectory = Application.StartupPath + "\\Resources";
-
-            //// Set other properties as needed
-            //save.Filter = "CSV Files (*.csv) | *.csv";
-            //save.DefaultExt = "csv";
-            //save.AddExtension = true;
-
-            //if (save.ShowDialog() == DialogResult.OK) {
-
-            //    try
-            //    {
-            //        StreamWriter sw = new StreamWriter(save.FileName, false, Encoding.Default);
-
-            //        foreach (Room r in rooms)
-            //        {
-            //            sw.Write($"{r.Text};{r.Color};");
-            //            foreach (Device d in r.Devices)
-            //            {
-            //                sw.Write($"{d.UnitID};{d.Type};{d.DeviceName};{d.NrOfRegs};"); // valamiért a nem connected eszközöknél is ír egy 0-t a norofregs-hez
-            //            }
-            //            sw.Write("\n");
-            //        }
-            //        sw.Close();
-            //    }
-            //    catch (Exception)
-            //    {
-            //        MessageBox.Show("File is open in another program.", "Error");
-            //    }
-
-            //}
-
-            //FormSerialisor.Serialise(this, Application.StartupPath + @"\building.xml");
-
-            // Saving to XML
-            //SerializeToXml(this, "building.xml");
-
-
+            // xml serialize here
         }
 
         private void loadPresetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Loading from XML
-            //Building loadedBuilding = DeserializeFromXml<Building>("building.xml");
-            //loadedBuilding.Show();
-            //this.Close();
-        }
 
+            // xml deserialize here
 
-        // ChatGPT szülte dolog
-
-        static void SerializeToXml<T>(T objectToSerialize, string filePath)
-        {
-            XmlAttributeOverrides attrOverrides = new XmlAttributeOverrides();
-            XmlAttributes attrs = new XmlAttributes { XmlIgnore = true };
-            attrOverrides.Add(typeof(System.ComponentModel.Component), "Site", attrs);
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-
-            using (StreamWriter streamWriter = new StreamWriter(filePath, false, Encoding.UTF8))
-            using (XmlWriter xmlWriter = XmlWriter.Create(streamWriter, new XmlWriterSettings { Indent = true }))
-            {
-                xmlSerializer.Serialize(xmlWriter, objectToSerialize);
+            foreach (Room room in Rooms) {
+                RefreshRoomDisplays(room);
             }
         }
+    }
 
-        static T DeserializeFromXml<T>(string filePath)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-
-            using (StreamReader streamReader = new StreamReader(filePath))
-            using (XmlReader xmlReader = XmlReader.Create(streamReader))
-            {
-                return (T)xmlSerializer.Deserialize(xmlReader);
-            }
-        }
+    public class BuildingSettings
+    {
+        public List<Room> Rooms { get; set; }
     }
 }

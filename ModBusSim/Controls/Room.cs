@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace ModBusSim
 {
-    [Serializable]
-
     // This class defines a Room with Devices is your Building
+
+    [Serializable]
     public partial class Room : Form
     {
         private Color roomcolor;
@@ -38,21 +38,11 @@ namespace ModBusSim
             OpenRoomProperties();
         }
 
-        private void digitalcoilDeviceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Creating new DigitalDevice
+            // Creating new Device
 
-            DigitalDevice device = new DigitalDevice();
-            device.Room = this;
-            device.Position = Devices.Count;
-            AddDevice(device);
-        }
-
-        private void analogholdingDeviceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Creating new AnalogDevice
-
-            AnalogDevice device = new AnalogDevice();
+            Device device = new Device();
             device.Room = this;
             device.Position = Devices.Count;
             AddDevice(device);
@@ -90,10 +80,9 @@ namespace ModBusSim
 
         private void AddDevice(Device device)
         {
-            // Adding the given Device to the screen and to the Devices list property of the room
+            // Adding the given Device to the screen
 
             panel1.Controls.Add(device);
-            Devices.Add(device);
             for (int i = 1; i < 255; i++)
             {
                 if (!Building.UnitIDsInUse.Contains(i)) { device.UnitID = i; break; }
@@ -120,5 +109,12 @@ namespace ModBusSim
             this.Visible = false;
             RoomProperties.Close();
         }
+    }
+
+    public class RoomSettings
+    {
+        public string Text { get; set; }
+        public Color Color { get; set; }
+        public List<Device> Devices { get; set; }
     }
 }

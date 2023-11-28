@@ -63,8 +63,8 @@ namespace ModBusSim.Controls
             NrOfDig = 0;
             foreach (Device device in Room.Devices)
             {
-                if (device is AnalogDevice) { NrOfAn++; }
-                else { NrOfDig++; }
+                if (device.IsDigital) { NrOfDig++; }
+                else { NrOfAn++; }
             }
         }
 
