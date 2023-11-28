@@ -176,6 +176,7 @@ namespace ModBusSim
 
             Rooms.Clear();
             UnitIDsInUse.Clear();
+            buildingContainer.Controls.Clear();
 
             foreach (Room room in newBuilding.Rooms) {
                 room.Building = this;
