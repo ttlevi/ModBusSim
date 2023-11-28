@@ -155,11 +155,20 @@ namespace ModBusSim
 
             StreamReader sr = new StreamReader(ofd.FileName);
             string xml = sr.ReadToEnd();
-
             XmlSerializer serializer = new XmlSerializer(typeof(BuildingSettings));
             StringReader r = new StringReader(xml);
 
-            var newBuildingSettings = (BuildingSettings)serializer.Deserialize(r);
+            BuildingSettings newBuildingSettings;
+            try
+            {
+                newBuildingSettings = (BuildingSettings)serializer.Deserialize(r);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The chosen XML file follows unsupported pattern.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+            }
+            
             Building newBuilding = new Building(false);
             newBuilding = Building.FromBuildingSettings(newBuildingSettings);
             
