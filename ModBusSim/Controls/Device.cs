@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace ModBusSim.Controls
 {
 
-    // This class is an abstraction of the two kinds of devices, helps to set up the common parameters in one place.
+    // This is a class for ModBus Devices to show on screen and to communicate with the client through the cluster
 
     [Serializable]
     public partial class Device : UserControl
@@ -179,13 +179,37 @@ namespace ModBusSim.Controls
             LoadRegs(IsDigital);
             Room.Building.RefreshRoomDisplays(Room);
         }
+
+        public DeviceSettings ToDeviceSetting()
+        {
+            return new DeviceSettings()
+            {
+                DeviceName = this.DeviceName,
+                NrOfRegs = this.NrOfRegs,
+                IsDigital = this.IsDigital,
+                UnitID = this.UnitID,
+                Position = this.Position
+            };
+        }
+
+        public static Device FromDeviceSettings(DeviceSettings settings)
+        {
+            Device device= new Device();
+            device.DeviceName = settings.DeviceName;
+            device.Position = settings.Position;
+            device.UnitID = settings.UnitID;
+            device.IsDigital = settings.IsDigital;
+            device.NrOfRegs = settings.NrOfRegs;
+            return device;
+        }
     }
 
     public class DeviceSettings
     {
         public string DeviceName { get; set; }
         public int NrOfRegs { get; set; }
-        public string Type { get; set; }
+        public bool IsDigital { get; set; }
         public int UnitID { get; set; }
+        public int Position { get; set; }
     }
 }

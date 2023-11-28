@@ -12,9 +12,11 @@ using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Security.Policy;
+using static System.Net.WebRequestMethods;
 
 namespace ModBusSim
 {
+    // This is the main source class of all controls in the project
 
     [Serializable]
     public partial class Building : Form
@@ -43,10 +45,11 @@ namespace ModBusSim
             Cluster.Listen();
             Cluster.DebugMessage += (s, m) =>
             {
-                this.Invoke((MethodInvoker)delegate ()
-                {
-                    log.Data += m + Environment.NewLine;
-                });
+
+                //this.Invoke((MethodInvoker)delegate ()
+                //{
+                //    log.Data += m + Environment.NewLine;
+                //});
             };
         }
 
@@ -104,21 +107,91 @@ namespace ModBusSim
         private void savePresetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // xml serialize here
+            var output = this.ToBuildingSettings();
+
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                Filter = "XML Files|*.xml|All Files|*.*",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+
+            if (sfd.ShowDialog() != DialogResult.OK) { return; }
+
+            StreamWriter sw = new StreamWriter(sfd.FileName);
+            string xml = string.Empty;          
+
+            XmlSerializer serializer = new XmlSerializer(typeof(BuildingSettings));
+
+            using (StringWriter writer = new StringWriter())
+            {
+                serializer.Serialize(writer, output);
+                xml = writer.ToString();
+            }
+            
+            sw.Write(xml);
+            sw.Close();
         }
 
         private void loadPresetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Cluster.StopListening();
             // xml deserialize here
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "XML Files|*.xml|All Files|*.*",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+
+            if (ofd.ShowDialog() != DialogResult.OK) { return; }
+
+            StreamReader sr = new StreamReader(ofd.FileName);
+            string xml = sr.ReadToEnd();
+
+            XmlSerializer serializer = new XmlSerializer(typeof(BuildingSettings));
+
+            using (StringReader r = new StringReader(xml))
+            {
+                var newBuildingSettings = (BuildingSettings)serializer.Deserialize(r);
+
+
+                var newBuilding = Building.FromBuildingSettings(newBuildingSettings);
+                newBuilding.Show();
+            }
+            sr.Close();
+
+            
 
             foreach (Room room in Rooms) {
                 RefreshRoomDisplays(room);
             }
         }
+
+        public BuildingSettings ToBuildingSettings()
+        {
+            BuildingSettings buildingSettings = new BuildingSettings() { };
+
+            buildingSettings.Rooms = new List<RoomSettings>();
+
+            foreach (Room room in Rooms) { buildingSettings.Rooms.Add(room.ToRoomSettings()); }
+
+            return buildingSettings;
+        }
+
+        public static Building FromBuildingSettings(BuildingSettings buildingSettings)
+        {
+            Building building = new Building();
+
+            foreach (RoomSettings room in buildingSettings.Rooms)
+            {
+                building.Rooms.Add(Room.FromRoomSettings(room));
+            }
+
+            return building;
+        }
     }
 
     public class BuildingSettings
     {
-        public List<Room> Rooms { get; set; }
+        public List<RoomSettings> Rooms { get; set; }
     }
 }

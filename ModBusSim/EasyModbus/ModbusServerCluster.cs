@@ -71,7 +71,8 @@ namespace ModBusTest.EasyModBus
             
             // Check if UnitID is already given to another Device
             if (Servers.Where(s => s.UnitIdentifier == id).Count() > 0) {
-                MessageBox.Show("This Unit ID is already in use. Values that you change will be changed on all the devices with the same ID.","Warning");
+                MessageBox.Show("This Unit ID is already in use. Values that you change will be changed on all the devices with the same ID.",
+                    "Warning",MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             };
 

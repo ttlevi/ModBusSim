@@ -42,7 +42,8 @@ namespace ModBusClient
             }
             catch (Exception)
             {
-                MessageBox.Show("There's no ModBus server available on this port. Try another IP Address or Port Number.", "Error");
+                MessageBox.Show("There's no ModBus server available on this port. Try another IP Address or Port Number.",
+                    "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -64,7 +65,8 @@ namespace ModBusClient
             }
             catch (Exception)
             {
-                MessageBox.Show("There's no device connected with the given UnitID, or it's connection is not yet established. Try again, or try a different UnitID.", "Error");
+                MessageBox.Show("There's no device connected with the given UnitID, or it's connection is not yet established. Try again, or try a different UnitID.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

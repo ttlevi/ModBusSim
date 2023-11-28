@@ -109,12 +109,43 @@ namespace ModBusSim
             this.Visible = false;
             RoomProperties.Close();
         }
+
+        public RoomSettings ToRoomSettings()
+        {
+            RoomSettings roomSettings = new RoomSettings()
+            {
+                Text = this.Text,
+                Color = this.Color,
+                Exists = this.Exists
+            };
+
+            roomSettings.Devices = new List<DeviceSettings>();
+
+            foreach (Device device in panel1.Controls) { roomSettings.Devices.Add(device.ToDeviceSetting()); }
+
+            return roomSettings;
+        }
+
+        public static Room FromRoomSettings(RoomSettings roomSettings)
+        {
+            Room room = new Room();
+            room.Text = roomSettings.Text;
+            room.Color = roomSettings.Color;
+            room.Exists = roomSettings.Exists;
+            
+            foreach (DeviceSettings device in roomSettings.Devices) {
+                room.Devices.Add(Device.FromDeviceSettings(device));
+            }
+
+            return room;
+        }
     }
 
     public class RoomSettings
     {
         public string Text { get; set; }
         public Color Color { get; set; }
-        public List<Device> Devices { get; set; }
+        public List<DeviceSettings> Devices { get; set; }
+        public bool Exists { get; set; }
     }
 }
