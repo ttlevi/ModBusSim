@@ -182,6 +182,7 @@ namespace ModBusSim
             Rooms.Clear();
             UnitIDsInUse.Clear();
             panelBuilding.Controls.Clear();
+            log.Data = string.Empty;
 
             foreach (Room room in newBuilding.Rooms) {
                 room.Building = this;
