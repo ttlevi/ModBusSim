@@ -1,19 +1,12 @@
 ﻿using EasyModBus;
+using ModBusSim;
+using ModBusSim.Controls;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO.Ports;
 using System.Linq;
-using System.Net.Sockets;
 using System.Net;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static EasyModBus.TCPHandler;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using ModBusSim.Controls;
-using ModBusSim;
 
 namespace ModBusTest.EasyModBus
 {
@@ -23,6 +16,7 @@ namespace ModBusTest.EasyModBus
         public event DebugMessageEventHandler DebugMessage;
 
         public List<ModbusServer> Servers { get; set; } = new List<ModbusServer>();
+        public Building Building { get; set; }
 
         private IPAddress ipAddressIn;
         private IPEndPoint iPEndPoint;
@@ -69,10 +63,19 @@ namespace ModBusTest.EasyModBus
             modbusServer.UnitIdentifier = (byte)id;
             modbusServer.directFlag = true;
             
-            // Check if UnitID is already given to another Device
+            // Check if UnitID is already in use, return null to prevent ServerError
             if (Servers.Where(s => s.UnitIdentifier == id).Count() > 0) {
                 MessageBox.Show("This Unit ID is already in use. Values that you change will be changed on all the devices with the same ID.",
-                    "Warning",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Building.UnitIDsInUse.Clear();
+                foreach (Room room in Building.Rooms)
+                {
+                    foreach (Device device in room.Devices)
+                    {
+                        Building.UnitIDsInUse.Add(device.UnitID);
+                    }
+                }
                 return null;
             };
 

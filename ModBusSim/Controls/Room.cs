@@ -87,8 +87,9 @@ namespace ModBusSim
             // Adding the given Device to the screen
 
             panelRoom.Controls.Add(device);
-
+            
             if (!presaved) {
+                Devices.Add(device);
                 for (int i = 1; i < 255; i++)
                 {
                     if (!Building.UnitIDsInUse.Contains(i))
@@ -103,7 +104,6 @@ namespace ModBusSim
             {
                 Building.UnitIDsInUse.Add(device.UnitID);
             }
-            
             
             SaveRoom();
         }

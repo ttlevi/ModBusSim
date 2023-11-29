@@ -44,7 +44,7 @@ namespace ModBusSim
             // newRoomToolStripMenuItem
             // 
             this.newRoomToolStripMenuItem.Name = "newRoomToolStripMenuItem";
-            this.newRoomToolStripMenuItem.Size = new System.Drawing.Size(151, 44);
+            this.newRoomToolStripMenuItem.Size = new System.Drawing.Size(151, 40);
             this.newRoomToolStripMenuItem.Text = "New Room";
             this.newRoomToolStripMenuItem.Click += new System.EventHandler(this.newRoomToolStripMenuItem_Click);
             // 
@@ -68,7 +68,7 @@ namespace ModBusSim
             this.savePresetToolStripMenuItem,
             this.loadPresetToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 44);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 40);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // savePresetToolStripMenuItem
@@ -88,7 +88,7 @@ namespace ModBusSim
             // changeLogToolStripMenuItem
             // 
             this.changeLogToolStripMenuItem.Name = "changeLogToolStripMenuItem";
-            this.changeLogToolStripMenuItem.Size = new System.Drawing.Size(236, 44);
+            this.changeLogToolStripMenuItem.Size = new System.Drawing.Size(236, 40);
             this.changeLogToolStripMenuItem.Text = "Server Change Log";
             this.changeLogToolStripMenuItem.Click += new System.EventHandler(this.changeLogToolStripMenuItem_Click);
             // 
@@ -97,6 +97,7 @@ namespace ModBusSim
             this.panelBuilding.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBuilding.AutoScroll = true;
             this.panelBuilding.Location = new System.Drawing.Point(12, 56);
             this.panelBuilding.Name = "panelBuilding";
             this.panelBuilding.Size = new System.Drawing.Size(1092, 542);

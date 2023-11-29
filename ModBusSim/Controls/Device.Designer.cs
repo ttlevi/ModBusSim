@@ -48,7 +48,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtName.Location = new System.Drawing.Point(6, 4);
-            this.txtName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtName.Margin = new System.Windows.Forms.Padding(6);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(486, 32);
             this.txtName.TabIndex = 37;
@@ -60,7 +60,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDevice.BackColor = System.Drawing.Color.Transparent;
             this.panelDevice.Location = new System.Drawing.Point(0, 167);
-            this.panelDevice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelDevice.Margin = new System.Windows.Forms.Padding(4);
             this.panelDevice.Name = "panelDevice";
             this.panelDevice.Size = new System.Drawing.Size(560, 271);
             this.panelDevice.TabIndex = 36;
@@ -68,7 +68,7 @@
             // nuUnitID
             // 
             this.nuUnitID.Location = new System.Drawing.Point(8, 75);
-            this.nuUnitID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nuUnitID.Margin = new System.Windows.Forms.Padding(4);
             this.nuUnitID.Maximum = new decimal(new int[] {
             255,
             0,
@@ -94,7 +94,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.White;
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
             this.btnDelete.Location = new System.Drawing.Point(500, 4);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(6);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(54, 52);
             this.btnDelete.TabIndex = 34;
@@ -107,7 +107,7 @@
             this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConnect.BackColor = System.Drawing.Color.White;
             this.btnConnect.Location = new System.Drawing.Point(352, 65);
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(6);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(202, 92);
             this.btnConnect.TabIndex = 33;
@@ -125,7 +125,7 @@
             "20",
             "25"});
             this.cboNrOfRegs.Location = new System.Drawing.Point(180, 73);
-            this.cboNrOfRegs.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cboNrOfRegs.Margin = new System.Windows.Forms.Padding(6);
             this.cboNrOfRegs.Name = "cboNrOfRegs";
             this.cboNrOfRegs.Size = new System.Drawing.Size(156, 33);
             this.cboNrOfRegs.TabIndex = 32;
@@ -158,19 +158,20 @@
             this.rbtnDigital.AutoSize = true;
             this.rbtnDigital.Checked = true;
             this.rbtnDigital.Location = new System.Drawing.Point(104, 125);
-            this.rbtnDigital.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rbtnDigital.Margin = new System.Windows.Forms.Padding(6);
             this.rbtnDigital.Name = "rbtnDigital";
             this.rbtnDigital.Size = new System.Drawing.Size(103, 29);
             this.rbtnDigital.TabIndex = 38;
             this.rbtnDigital.TabStop = true;
             this.rbtnDigital.Text = "Digital";
             this.rbtnDigital.UseVisualStyleBackColor = true;
+            this.rbtnDigital.CheckedChanged += new System.EventHandler(this.rbtnDigital_CheckedChanged);
             // 
             // rbtnAnalog
             // 
             this.rbtnAnalog.AutoSize = true;
             this.rbtnAnalog.Location = new System.Drawing.Point(224, 125);
-            this.rbtnAnalog.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rbtnAnalog.Margin = new System.Windows.Forms.Padding(6);
             this.rbtnAnalog.Name = "rbtnAnalog";
             this.rbtnAnalog.Size = new System.Drawing.Size(110, 29);
             this.rbtnAnalog.TabIndex = 39;
@@ -205,7 +206,7 @@
             this.Controls.Add(this.cboNrOfRegs);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Device";
             this.Size = new System.Drawing.Size(560, 440);
             ((System.ComponentModel.ISupportInitialize)(this.nuUnitID)).EndInit();

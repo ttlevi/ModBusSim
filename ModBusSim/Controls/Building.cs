@@ -14,7 +14,7 @@ namespace ModBusSim
     public partial class Building : Form
     {
         private Log log = new Log();
-        private List<Room> Rooms { get; set; } = new List<Room>();
+        public List<Room> Rooms { get; set; } = new List<Room>();
         public ModbusServerCluster Cluster { get; set; }
         public List<int> UnitIDsInUse { get; set; } = new List<int>();
         public List<RoomDisplay> RoomDisplays { get; set; } = new List<RoomDisplay>();
@@ -23,17 +23,6 @@ namespace ModBusSim
             if (connected) { SetUpCluster(); }
 
             InitializeComponent();
-
-            //foreach (Room room in Rooms)
-            //{
-            //    foreach (Device device in room.Devices)
-            //    {
-            //        if (!UnitIDsInUse.Contains(device.UnitID))
-            //        {
-            //            UnitIDsInUse.Add(device.UnitID);
-            //        }
-            //    }
-            //}
 
             WindowState = FormWindowState.Maximized;
         }
@@ -46,6 +35,7 @@ namespace ModBusSim
 
             Cluster = new ModbusServerCluster();
             Cluster.Port = 502;
+            Cluster.Building = this;
             Cluster.Listen();
             Cluster.DebugMessage += (s, m) =>
             {
@@ -93,9 +83,7 @@ namespace ModBusSim
             // Function to remove every visual element related to the given room.
             // It also removes it from the "rooms" list.
 
-            toremove.Close();
-            toremove.Dispose();
-            Rooms.Remove(toremove);
+            
             foreach (RoomDisplay disp in panelBuilding.Controls)
             {
                 if (disp.Room == toremove) {
@@ -104,6 +92,14 @@ namespace ModBusSim
                 }
                 RefreshRoomDisplays(disp.Room);
             }
+            foreach (Device device in toremove.Devices)
+            {
+                Cluster.Remove(device.UnitID);
+                UnitIDsInUse.Remove(device.UnitID);
+            }
+            toremove.Close();
+            toremove.Dispose();
+            Rooms.Remove(toremove);
         }
 
         private void changeLogToolStripMenuItem_Click(object sender, EventArgs e)
@@ -182,6 +178,7 @@ namespace ModBusSim
             Rooms.Clear();
             UnitIDsInUse.Clear();
             panelBuilding.Controls.Clear();
+            Cluster.Servers.Clear();
             log.Data = string.Empty;
 
             foreach (Room room in newBuilding.Rooms) {

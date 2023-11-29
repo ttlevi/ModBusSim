@@ -2,6 +2,7 @@
 using ModBusTest.EasyModBus;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -19,7 +20,6 @@ namespace ModBusSim.Controls
         private int w;
         private int h;
         private int d;
-        private ModbusServerCluster cluster = new ModbusServerCluster();
 
         public Room Room { get; set; }
 
@@ -90,14 +90,13 @@ namespace ModBusSim.Controls
             // Adding a new Server instance to the Cluster
 
             UnitID = int.Parse(nuUnitID.Text);
-            cluster = Room.Building.Cluster;
+            //cluster = Room.Building.Cluster;
 
-            cluster.Add(UnitID);
+            Room.Building.Cluster.Add(UnitID);
             if (!Room.Building.UnitIDsInUse.Contains(UnitID))
             {
                 Room.Building.UnitIDsInUse.Add(UnitID);
             }
-            Room.Devices.Add(this);
 
             // Setting up properties
 
@@ -107,7 +106,7 @@ namespace ModBusSim.Controls
             // Finding the Device in the Cluster list of the Building
 
             int j = 0;
-            foreach (ModbusServer unit in cluster.Servers)
+            foreach (ModbusServer unit in Room.Building.Cluster.Servers)
             {
                 if (unit.UnitIdentifier == UnitID) { break; }
                 j++;
@@ -134,9 +133,9 @@ namespace ModBusSim.Controls
                     panelDevice.Controls.Add(disp);
                 }
 
-                cluster.Servers[j].HoldingRegistersChanged += (int register, int numberOfRegisters) =>
+                Room.Building.Cluster.Servers[j].HoldingRegistersChanged += (int register, int numberOfRegisters) =>
                 {
-                    int value = cluster.Servers[j].holdingRegisters[register];
+                    int value = Room.Building.Cluster.Servers[j].holdingRegisters[register];
                     foreach (Display disp in panelDevice.Controls)
                     {
                         if (disp.Address == register) { disp.Value = value; };
@@ -163,9 +162,9 @@ namespace ModBusSim.Controls
                     panelDevice.Controls.Add(led);
                 }
 
-                cluster.Servers[j].CoilsChanged += (int coil, int numberOfCoils) =>
+                Room.Building.Cluster.Servers[j].CoilsChanged += (int coil, int numberOfCoils) =>
                 {
-                    bool value = cluster.Servers[j].coils[coil];
+                    bool value = Room.Building.Cluster.Servers[j].coils[coil];
                     foreach (Led led in panelDevice.Controls)
                     {
                         if (led.Address == coil) { led.Value = value; };
@@ -189,6 +188,7 @@ namespace ModBusSim.Controls
             Room.RemoveDevice(this);
             Room.Building.Cluster.Remove(UnitID);
             Room.Building.UnitIDsInUse.Remove(UnitID);
+            Room.Building.RefreshRoomDisplays(Room);
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -196,13 +196,12 @@ namespace ModBusSim.Controls
             if (btnConnect.Text == "Connect")
             {
                 LoadRegs(IsDigital);
-                Room.Building.RefreshRoomDisplays(Room);
                 btnConnect.Text = "Disconnect";
                 EnableControls(false);
             }
             else
             {
-                cluster.Remove(UnitID);
+                Room.Building.Cluster.Remove(UnitID);
                 panelDevice.Controls.Clear();
                 btnConnect.Text = "Connect";
                 EnableControls(true);
@@ -231,6 +230,14 @@ namespace ModBusSim.Controls
             device.IsDigital = settings.IsDigital;
             device.NrOfRegs = settings.NrOfRegs;
             return device;
+        }
+
+        private void rbtnDigital_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Room != null)
+            {
+                Room.SaveRoom();
+            }
         }
     }
 

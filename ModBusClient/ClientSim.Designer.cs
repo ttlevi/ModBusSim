@@ -72,9 +72,11 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 124);
+            this.groupBox1.Location = new System.Drawing.Point(12, 238);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(318, 171);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Size = new System.Drawing.Size(636, 329);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change Data";
@@ -82,10 +84,10 @@
             // chCoilVal
             // 
             this.chCoilVal.AutoSize = true;
-            this.chCoilVal.Location = new System.Drawing.Point(131, 102);
-            this.chCoilVal.Margin = new System.Windows.Forms.Padding(2);
+            this.chCoilVal.Location = new System.Drawing.Point(262, 196);
+            this.chCoilVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chCoilVal.Name = "chCoilVal";
-            this.chCoilVal.Size = new System.Drawing.Size(48, 17);
+            this.chCoilVal.Size = new System.Drawing.Size(88, 29);
             this.chCoilVal.TabIndex = 18;
             this.chCoilVal.Text = "True";
             this.chCoilVal.UseVisualStyleBackColor = true;
@@ -93,10 +95,10 @@
             // rbtnHoldingReg
             // 
             this.rbtnHoldingReg.AutoSize = true;
-            this.rbtnHoldingReg.Location = new System.Drawing.Point(209, 49);
-            this.rbtnHoldingReg.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnHoldingReg.Location = new System.Drawing.Point(418, 94);
+            this.rbtnHoldingReg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnHoldingReg.Name = "rbtnHoldingReg";
-            this.rbtnHoldingReg.Size = new System.Drawing.Size(103, 17);
+            this.rbtnHoldingReg.Size = new System.Drawing.Size(202, 29);
             this.rbtnHoldingReg.TabIndex = 17;
             this.rbtnHoldingReg.Text = "Holding Register";
             this.rbtnHoldingReg.UseVisualStyleBackColor = true;
@@ -105,10 +107,10 @@
             // 
             this.rbtnCoil.AutoSize = true;
             this.rbtnCoil.Checked = true;
-            this.rbtnCoil.Location = new System.Drawing.Point(131, 49);
-            this.rbtnCoil.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtnCoil.Location = new System.Drawing.Point(262, 94);
+            this.rbtnCoil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnCoil.Name = "rbtnCoil";
-            this.rbtnCoil.Size = new System.Drawing.Size(77, 17);
+            this.rbtnCoil.Size = new System.Drawing.Size(150, 29);
             this.rbtnCoil.TabIndex = 16;
             this.rbtnCoil.TabStop = true;
             this.rbtnCoil.Text = "Coil Output";
@@ -117,21 +119,21 @@
             // 
             // nuRegVal
             // 
-            this.nuRegVal.Location = new System.Drawing.Point(131, 102);
-            this.nuRegVal.Margin = new System.Windows.Forms.Padding(2);
+            this.nuRegVal.Location = new System.Drawing.Point(262, 196);
+            this.nuRegVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nuRegVal.Maximum = new decimal(new int[] {
             999,
             0,
             0,
             0});
             this.nuRegVal.Name = "nuRegVal";
-            this.nuRegVal.Size = new System.Drawing.Size(179, 20);
+            this.nuRegVal.Size = new System.Drawing.Size(358, 31);
             this.nuRegVal.TabIndex = 15;
             // 
             // nuRegAddr
             // 
-            this.nuRegAddr.Location = new System.Drawing.Point(130, 75);
-            this.nuRegAddr.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.nuRegAddr.Location = new System.Drawing.Point(260, 144);
+            this.nuRegAddr.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.nuRegAddr.Maximum = new decimal(new int[] {
             25,
             0,
@@ -143,7 +145,7 @@
             0,
             0});
             this.nuRegAddr.Name = "nuRegAddr";
-            this.nuRegAddr.Size = new System.Drawing.Size(180, 20);
+            this.nuRegAddr.Size = new System.Drawing.Size(360, 31);
             this.nuRegAddr.TabIndex = 14;
             this.nuRegAddr.Value = new decimal(new int[] {
             1,
@@ -153,8 +155,8 @@
             // 
             // nuUnitID
             // 
-            this.nuUnitID.Location = new System.Drawing.Point(131, 22);
-            this.nuUnitID.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.nuUnitID.Location = new System.Drawing.Point(262, 42);
+            this.nuUnitID.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.nuUnitID.Maximum = new decimal(new int[] {
             255,
             0,
@@ -166,7 +168,7 @@
             0,
             0});
             this.nuUnitID.Name = "nuUnitID";
-            this.nuUnitID.Size = new System.Drawing.Size(179, 20);
+            this.nuUnitID.Size = new System.Drawing.Size(358, 31);
             this.nuUnitID.TabIndex = 13;
             this.nuUnitID.Value = new decimal(new int[] {
             1,
@@ -178,9 +180,10 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(84, 23);
+            this.label6.Location = new System.Drawing.Point(168, 44);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.Size = new System.Drawing.Size(76, 25);
             this.label6.TabIndex = 11;
             this.label6.Text = "Unit ID";
             // 
@@ -188,18 +191,19 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(128, 147);
-            this.lblError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblError.Location = new System.Drawing.Point(256, 283);
+            this.lblError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 13);
+            this.lblError.Size = new System.Drawing.Size(0, 25);
             this.lblError.TabIndex = 7;
             // 
             // btnSetValue
             // 
             this.btnSetValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetValue.Location = new System.Drawing.Point(130, 127);
+            this.btnSetValue.Location = new System.Drawing.Point(260, 244);
+            this.btnSetValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSetValue.Name = "btnSetValue";
-            this.btnSetValue.Size = new System.Drawing.Size(180, 38);
+            this.btnSetValue.Size = new System.Drawing.Size(360, 73);
             this.btnSetValue.TabIndex = 6;
             this.btnSetValue.Text = "Set";
             this.btnSetValue.UseVisualStyleBackColor = true;
@@ -209,9 +213,10 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 76);
+            this.label3.Location = new System.Drawing.Point(74, 146);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.Size = new System.Drawing.Size(177, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Register Address";
             // 
@@ -219,9 +224,10 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(65, 103);
+            this.label2.Location = new System.Drawing.Point(130, 198);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.Size = new System.Drawing.Size(115, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "New Value";
             // 
@@ -229,9 +235,10 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 49);
+            this.label1.Location = new System.Drawing.Point(102, 94);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.Size = new System.Drawing.Size(146, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Register Type";
             // 
@@ -244,11 +251,11 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtPort);
             this.groupBox2.Controls.Add(this.txtIPAddr);
-            this.groupBox2.Location = new System.Drawing.Point(6, 4);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(12, 8);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(318, 115);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(636, 221);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Server Properties";
@@ -256,9 +263,10 @@
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(131, 69);
+            this.btnRefresh.Location = new System.Drawing.Point(262, 133);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(179, 38);
+            this.btnRefresh.Size = new System.Drawing.Size(358, 73);
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -268,9 +276,10 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 46);
+            this.label5.Location = new System.Drawing.Point(116, 88);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 13);
+            this.label5.Size = new System.Drawing.Size(132, 25);
             this.label5.TabIndex = 9;
             this.label5.Text = "Port Number";
             // 
@@ -278,39 +287,44 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(66, 20);
+            this.label4.Location = new System.Drawing.Point(132, 38);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.Size = new System.Drawing.Size(116, 25);
             this.label4.TabIndex = 7;
             this.label4.Text = "IP Address";
             // 
             // txtPort
             // 
             this.txtPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPort.Location = new System.Drawing.Point(131, 43);
+            this.txtPort.Location = new System.Drawing.Point(262, 83);
+            this.txtPort.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(181, 20);
+            this.txtPort.Size = new System.Drawing.Size(358, 31);
             this.txtPort.TabIndex = 8;
             this.txtPort.Text = "502";
             // 
             // txtIPAddr
             // 
             this.txtIPAddr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIPAddr.Location = new System.Drawing.Point(130, 17);
+            this.txtIPAddr.Location = new System.Drawing.Point(260, 33);
+            this.txtIPAddr.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtIPAddr.Name = "txtIPAddr";
-            this.txtIPAddr.Size = new System.Drawing.Size(182, 20);
+            this.txtIPAddr.Size = new System.Drawing.Size(360, 31);
             this.txtIPAddr.TabIndex = 2;
             this.txtIPAddr.Text = "127.0.0.1";
             // 
             // ModbusClientForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 300);
+            this.ClientSize = new System.Drawing.Size(660, 577);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
             this.Name = "ModbusClientForm";
             this.Text = "ModBusClient";
             this.groupBox1.ResumeLayout(false);
