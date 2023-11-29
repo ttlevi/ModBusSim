@@ -24,16 +24,16 @@ namespace ModBusSim
 
             InitializeComponent();
 
-            foreach (Room room in Rooms)
-            {
-                foreach (Device device in room.Devices)
-                {
-                    if (!UnitIDsInUse.Contains(device.UnitID))
-                    {
-                        UnitIDsInUse.Add(device.UnitID);
-                    }
-                }
-            }
+            //foreach (Room room in Rooms)
+            //{
+            //    foreach (Device device in room.Devices)
+            //    {
+            //        if (!UnitIDsInUse.Contains(device.UnitID))
+            //        {
+            //            UnitIDsInUse.Add(device.UnitID);
+            //        }
+            //    }
+            //}
 
             WindowState = FormWindowState.Maximized;
         }
@@ -62,7 +62,7 @@ namespace ModBusSim
 
             if (!newroom.Exists) { newroom.Exists = true; Rooms.Add(newroom); }
             int nr = 0;
-            foreach (RoomDisplay disp in buildingContainer.Controls)
+            foreach (RoomDisplay disp in panelBuilding.Controls)
             {
                 disp.SetPropOfRoomDisplay(disp.Room);
                 disp.Position = nr;
@@ -84,7 +84,7 @@ namespace ModBusSim
             RoomDisplay disp = new RoomDisplay();
             disp.Room = newroom;
             disp.Building = this;
-            buildingContainer.Controls.Add(disp);
+            panelBuilding.Controls.Add(disp);
             RefreshRoomDisplays(disp.Room);
         }
 
@@ -96,10 +96,10 @@ namespace ModBusSim
             toremove.Close();
             toremove.Dispose();
             Rooms.Remove(toremove);
-            foreach (RoomDisplay disp in buildingContainer.Controls)
+            foreach (RoomDisplay disp in panelBuilding.Controls)
             {
                 if (disp.Room == toremove) {
-                    buildingContainer.Controls.Remove(disp);
+                    panelBuilding.Controls.Remove(disp);
                     RoomDisplays.Remove(disp);
                 }
                 RefreshRoomDisplays(disp.Room);
@@ -174,9 +174,14 @@ namespace ModBusSim
             
             sr.Close();
 
+            foreach (Room room in Rooms)
+            {
+                room.Dispose();
+            }
+
             Rooms.Clear();
             UnitIDsInUse.Clear();
-            buildingContainer.Controls.Clear();
+            panelBuilding.Controls.Clear();
 
             foreach (Room room in newBuilding.Rooms) {
                 room.Building = this;
@@ -185,7 +190,7 @@ namespace ModBusSim
                 {
                     if (!UnitIDsInUse.Contains(device.UnitID)) { UnitIDsInUse.Add(device.UnitID); };
                     device.Room = room;
-                    room.AddDevice(device);
+                    room.AddDevice(device,true);
                 }
                 Rooms.Add(room);
                 AddNewRoomDisplay(room);

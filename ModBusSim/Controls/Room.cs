@@ -1,6 +1,7 @@
 ﻿using ModBusSim.Controls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -19,7 +20,7 @@ namespace ModBusSim
         public Color Color
         {
             get { return roomcolor; }
-            set { roomcolor = value; panel1.BackColor = Color; }
+            set { roomcolor = value; panelRoom.BackColor = Color; }
         }
 
         public List<Device> Devices { get; set; } = new List<Device>();
@@ -30,10 +31,10 @@ namespace ModBusSim
         {
             InitializeComponent();
 
-            if (!presaved) { OpenRoomProperties();}
-
             this.Color = Color.LightGray;
             this.Show();
+
+            if (!presaved) { OpenRoomProperties(); }
         }
 
         private void roomPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace ModBusSim
             Device device = new Device();
             device.Room = this;
             device.Position = Devices.Count;
-            AddDevice(device);
+            AddDevice(device,false);
         }
 
         public void SaveRoom()
@@ -64,7 +65,7 @@ namespace ModBusSim
             // Resetting the Device positions
 
             int nr = 0;
-            foreach (Device device in panel1.Controls)
+            foreach (Device device in panelRoom.Controls)
             {
                 device.Position = nr;
                 nr++;
@@ -81,11 +82,29 @@ namespace ModBusSim
             roomProperties.Show();
         }
 
-        public void AddDevice(Device device)
+        public void AddDevice(Device device, bool presaved)
         {
             // Adding the given Device to the screen
 
-            panel1.Controls.Add(device);
+            panelRoom.Controls.Add(device);
+
+            if (!presaved) {
+                for (int i = 1; i < 255; i++)
+                {
+                    if (!Building.UnitIDsInUse.Contains(i))
+                    {
+                        device.UnitID = i;
+                        Building.UnitIDsInUse.Add(i);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Building.UnitIDsInUse.Add(device.UnitID);
+            }
+            
+            
             SaveRoom();
         }
 
@@ -94,14 +113,14 @@ namespace ModBusSim
             // Removing the given Device from everywhere and resetting the control positions
 
             Devices.Remove(toremove);
-            panel1.Controls.Remove(toremove);
+            panelRoom.Controls.Remove(toremove);
             SetDevicePositions();
             SaveRoom();
         }
 
         private void Room_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // To prevent the Room from dispatching when closed
+            // To prevent the Room from disposing when closed
 
             SaveRoom();
             e.Cancel = true;
@@ -120,7 +139,7 @@ namespace ModBusSim
 
             roomSettings.Devices = new List<DeviceSettings>();
 
-            foreach (Device device in panel1.Controls) { roomSettings.Devices.Add(device.ToDeviceSetting()); }
+            foreach (Device device in panelRoom.Controls) { roomSettings.Devices.Add(device.ToDeviceSetting()); }
 
             return roomSettings;
         }

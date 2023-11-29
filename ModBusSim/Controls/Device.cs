@@ -19,6 +19,7 @@ namespace ModBusSim.Controls
         private int w;
         private int h;
         private int d;
+        private ModbusServerCluster cluster = new ModbusServerCluster();
 
         public Room Room { get; set; }
 
@@ -82,10 +83,6 @@ namespace ModBusSim.Controls
             
             txtName.Text = "ModBus Device";
             cboNrOfRegs.Text = "5";
-            //for (int i = 1; i < 255; i++)
-            //{
-            //    if (!Room.Building.UnitIDsInUse.Contains(i)) { UnitID = i; break; }
-            //}
         }
 
         public void LoadRegs(bool isdigital)
@@ -93,20 +90,14 @@ namespace ModBusSim.Controls
             // Adding a new Server instance to the Cluster
 
             UnitID = int.Parse(nuUnitID.Text);
-            ModbusServerCluster cluster = Room.Building.Cluster;
+            cluster = Room.Building.Cluster;
+
             cluster.Add(UnitID);
             if (!Room.Building.UnitIDsInUse.Contains(UnitID))
             {
                 Room.Building.UnitIDsInUse.Add(UnitID);
             }
             Room.Devices.Add(this);
-
-            nuUnitID.Enabled = false;
-            cboNrOfRegs.Enabled = false;
-            btnConnect.Enabled = false;
-            txtName.Enabled = false;
-            rbtnAnalog.Enabled = false;
-            rbtnDigital.Enabled = false;
 
             // Setting up properties
 
@@ -131,7 +122,7 @@ namespace ModBusSim.Controls
                     Display disp = new Display();
 
                     disp.Width = (Width - 2 * d) / 5;
-                    disp.Height = panel1.Height / 5 - d;
+                    disp.Height = panelDevice.Height / 5 - d;
 
                     disp.Top = (i / 5) * (disp.Height + d);
                     disp.Left = d + (i % 5) * disp.Width;
@@ -140,13 +131,13 @@ namespace ModBusSim.Controls
                     disp.Address = i + 1;
                     disp.Value = 0;
 
-                    panel1.Controls.Add(disp);
+                    panelDevice.Controls.Add(disp);
                 }
 
                 cluster.Servers[j].HoldingRegistersChanged += (int register, int numberOfRegisters) =>
                 {
                     int value = cluster.Servers[j].holdingRegisters[register];
-                    foreach (Display disp in panel1.Controls)
+                    foreach (Display disp in panelDevice.Controls)
                     {
                         if (disp.Address == register) { disp.Value = value; };
                     }
@@ -162,26 +153,35 @@ namespace ModBusSim.Controls
                     Led led = new Led();
 
                     led.Width = Width / 5 - (d + d / 5);
-                    led.Height = panel1.Height / 5 - d;
+                    led.Height = panelDevice.Height / 5 - d;
 
                     led.Top = (i / 5) * (led.Height + d);
                     led.Left = d + (i % 5) * (led.Width + d);
 
                     led.Address = i + 1;
 
-                    panel1.Controls.Add(led);
+                    panelDevice.Controls.Add(led);
                 }
 
                 cluster.Servers[j].CoilsChanged += (int coil, int numberOfCoils) =>
                 {
                     bool value = cluster.Servers[j].coils[coil];
-                    foreach (Led led in panel1.Controls)
+                    foreach (Led led in panelDevice.Controls)
                     {
                         if (led.Address == coil) { led.Value = value; };
                     }
                 };
 
             }
+        }
+
+        private void EnableControls(bool value)
+        {
+            nuUnitID.Enabled = value;
+            cboNrOfRegs.Enabled = value;
+            txtName.Enabled = value;
+            rbtnAnalog.Enabled = value;
+            rbtnDigital.Enabled = value;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -193,8 +193,21 @@ namespace ModBusSim.Controls
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            LoadRegs(IsDigital);
-            Room.Building.RefreshRoomDisplays(Room);
+            if (btnConnect.Text == "Connect")
+            {
+                LoadRegs(IsDigital);
+                Room.Building.RefreshRoomDisplays(Room);
+                btnConnect.Text = "Disconnect";
+                EnableControls(false);
+            }
+            else
+            {
+                cluster.Remove(UnitID);
+                panelDevice.Controls.Clear();
+                btnConnect.Text = "Connect";
+                EnableControls(true);
+            }
+            
         }
 
         public DeviceSettings ToDeviceSetting()

@@ -70,9 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BuildingContainer.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\Display.cs">
       <SubType>UserControl</SubType>
     </Compile>

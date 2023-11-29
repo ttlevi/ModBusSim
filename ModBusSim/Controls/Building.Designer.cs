@@ -37,7 +37,7 @@ namespace ModBusSim
             this.savePresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buildingContainer = new ModBusSim.Controls.BuildingContainer();
+            this.panelBuilding = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,15 +92,15 @@ namespace ModBusSim
             this.changeLogToolStripMenuItem.Text = "Server Change Log";
             this.changeLogToolStripMenuItem.Click += new System.EventHandler(this.changeLogToolStripMenuItem_Click);
             // 
-            // buildingContainer
+            // panelBuilding
             // 
-            this.buildingContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelBuilding.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buildingContainer.Location = new System.Drawing.Point(11, 55);
-            this.buildingContainer.Name = "buildingContainer";
-            this.buildingContainer.Size = new System.Drawing.Size(1093, 543);
-            this.buildingContainer.TabIndex = 1;
+            this.panelBuilding.Location = new System.Drawing.Point(12, 56);
+            this.panelBuilding.Name = "panelBuilding";
+            this.panelBuilding.Size = new System.Drawing.Size(1092, 542);
+            this.panelBuilding.TabIndex = 1;
             // 
             // Building
             // 
@@ -108,7 +108,7 @@ namespace ModBusSim
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1116, 610);
-            this.Controls.Add(this.buildingContainer);
+            this.Controls.Add(this.panelBuilding);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -130,7 +130,7 @@ namespace ModBusSim
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem savePresetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadPresetToolStripMenuItem;
-        private Controls.BuildingContainer buildingContainer;
+        private System.Windows.Forms.Panel panelBuilding;
     }
 }
 
