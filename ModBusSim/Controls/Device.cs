@@ -93,10 +93,6 @@ namespace ModBusSim.Controls
             //cluster = Room.Building.Cluster;
 
             Room.Building.Cluster.Add(UnitID);
-            if (!Room.Building.UnitIDsInUse.Contains(UnitID))
-            {
-                Room.Building.UnitIDsInUse.Add(UnitID);
-            }
 
             // Setting up properties
 

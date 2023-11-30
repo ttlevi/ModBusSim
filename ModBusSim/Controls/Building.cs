@@ -66,6 +66,7 @@ namespace ModBusSim
 
             Room newroom = new Room(false);
             newroom.Building = this;
+            newroom.Visible = true;
             AddNewRoomDisplay(newroom);
         }
 
@@ -186,7 +187,6 @@ namespace ModBusSim
                 room.Visible = false;
                 foreach (Device device in room.Devices)
                 {
-                    if (!UnitIDsInUse.Contains(device.UnitID)) { UnitIDsInUse.Add(device.UnitID); };
                     device.Room = room;
                     room.AddDevice(device,true);
                 }

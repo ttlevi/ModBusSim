@@ -32,7 +32,6 @@ namespace ModBusSim
             InitializeComponent();
 
             this.Color = Color.LightGray;
-            this.Show();
 
             if (!presaved) { OpenRoomProperties(); }
         }
