@@ -22,6 +22,7 @@ namespace ModBusSim.Controls
         private int d;
 
         public Room Room { get; set; }
+        public int MaxNrInARow { get; set; } = 5;
 
         private string deviceName;
 
@@ -70,8 +71,8 @@ namespace ModBusSim.Controls
                 w = Width;
                 h = Height;
                 d = DeviceDpi / 96 * 10;
-                Left = d + (position % 4) * (w + d);
-                Top = d + (position / 4) * (h + d);
+                Left = d + (position % MaxNrInARow) * (w + d);
+                Top = d + (position / MaxNrInARow) * (h + d);
                 Width = w;
                 Height = h;
             }

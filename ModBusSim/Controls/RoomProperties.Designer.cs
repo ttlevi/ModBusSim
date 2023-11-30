@@ -104,6 +104,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RoomProperties";
             this.Text = "Room Properties";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RoomProperties_FormClosing);

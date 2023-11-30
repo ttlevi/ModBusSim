@@ -19,7 +19,7 @@ namespace ModBusSim.Controls
         // Properties for the RoomDisplays Room and Building relation
         public Room Room { get; set; }
         public Building Building { get; set; }
-
+        public int MaxNrInARow { get; set; } = 5;
         public int NrOfAn
         {
             get { return nrOfAn; }
@@ -38,8 +38,8 @@ namespace ModBusSim.Controls
             set
             {
                 position = value;
-                Left = (position % 5) * (w+d);
-                Top = (position / 5) * (h+d);
+                Left = (position % MaxNrInARow) * (w+d);
+                Top = (position / MaxNrInARow) * (h+d);
             }
         }
 

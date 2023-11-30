@@ -3,6 +3,7 @@ using ModBusTest.EasyModBus;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -46,15 +47,20 @@ namespace ModBusSim
             };
         }
 
-        public void RefreshRoomDisplays(Room newroom)
+        public void RefreshRoomDisplays([Optional]Room newroom)
         {
             // Function to create RoomDisplay instances on the Building Form.
 
-            if (!newroom.Exists) { newroom.Exists = true; Rooms.Add(newroom); }
+            if (newroom != null)
+            {
+                if (!newroom.Exists) { newroom.Exists = true; Rooms.Add(newroom); }
+            }
+            
             int nr = 0;
             foreach (RoomDisplay disp in panelBuilding.Controls)
             {
-                disp.SetPropOfRoomDisplay(disp.Room);
+                disp.SetPropOfRoomDisplay(disp.Room);               
+                disp.MaxNrInARow = this.Width/disp.Width;
                 disp.Position = nr;
                 nr++;
             }
@@ -219,6 +225,13 @@ namespace ModBusSim
 
             return building;
         }
+
+        private void Building_Resize(object sender, EventArgs e)
+        {
+            RefreshRoomDisplays();
+        }
+
+
     }
 
     public class BuildingSettings

@@ -66,6 +66,7 @@ namespace ModBusSim
             int nr = 0;
             foreach (Device device in panelRoom.Controls)
             {
+                device.MaxNrInARow = this.Width / device.Width;
                 device.Position = nr;
                 nr++;
             }
@@ -155,6 +156,11 @@ namespace ModBusSim
             }
 
             return room;
+        }
+
+        private void Room_Resize(object sender, EventArgs e)
+        {
+            SetDevicePositions();
         }
     }
 
