@@ -128,6 +128,8 @@ namespace ModBusSim
             if (RoomProperties != null) { RoomProperties.Close(); }
         }
 
+        // Functions to copy/load necessary settings to/from Serializable settings class
+
         public RoomSettings ToRoomSettings()
         {
             RoomSettings roomSettings = new RoomSettings()
@@ -163,6 +165,8 @@ namespace ModBusSim
             SetDevicePositions();
         }
     }
+
+    // Serializable settings class
 
     public class RoomSettings
     {

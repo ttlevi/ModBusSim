@@ -117,9 +117,11 @@ namespace ModBusSim
             log.Activate();
         }
 
+        // Saving/loading project to/from compatible XML file
+
         private void savePresetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // XmlSerializer
+            // Xml Serialization
             var output = this.ToBuildingSettings();
 
             SaveFileDialog sfd = new SaveFileDialog()
@@ -201,6 +203,8 @@ namespace ModBusSim
             }
         }
 
+        // Functions to copy/load necessary settings to/from Serializable settings class
+
         public BuildingSettings ToBuildingSettings()
         {
             BuildingSettings buildingSettings = new BuildingSettings() { };
@@ -225,6 +229,8 @@ namespace ModBusSim
 
             return building;
         }
+
+        // Serializable settings class
 
         private void Building_Resize(object sender, EventArgs e)
         {

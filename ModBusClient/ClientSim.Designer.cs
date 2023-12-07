@@ -73,9 +73,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 238);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox1.Size = new System.Drawing.Size(636, 329);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
@@ -84,8 +84,8 @@
             // chCoilVal
             // 
             this.chCoilVal.AutoSize = true;
-            this.chCoilVal.Location = new System.Drawing.Point(262, 196);
-            this.chCoilVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chCoilVal.Location = new System.Drawing.Point(263, 197);
+            this.chCoilVal.Margin = new System.Windows.Forms.Padding(4);
             this.chCoilVal.Name = "chCoilVal";
             this.chCoilVal.Size = new System.Drawing.Size(88, 29);
             this.chCoilVal.TabIndex = 18;
@@ -96,7 +96,7 @@
             // 
             this.rbtnHoldingReg.AutoSize = true;
             this.rbtnHoldingReg.Location = new System.Drawing.Point(418, 94);
-            this.rbtnHoldingReg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtnHoldingReg.Margin = new System.Windows.Forms.Padding(4);
             this.rbtnHoldingReg.Name = "rbtnHoldingReg";
             this.rbtnHoldingReg.Size = new System.Drawing.Size(202, 29);
             this.rbtnHoldingReg.TabIndex = 17;
@@ -108,7 +108,7 @@
             this.rbtnCoil.AutoSize = true;
             this.rbtnCoil.Checked = true;
             this.rbtnCoil.Location = new System.Drawing.Point(262, 94);
-            this.rbtnCoil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtnCoil.Margin = new System.Windows.Forms.Padding(4);
             this.rbtnCoil.Name = "rbtnCoil";
             this.rbtnCoil.Size = new System.Drawing.Size(150, 29);
             this.rbtnCoil.TabIndex = 16;
@@ -120,7 +120,7 @@
             // nuRegVal
             // 
             this.nuRegVal.Location = new System.Drawing.Point(262, 196);
-            this.nuRegVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nuRegVal.Margin = new System.Windows.Forms.Padding(4);
             this.nuRegVal.Maximum = new decimal(new int[] {
             999,
             0,
@@ -201,7 +201,7 @@
             // 
             this.btnSetValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSetValue.Location = new System.Drawing.Point(260, 244);
-            this.btnSetValue.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSetValue.Margin = new System.Windows.Forms.Padding(6);
             this.btnSetValue.Name = "btnSetValue";
             this.btnSetValue.Size = new System.Drawing.Size(360, 73);
             this.btnSetValue.TabIndex = 6;
@@ -252,9 +252,9 @@
             this.groupBox2.Controls.Add(this.txtPort);
             this.groupBox2.Controls.Add(this.txtIPAddr);
             this.groupBox2.Location = new System.Drawing.Point(12, 8);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(636, 221);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
@@ -264,7 +264,7 @@
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.Location = new System.Drawing.Point(262, 133);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(358, 73);
             this.btnRefresh.TabIndex = 10;
@@ -298,7 +298,7 @@
             // 
             this.txtPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPort.Location = new System.Drawing.Point(262, 83);
-            this.txtPort.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtPort.Margin = new System.Windows.Forms.Padding(6);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(358, 31);
             this.txtPort.TabIndex = 8;
@@ -308,7 +308,7 @@
             // 
             this.txtIPAddr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIPAddr.Location = new System.Drawing.Point(260, 33);
-            this.txtIPAddr.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtIPAddr.Margin = new System.Windows.Forms.Padding(6);
             this.txtIPAddr.Name = "txtIPAddr";
             this.txtIPAddr.Size = new System.Drawing.Size(360, 31);
             this.txtIPAddr.TabIndex = 2;
@@ -323,8 +323,10 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(686, 648);
+            this.MinimumSize = new System.Drawing.Size(686, 648);
             this.Name = "ModbusClientForm";
             this.Text = "ModBusClient";
             this.groupBox1.ResumeLayout(false);

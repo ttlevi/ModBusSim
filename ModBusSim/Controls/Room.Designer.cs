@@ -39,21 +39,22 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addDeviceToolStripMenuItem,
             this.openToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(1057, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(2114, 40);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // addDeviceToolStripMenuItem
             // 
             this.addDeviceToolStripMenuItem.Name = "addDeviceToolStripMenuItem";
-            this.addDeviceToolStripMenuItem.Size = new System.Drawing.Size(79, 22);
+            this.addDeviceToolStripMenuItem.Size = new System.Drawing.Size(156, 36);
             this.addDeviceToolStripMenuItem.Text = "Add Device";
             this.addDeviceToolStripMenuItem.Click += new System.EventHandler(this.addDeviceToolStripMenuItem_Click);
             // 
@@ -62,13 +63,13 @@
             this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.roomPropertiesToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(54, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(106, 36);
             this.openToolStripMenuItem.Text = "Details";
             // 
             // roomPropertiesToolStripMenuItem
             // 
             this.roomPropertiesToolStripMenuItem.Name = "roomPropertiesToolStripMenuItem";
-            this.roomPropertiesToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.roomPropertiesToolStripMenuItem.Size = new System.Drawing.Size(323, 44);
             this.roomPropertiesToolStripMenuItem.Text = "Room Properties";
             this.roomPropertiesToolStripMenuItem.Click += new System.EventHandler(this.roomPropertiesToolStripMenuItem_Click);
             // 
@@ -77,21 +78,22 @@
             this.panelRoom.AutoScroll = true;
             this.panelRoom.BackColor = System.Drawing.Color.Silver;
             this.panelRoom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRoom.Location = new System.Drawing.Point(0, 24);
-            this.panelRoom.Margin = new System.Windows.Forms.Padding(2);
+            this.panelRoom.Location = new System.Drawing.Point(0, 40);
+            this.panelRoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelRoom.Name = "panelRoom";
-            this.panelRoom.Size = new System.Drawing.Size(1057, 355);
+            this.panelRoom.Size = new System.Drawing.Size(2114, 689);
             this.panelRoom.TabIndex = 2;
             // 
             // Room
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 379);
+            this.ClientSize = new System.Drawing.Size(2114, 729);
             this.Controls.Add(this.panelRoom);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.MinimumSize = new System.Drawing.Size(650, 650);
             this.Name = "Room";
             this.Text = "NewRoom";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Room_FormClosing);

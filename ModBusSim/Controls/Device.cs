@@ -206,6 +206,8 @@ namespace ModBusSim.Controls
             
         }
 
+        // Functions to copy/load necessary settings to/from Serializable settings class
+
         public DeviceSettings ToDeviceSetting()
         {
             return new DeviceSettings()
@@ -237,6 +239,8 @@ namespace ModBusSim.Controls
             }
         }
     }
+
+    // Serializable settings class
 
     public class DeviceSettings
     {
